@@ -24,7 +24,7 @@ exports.listAll = function(req, res){
 };
 
 exports.listOne = function(req, res){
-  User.find({"username":req.body.username}, function(req, result){
+  User.find({"username":req.params.username}, function(req, result){
     return res.send(result);
   });
 };
