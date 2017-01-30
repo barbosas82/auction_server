@@ -50,9 +50,7 @@ exports.Auth = function(req, res){
          } else {
            // if user is found and password is right
            // create a token
-           var token = jwt.sign(user, config.secret, {
-             expiresInMinutes: config.security.tokenlife
-           });
+           var token = jwt.sign(user, "passwordlixada123", {expiresInMinutes: 1000});
 
            // return the information including token as JSON
            res.json({
