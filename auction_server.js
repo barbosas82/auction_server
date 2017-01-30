@@ -9,8 +9,8 @@ var mongoose    = require('mongoose');
 
 var jwt    = require('jsonwebtoken'); // used to create, sign, and verify tokens
 var config = require('./config'); // get our config file
-var User   = require('./models/user'); // get our mongoose model
-require('./routes')(app); //get our routes
+//var User   = require('./models/user'); // get our mongoose model
+//require('./routes')(app); //get our routes
 
 
 
