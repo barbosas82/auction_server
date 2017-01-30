@@ -36,7 +36,7 @@ module.exports = function(app){
 
    app.post('/api/authenticate', function(req, res){
 
-      User.findOne({"username":req.body.username}, function (err, user){
+      User.find({"username":req.body.username}, function (err, user){
 
         if(err) throw err;
 
