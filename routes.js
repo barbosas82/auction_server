@@ -7,10 +7,11 @@ module.exports = function(app){
 
 // API ROUTES -------------------
 
-  //Admin method to add user
+  //Admin method to add user, list users
   var users = require('./controllers/user');
-  app.post('/useradd', users.add);
-  app.get('/listusers', users.list)
+  app.post('/api/useradd', users.add);
+  app.get('/api/listusers', users.listAll)
+  app.get('/api/listuser:username', user.listOne)
 
 
 

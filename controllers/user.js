@@ -17,12 +17,14 @@ exports.add = function(req, res){
   });
 };
 
-exports.list = function(req, res){
+exports.listAll = function(req, res){
   User.find({}, function(req, result){
     return res.send(result);
-
   });
+};
 
-
-
+exports.listOne = function(req, res){
+  User.find({"username":req.body.username}, function(req, result){
+    return res.send(result);
+  });
 };
