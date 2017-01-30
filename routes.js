@@ -19,20 +19,12 @@ module.exports = function(app){
   **********************************************/
    var artists = require('./controllers/artists');
 
-   app.post('/wantlist',
-           artists.add
-   );
+   app.post('/api/wantlist', artists.add );
 
-   app.get('/wantlist',
-           artists.findAll
-   );
+   app.get('/api/wantlist', artists.findAll);
 
-   app.put('/wantlist/:id',
-           artists.update
-   );
+   app.put('/api/wantlist/:id', artists.update );
 
-   app.delete('/wantlist/:id',
-           artists.delete
-   );
+   app.delete('/api/wantlist/:id', artists.delete);
 
 }
