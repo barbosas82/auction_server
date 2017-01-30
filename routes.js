@@ -13,7 +13,7 @@ module.exports = function(app){
   app.post('/api/useradd', users.add);
   app.get('/api/listusers', users.listAll)
   app.get('/api/listuser/:username', users.listOne)
-  //app.post('/api/authenticate', users.Auth);
+  app.post('/api/authenticate', users.Auth);
 
 
   /**********************************************
@@ -34,43 +34,43 @@ module.exports = function(app){
    **********************************************/
 
 
-   var mongoose = require('mongoose'),
-       User = mongoose.model('User'), // get our mongoose model
-       jwt  = require('jsonwebtoken'); // used to create, sign, and verify tokens;
-
-   app.post('/api/authenticate', function(req, res){
-     var username = req.body.username;
-
-      User.findOne({"username": username}, function (err, user){
-
-        //res.send("Username: " + username);
-
-        if(err) throw err;
-
-        if (!user) {
-          res.json({ success: false, message: 'Authentication failed. User not found. ' + username});
-        } else if (user) {
-
-            // check if password matches
-            if (user.password != req.body.password) {
-              res.json({ success: false, message: 'Authentication failed. Wrong password.' });
-            } else {
-              // if user is found and password is right
-              // create a token
-              var token = jwt.sign(user, app.get('superSecrets'), {
-                expiresInMinutes: app.get('tokenlife')
-              });
-
-              // return the information including token as JSON
-              res.json({
-                success: true,
-                message: 'Enjoy your token!',
-                token: token
-              });
-            }
-        }
-      });
-   });
+  //  var mongoose = require('mongoose'),
+  //      User = mongoose.model('User'), // get our mongoose model
+  //      jwt  = require('jsonwebtoken'); // used to create, sign, and verify tokens;
+   //
+  //  app.post('/api/authenticate', function(req, res){
+  //    var username = req.body.username;
+   //
+  //     User.findOne({"username": username}, function (err, user){
+   //
+  //       //res.send("Username: " + username);
+   //
+  //       if(err) throw err;
+   //
+  //       if (!user) {
+  //         res.json({ success: false, message: 'Authentication failed. User not found. ' + username});
+  //       } else if (user) {
+   //
+  //           // check if password matches
+  //           if (user.password != req.body.password) {
+  //             res.json({ success: false, message: 'Authentication failed. Wrong password.' });
+  //           } else {
+  //             // if user is found and password is right
+  //             // create a token
+  //             var token = jwt.sign(user, app.get('superSecrets'), {
+  //               expiresInMinutes: app.get('tokenlife')
+  //             });
+   //
+  //             // return the information including token as JSON
+  //             res.json({
+  //               success: true,
+  //               message: 'Enjoy your token!',
+  //               token: token
+  //             });
+  //           }
+  //       }
+  //     });
+  //  });
 
 
 
