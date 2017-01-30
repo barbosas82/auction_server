@@ -30,6 +30,7 @@ app.use(bodyParser.json());
 app.use(morgan('dev'));
 
 var User   = require('./models/user'); // get our mongoose model
+var Artist   = require('./models/user'); // get our mongoose model
 require('./routes')(app); //get our routes
 
 app.get('/', function(req, res) {
