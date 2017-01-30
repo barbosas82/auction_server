@@ -31,7 +31,8 @@ module.exports = function(app){
    /**********************************************
    ******    METHODS FOR TOKENS              *****
    **********************************************/
-   var User = mongoose.model('UserModel');
+   var mongoose = require('mongoose'),
+       User = mongoose.model('UserModel');
 
    app.post('/api/authenticate', function(req, res){
 
