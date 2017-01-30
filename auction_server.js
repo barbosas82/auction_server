@@ -33,7 +33,7 @@ var User   = require('./models/user'); // get our mongoose model
 //require('./routes')(app); //get our routes
 
 app.get('/', function(req, res) {
-    res.send('Hello! The API is at http://localhost:' + port + '/api');
+    res.send('Hello! The API is at http://localhost:' + port);
 });
 
 // =======================
