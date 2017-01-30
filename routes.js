@@ -36,10 +36,11 @@ module.exports = function(app){
        jwt  = require('jsonwebtoken'); // used to create, sign, and verify tokens;
 
    app.post('/api/authenticate', function(req, res){
+     var username = req.body.username;
 
       User.findOne({"username":req.body.username}, function (err, user){
 
-        res.send("Username: " + req.body.username);
+        res.send("Username: " + username);
 
         if(err) throw err;
 
