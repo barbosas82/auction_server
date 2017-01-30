@@ -43,8 +43,8 @@ exports.Auth = function(req, res){
         res.json({ success: false, message: 'Authentication failed. Wrong password.' });
       }else{//match
 
-        res.json({success: true,  message: 'Enjoy your token!', token: "token"  });
-      // }
+        res.json({success: true,  message: 'Enjoy your token!', token: "token" });
+       }
     }
   });
   //return res.send(req.body)
