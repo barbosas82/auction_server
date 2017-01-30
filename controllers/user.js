@@ -40,7 +40,7 @@ exports.Auth = function(req, res){
     }else if (exists){
       //Check if password matches
       if (exists.password != exists.checkPassword(req.body.password)) {//doesn't match
-        res.json({ success: false, message: 'Authentication failed. Wrong password.' });
+        res.json({ success: false, message: 'Authentication failed. Wrong password. '+ exists.checkPassword(req.body.password) + " --- " + exists.password});
       }else{//match
 
         res.json({success: true,  message: 'Enjoy your token!', token: "token" });
