@@ -50,7 +50,7 @@ module.exports = function(app){
               // if user is found and password is right
               // create a token
               var token = jwt.sign(user, app.get('superSecret'), {
-                expiresInMinutes: app.get('tokenlife');
+                expiresInMinutes: app.get('tokenlife')
               });
 
               // return the information including token as JSON
