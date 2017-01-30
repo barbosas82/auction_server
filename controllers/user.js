@@ -1,7 +1,7 @@
 var mongoose = require('mongoose'),
     User = mongoose.model('User'),
     jwt  = require('jsonwebtoken'),
-    config = require('./config');
+    config = require('../config');
 
 
 exports.add = function(req, res){
