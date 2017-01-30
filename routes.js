@@ -11,7 +11,7 @@ module.exports = function(app){
   var users = require('./controllers/user');
   app.post('/api/useradd', users.add);
   app.get('/api/listusers', users.listAll)
-  app.get('/api/listuser:username', users.listOne)
+  app.get('/api/listuser/:username', users.listOne)
 
 
 
