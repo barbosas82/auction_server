@@ -34,7 +34,14 @@ exports.listOne = function(req, res){
 exports.Auth = function(req, res){
   var username = req.body.username;
 
-  return res.send(req.body)
+  User.findOne({"username": username}, function(err, exists){
+    if (exists){
+      return res.send("Exists");
 
+    }else{
+      return res.send("doesn't Exists");
 
+    }
+  });
+  //return res.send(req.body)
 };
