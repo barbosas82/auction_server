@@ -10,7 +10,7 @@ module.exports = function(app){
   //Admin method to add user
   var users = require('./controllers/user');
   app.post('/useradd', users.add);
-  app.get('/listusers' users.list)
+  app.get('/listusers', users.list)
 
 
 
