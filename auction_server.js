@@ -7,8 +7,6 @@ var bodyParser    = require('body-parser');
 var morgan        = require('morgan');
 var mongoose      = require('mongoose');
 var autoIncrement = require('mongoose-auto-increment');
-
-var jwt    = require('jsonwebtoken'); // used to create, sign, and verify tokens
 var config = require('./config'); // get our config file
 
 
