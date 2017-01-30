@@ -2,7 +2,8 @@
 // routes ================
 // =======================
 module.exports = function(app){
-  //Authentication libs
+
+  var config = require('./config'); // get our config file
 
 
 // API ROUTES -------------------
@@ -26,5 +27,43 @@ module.exports = function(app){
    app.put('/api/wantlist/:id', artists.update );
 
    app.delete('/api/wantlist/:id', artists.delete);
+
+   /**********************************************
+   ******    METHODS FOR TOKENS              *****
+   **********************************************/
+   var User = mongoose.model('UserModel');
+
+   app.post('/api/authenticate', function(req, res){
+
+      User.findOne({"username":req.body.username}, function (err, user){
+
+        if(err) throw err;
+
+        if (!user) {
+          res.json({ success: false, message: 'Authentication failed. User not found.' });
+        } else if (user) {
+
+            // check if password matches
+            if (user.password != req.body.password) {
+              res.json({ success: false, message: 'Authentication failed. Wrong password.' });
+            } else {
+              // if user is found and password is right
+              // create a token
+              var token = jwt.sign(user, app.get('superSecret'), {
+                expiresInMinutes: app.get('tokenlife');
+              });
+
+              // return the information including token as JSON
+              res.json({
+                success: true,
+                message: 'Enjoy your token!',
+                token: token
+              });
+            }
+        }
+      });
+   });
+
+
 
 }

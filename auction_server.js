@@ -21,6 +21,7 @@ var db = mongoose.connect(config.mongoose.uri);
 autoIncrement.initialize(db);
 var port = process.env.PORT || 8080; // used to create, sign, and verify tokens
 app.set('superSecret', config.secret); // secret variable
+app.set('tokenlife', config.security.tokenlife);
 
 // use body parser so we can get info from POST and/or URL parameters
 app.use(bodyParser.urlencoded({ extended: false }));
