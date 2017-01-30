@@ -40,10 +40,11 @@ exports.Auth = function(req, res){
     }else if (exists){
       //Check if password matches
       if (!exists.checkPassword(req.body.password)) {//doesn't match
-        res.json({ success: false, message: 'Authentication failed. Wrong password. '+ exists.checkPassword(req.body.password) + " --- " + exists.password});
+        res.json({ success: false, message: 'Authentication failed. Wrong password.'});
       }else{//match
+        var token = jwt.sign(user, config.secret, { expiresInMinutes: config.security.tokenlife });
 
-        res.json({success: true,  message: 'Enjoy your token!', token: "token" });
+        res.json({success: true,  message: 'Enjoy your token!', token: token });
        }
     }
   });
