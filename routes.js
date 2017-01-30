@@ -38,14 +38,14 @@ module.exports = function(app){
    app.post('/api/authenticate', function(req, res){
      var username = req.body.username;
 
-      User.findOne({"username":req.body.username}, function (err, user){
+      User.findOne({"username": username}, function (err, user){
 
         //res.send("Username: " + username);
 
         if(err) throw err;
 
         if (!user) {
-          res.json({ success: false, message: 'Authentication failed. User not found.' + req.body.username});
+          res.json({ success: false, message: 'Authentication failed. User not found. ' + username});
         } else if (user) {
 
             // check if password matches
