@@ -21,7 +21,7 @@ var UserSchema = new Schema({
     }
 }, {timestamps: true});
 
-UserSchema.plugin(autoIncrement.plugin, 'UserModel');
+UserSchema.plugin(autoIncrement.plugin, 'User');
 
 UserSchema.methods.encryptPassword = function(password) {
     return crypto.createHmac('sha1', this.salt).update(password).digest('hex');
@@ -47,4 +47,4 @@ UserSchema.methods.checkPassword = function(password) {
     return this.encryptPassword(password) === this.hashedPassword;
 };
 
-mongoose.model('UserModel', UserSchema);
+mongoose.model('User', UserSchema);

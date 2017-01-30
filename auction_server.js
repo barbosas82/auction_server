@@ -28,7 +28,7 @@ app.use(bodyParser.json());
 // use morgan to log requests to the console
 app.use(morgan('dev'));
 
-var User   = require('./models/user'); // get our mongoose model
+var UserModel   = require('./models/user'); // get our mongoose model
 var Artist   = require('./models/artists'); // get our mongoose model
 require('./routes')(app); //get our routes
 
