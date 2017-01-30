@@ -16,3 +16,13 @@ exports.add = function(req, res){
       }
   });
 };
+
+exports.list = function(req, res){
+  User.find({}, function(req, result){
+    return res.send(result);
+
+  });
+
+
+
+};
