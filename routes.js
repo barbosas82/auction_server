@@ -45,7 +45,7 @@ module.exports = function(app){
         if(err) throw err;
 
         if (!user) {
-          res.json({ success: false, message: 'Authentication failed. User not found.' });
+          res.json({ success: false, message: 'Authentication failed. User not found.' + req.body.username});
         } else if (user) {
 
             // check if password matches
