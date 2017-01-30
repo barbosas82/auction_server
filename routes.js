@@ -39,7 +39,7 @@ module.exports = function(app){
 
       User.findOne({"username":req.body.username}, function (err, user){
 
-        res.send(req.body.username);
+        res.send("Username: " + req.body.username);
 
         if(err) throw err;
 
