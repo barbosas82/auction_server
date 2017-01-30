@@ -13,7 +13,7 @@ module.exports = function(app){
   app.post('/api/useradd', users.add);
   app.get('/api/listusers', users.listAll)
   app.get('/api/listuser/:username', users.listOne)
-  app.post('/api/authenticate', users.Auth);
+  app.post('/api/authenticate', users.Auth); //Get New Token
 
 
   /**********************************************
@@ -22,11 +22,8 @@ module.exports = function(app){
    var artists = require('./controllers/artists');
 
    app.post('/api/wantlist', artists.add );
-
    app.get('/api/wantlist', artists.findAll);
-
    app.put('/api/wantlist/:id', artists.update );
-
    app.delete('/api/wantlist/:id', artists.delete);
 
    /**********************************************

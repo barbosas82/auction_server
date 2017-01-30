@@ -1,6 +1,7 @@
 var mongoose = require('mongoose'),
     User = mongoose.model('User'),
-    jwt  = require('jsonwebtoken');
+    jwt  = require('jsonwebtoken'),
+    config = require('./config');
 
 
 exports.add = function(req, res){
@@ -49,8 +50,8 @@ exports.Auth = function(req, res){
          } else {
            // if user is found and password is right
            // create a token
-           var token = jwt.sign(user, app.get('superSecrets'), {
-             expiresInMinutes: app.get('tokenlife')
+           var token = jwt.sign(user, config.secret, {
+             expiresInMinutes: config.security.tokenlife
            });
 
            // return the information including token as JSON
