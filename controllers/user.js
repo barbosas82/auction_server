@@ -35,12 +35,16 @@ exports.Auth = function(req, res){
   var username = req.body.username;
 
   User.findOne({"username": username}, function(err, exists){
-    if (exists){
-      return res.send("Exists");
+    if (!exists){
+      res.json({ success: false, message: 'Authentication failed. User not found. ' + username});
+    }else if (exists){
+      //Check if password matches
+      if (exists.password != req.body.password) {//doesn't match
+        res.json({ success: false, message: 'Authentication failed. Wrong password.' });
+      }else{//match
 
-    }else{
-      return res.send("doesn't Exists");
-
+        res.json({success: true,  message: 'Enjoy your token!', token: "token"  });
+      // }
     }
   });
   //return res.send(req.body)
