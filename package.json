@@ -10,6 +10,6 @@
     "body-parser": "latest",
     "mongoose-auto-increment": "latest",
     "morgan": "latest",
-    "jsonwebtoken": "latest"
+
   }
 }
