@@ -10,8 +10,7 @@ var autoIncrement = require('mongoose-auto-increment');
 
 var jwt    = require('jsonwebtoken'); // used to create, sign, and verify tokens
 var config = require('./config'); // get our config file
-var User   = require('./models/user'); // get our mongoose model
-require('./routes')(app); //get our routes
+
 
 
 
@@ -29,6 +28,9 @@ app.use(bodyParser.json());
 
 // use morgan to log requests to the console
 app.use(morgan('dev'));
+
+var User   = require('./models/user'); // get our mongoose model
+require('./routes')(app); //get our routes
 
 
 // =======================
