@@ -1,6 +1,5 @@
 {
-    "secret": "passwordlixada123",
-    "port" : 27017,
+    "port": 27017,
     "security": {
         "tokenLife" : 3600
     },
