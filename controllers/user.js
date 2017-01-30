@@ -1,5 +1,6 @@
 var mongoose = require('mongoose'),
-    User = mongoose.model('User');
+    User = mongoose.model('User'),
+    jwt  = require('jsonwebtoken');
 
 
 exports.add = function(req, res){
@@ -27,4 +28,40 @@ exports.listOne = function(req, res){
   User.find({"username":req.params.username}, function(req, result){
     return res.send(result);
   });
+};
+
+exports.Auth = function(req, res){
+  var username = req.body.username;
+
+   User.find({"username": username}, function (err, user){
+
+     //res.send("Username: " + username);
+
+     if(err) throw err;
+
+     if (!user) {
+       res.json({ success: false, message: 'Authentication failed. User not found. ' + username});
+     } else if (user) {
+
+         // check if password matches
+         if (user.password != req.body.password) {
+           res.json({ success: false, message: 'Authentication failed. Wrong password.' });
+         } else {
+           // if user is found and password is right
+           // create a token
+           var token = jwt.sign(user, app.get('superSecrets'), {
+             expiresInMinutes: app.get('tokenlife')
+           });
+
+           // return the information including token as JSON
+           res.json({
+             success: true,
+             message: 'Enjoy your token!',
+             token: token
+           });
+         }
+     }
+   });
+
+
 };

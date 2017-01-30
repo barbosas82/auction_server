@@ -13,6 +13,7 @@ module.exports = function(app){
   app.post('/api/useradd', users.add);
   app.get('/api/listusers', users.listAll)
   app.get('/api/listuser/:username', users.listOne)
+  //app.post('/api/authenticate', users.Auth);
 
 
   /**********************************************
@@ -31,6 +32,8 @@ module.exports = function(app){
    /**********************************************
    ******    METHODS FOR TOKENS              *****
    **********************************************/
+
+
    var mongoose = require('mongoose'),
        User = mongoose.model('User'), // get our mongoose model
        jwt  = require('jsonwebtoken'); // used to create, sign, and verify tokens;
