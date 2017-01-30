@@ -43,7 +43,7 @@ exports.Auth = function(req, res){
         res.json({ success: false, message: 'Authentication failed. Wrong password.'});
       }else{//match
         var token = jwt.sign(exists, req.app.get('superSecret'), {expiresIn: req.app.get('tokenLife')}  );
-        res.json({success: true,  message: 'Enjoy your token!', token: "token" });
+        res.json({success: true,  message: 'Enjoy your token!', token: token });
        }
     }
   });
