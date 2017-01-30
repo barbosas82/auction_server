@@ -39,7 +39,7 @@ exports.Auth = function(req, res){
       res.json({ success: false, message: 'Authentication failed. User not found. ' + username});
     }else if (exists){
       //Check if password matches
-      if (exists.password != User.checkPassword(req.body.password)) {//doesn't match
+      if (exists.password != exists.checkPassword(req.body.password)) {//doesn't match
         res.json({ success: false, message: 'Authentication failed. Wrong password.' });
       }else{//match
 
