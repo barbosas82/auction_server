@@ -30,7 +30,7 @@ UserSchema.methods.encryptPassword = function(password) {
 
 UserSchema.virtual('userId')
     .get(function () {
-        return this.id;
+        return this.username;
     });
 
 UserSchema.virtual('password')

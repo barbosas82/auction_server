@@ -1,10 +1,16 @@
 // =======================
 // routes ================
 // =======================
-// basic route
-app.get('/', function(req, res) {
-    res.send('Hello! The API is at http://localhost:' + port + '/api');
-});
+module.exports = function(app){
+  //Authentication libs
+
 
 // API ROUTES -------------------
-// we'll get to these in a second
+
+  //Admin method to add user
+  var users = require('./controllers/user');
+  app.post('/useradd', users.add);
+
+
+
+}
