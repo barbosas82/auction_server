@@ -37,7 +37,7 @@ exports.Auth = function(req, res){
   User.find({"username": username}, function(err, usr){
     if (!usr){
       res.json({ success: false, message: 'Authentication failed. User not found. ' + username});
-    }else if (exists){
+    }else if (usr){
       //Check if password matches
       if (!usr.checkPassword(req.body.password)) {//doesn't match
         res.json({ success: false, message: 'Authentication failed. Wrong password.'});
