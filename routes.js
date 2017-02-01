@@ -33,9 +33,11 @@ module.exports = function(app){
       // verifies secret and checks exp
       jwt.verify(token, app.get('secret'), function(err, decoded) {
         if (err) {
+          console.log(decoded);
           return res.json({ success: false, message: 'Failed to authenticate token.' });
         } else {
           // if everything is good, save to request for use in other routes
+          console.log(decoded);
           req.decoded = decoded;
           next();
         }
