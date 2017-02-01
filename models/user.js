@@ -43,7 +43,7 @@ UserSchema.virtual('password')
     .get(function() { return this._plainPassword; });
 
 
-UserSchema.function.checkPassword = function(password) {
+UserSchema.methods.checkPassword = function(password) {
     return this.encryptPassword(password) === this.hashedPassword;
 };
 
