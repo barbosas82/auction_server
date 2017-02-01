@@ -33,13 +33,14 @@ exports.listOne = function(req, res){
 
 exports.Auth = function(req, res){
   var username = req.body.username;
+  var password = req.body.password;
 
   Users.findOne({"username": username}, function(err, user){
     if (!user){
       res.json({ success: false, message: 'Authentication failed. User not found. ' + username});
     }else if (user){
       //Check if password matches
-      if (!user.checkPassword(username)) {//doesn't match
+      if (!user.checkPassword(password)) {//doesn't match
         res.json({ success: false, message: 'Authentication failed. Wrong password.'});
       }else{//match
         var token = jwt.sign(exists, req.app.get('superSecret'), {expiresIn: req.app.get('tokenLife')}  );
