@@ -29,7 +29,4 @@ module.exports = function(app){
    ******    METHODS FOR TOKENS              *****
    **********************************************/
 
-
-
-
 }

@@ -34,12 +34,10 @@ exports.listOne = function(req, res){
 exports.Auth = function(req, res){
   var username = req.body.username;
 
-  //return res.send(req.body);
-
-  User.find({"username": username}, function(err, usr){
-    if (!usr){
+  User.find({"username": username}, function(err, user){
+    if (!user){
       res.json({ success: false, message: 'Authentication failed. User not found. ' + username});
-    }else if (usr){
+    }else if (user){
       //Check if password matches
       if (!usr.checkPassword(username)) {//doesn't match
         res.json({ success: false, message: 'Authentication failed. Wrong password.'});
