@@ -1,6 +1,6 @@
 var mongoose = require('mongoose'),
-Schema = mongoose.Schema,
-autoIncrement = require('mongoose-auto-increment');
+    Schema = mongoose.Schema,
+    autoIncrement = require('mongoose-auto-increment');
 
 var ArtistSchema = new Schema({
   "_id" : Number,
