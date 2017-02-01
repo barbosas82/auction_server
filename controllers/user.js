@@ -34,12 +34,12 @@ exports.listOne = function(req, res){
 exports.Auth = function(req, res){
   var username = req.body.username;
 
-  User.find({"username": username}, function(err, exists){
-    if (!exists){
+  User.find({"username": username}, function(err, usr){
+    if (!usr){
       res.json({ success: false, message: 'Authentication failed. User not found. ' + username});
     }else if (exists){
       //Check if password matches
-      if (!exists.checkPassword(req.body.password)) {//doesn't match
+      if (!usr.checkPassword(req.body.password)) {//doesn't match
         res.json({ success: false, message: 'Authentication failed. Wrong password.'});
       }else{//match
         var token = jwt.sign(exists, req.app.get('superSecret'), {expiresIn: req.app.get('tokenLife')}  );
