@@ -40,7 +40,6 @@ module.exports = function(app){
 
    // route middleware to verify a token
   apiRoutes.use(function(req, res, next) {
-
     // check header or url parameters or post parameters for token
     var token = req.body.token || req.query.token || req.headers['x-access-token'];
 
@@ -62,7 +61,7 @@ module.exports = function(app){
       return res.status(403).send({
           success: false,
           message: 'No token provided.'
-      });      
+      });
     }
   });
 
