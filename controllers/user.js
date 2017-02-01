@@ -34,7 +34,7 @@ exports.listOne = function(req, res){
 exports.Auth = function(req, res){
   var username = req.body.username;
 
-  User.findOne({"username": username}, function(err, exists){
+  User.find({"username": username}, function(err, exists){
     if (!exists){
       res.json({ success: false, message: 'Authentication failed. User not found. ' + username});
     }else if (exists){
