@@ -44,7 +44,7 @@ exports.Auth = function(req, res){
         res.json({ success: false, message: 'Authentication failed. Wrong password.'});
       }else{//match
         var payload = "{ \"_id\": " + user._id + ", \"username\": \"" + user.username + "\", \"email\": \"" + user.email + "\", \"role\": \"" + user.role + "\" }";
-        var token = jwt.sign(user, req.app.get('secret'), {expiresIn: req.app.get('tokenLife')}  );
+        var token = jwt.sign(payload, req.app.get('secret'), {expiresIn: req.app.get('tokenLife')}  );
         res.json({success: true,  message: 'Enjoy your token!', token: token });
        }
        {}
