@@ -29,7 +29,8 @@ module.exports = function(app){
    ******    METHODS FOR TOKENS              *****
    **********************************************/
 
-   //var apiRoutes = express.Router();
+   var apiRoutes = express.Router();
+   app.use('/api', apiRoutes);
 
 
 
