@@ -1,4 +1,5 @@
 var express       = require('express');
+var apiRoutes = express.Router();
 
 // =======================
 // routes ================
@@ -11,9 +12,9 @@ module.exports = function(app){
 
   //Admin method to add user, list users
   var users = require('./controllers/user');
-  app.post('/useradd', users.add);
-  app.get('/listusers', users.listAll);
-  app.get('/listuser/:username', users.listOne);
+  apiRoutes.post('/useradd', users.add);
+  apiRoutes.get('/listusers', users.listAll);
+  apiRoutes.get('/listuser/:username', users.listOne);
   app.post('/authenticate', users.Auth); //Get New Token
 
 
@@ -22,16 +23,16 @@ module.exports = function(app){
   **********************************************/
    var artists = require('./controllers/artists');
 
-   app.post('/wantlist', artists.add );
-   app.get('/wantlist', artists.findAll);
-   app.put('/wantlist/:id', artists.update );
-   app.delete('/wantlist/:id', artists.delete);
+   apiRoutes.post('/wantlist', artists.add );
+   apiRoutes.get('/wantlist', artists.findAll);
+   apiRoutes.put('/wantlist/:id', artists.update );
+   apiRoutes.delete('/wantlist/:id', artists.delete);
 
    /**********************************************
    ******    METHODS FOR TOKENS              *****
    **********************************************/
 
-   var apiRoutes = express.Router();
+
    apiRoutes.get('/', function(req, res) {
         res.json({ message: 'Welcome to the coolest API on earth!' });
    });
