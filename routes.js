@@ -15,24 +15,6 @@ module.exports = function(app){
        res.json({ message: 'Welcome to the coolest API on earth!' });
   });
 
-  /**********************************************
-  ******        USER METHODS                *****
-  **********************************************/
-  var users = require('./controllers/user');
-  apiRoutes.post('/useradd', users.add);
-  apiRoutes.get('/listusers', users.listAll);
-  apiRoutes.get('/listuser/:username', users.listOne);
-
-  /**********************************************
-  ******    METHODS FOR WANTLIST / ARTIST   *****
-  **********************************************/
-   var artists = require('./controllers/artists');
-
-   apiRoutes.post('/wantlist', artists.add );
-   apiRoutes.get('/wantlist', artists.findAll);
-   apiRoutes.put('/wantlist/:id', artists.update );
-   apiRoutes.delete('/wantlist/:id', artists.delete);
-
    /**********************************************
    ******    METHODS FOR TOKENS              *****
    **********************************************/
@@ -64,6 +46,24 @@ module.exports = function(app){
       });
     }
   });
+  
+  /**********************************************
+  ******        USER METHODS                *****
+  **********************************************/
+  var users = require('./controllers/user');
+  apiRoutes.post('/useradd', users.add);
+  apiRoutes.get('/listusers', users.listAll);
+  apiRoutes.get('/listuser/:username', users.listOne);
+
+  /**********************************************
+  ******    METHODS FOR WANTLIST / ARTIST   *****
+  **********************************************/
+   var artists = require('./controllers/artists');
+
+   apiRoutes.post('/wantlist', artists.add );
+   apiRoutes.get('/wantlist', artists.findAll);
+   apiRoutes.put('/wantlist/:id', artists.update );
+   apiRoutes.delete('/wantlist/:id', artists.delete);
 
    app.use('/api', apiRoutes);
 
