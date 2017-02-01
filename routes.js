@@ -9,10 +9,10 @@ module.exports = function(app){
 
   //Admin method to add user, list users
   var users = require('./controllers/user');
-  app.post('/api/useradd', users.add);
-  app.get('/api/listusers', users.listAll);
-  app.get('/api/listuser/:username', users.listOne);
-  app.post('/api/authenticate', users.Auth); //Get New Token
+  app.post('/useradd', users.add);
+  app.get('/listusers', users.listAll);
+  app.get('/listuser/:username', users.listOne);
+  app.post('/authenticate', users.Auth); //Get New Token
 
 
   /**********************************************
@@ -20,13 +20,17 @@ module.exports = function(app){
   **********************************************/
    var artists = require('./controllers/artists');
 
-   app.post('/api/wantlist', artists.add );
-   app.get('/api/wantlist', artists.findAll);
-   app.put('/api/wantlist/:id', artists.update );
-   app.delete('/api/wantlist/:id', artists.delete);
+   app.post('/wantlist', artists.add );
+   app.get('/wantlist', artists.findAll);
+   app.put('/wantlist/:id', artists.update );
+   app.delete('/wantlist/:id', artists.delete);
 
    /**********************************************
    ******    METHODS FOR TOKENS              *****
    **********************************************/
+
+   //var apiRoutes = express.Router();
+
+
 
 }

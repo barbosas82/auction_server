@@ -11,6 +11,14 @@ var UserSchema = new Schema({
         unique: true,
         required: true
     },
+    email: {
+        type: String,
+        required: false
+    },
+    role: {
+        type: String,
+        required: true
+    },
     hashedPassword: {
         type: String,
         required: true
@@ -48,4 +56,3 @@ UserSchema.methods.checkPassword = function(password) {
 };
 
 mongoose.model('User', UserSchema);
-module.exports = mongoose.model('User');
