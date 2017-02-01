@@ -39,7 +39,7 @@ exports.Auth = function(req, res){
       res.json({ success: false, message: 'Authentication failed. User not found. ' + username});
     }else if (user){
       //Check if password matches
-      if (!usr.checkPassword(username)) {//doesn't match
+      if (!user.checkPassword(username)) {//doesn't match
         res.json({ success: false, message: 'Authentication failed. Wrong password.'});
       }else{//match
         var token = jwt.sign(exists, req.app.get('superSecret'), {expiresIn: req.app.get('tokenLife')}  );
