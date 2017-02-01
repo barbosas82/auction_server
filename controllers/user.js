@@ -27,7 +27,8 @@ exports.listAll = function(req, res){
 
 exports.listOne = function(req, res){
   User.find({"username":req.params.username}, function(req, result){
-    return res.send(result instanceof User);
+
+    return res.send(result.checkPassword("totot"));
   });
 };
 
