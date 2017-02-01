@@ -35,6 +35,7 @@ exports.Auth = function(req, res){
   var username = req.body.username;
 
   User.find({"username": username}, function(err, user){
+    return res.send(user instanceof User);
     if (!user){
       res.json({ success: false, message: 'Authentication failed. User not found. ' + username});
     }else if (user){
