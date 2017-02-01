@@ -45,7 +45,7 @@ exports.Auth = function(req, res){
       }else{//match
         //var payload = "{ \"_id\": " + user._id + ", \"username\": \"" + user.username + "\", \"email\": \"" + user.email + "\", \"role\": \"" + user.role + "\" }";
         var token = jwt.sign(user, req.app.get('secret'), {expiresIn: req.app.get('tokenLife')}  );
-        res.json({success: true,  message: 'Enjoy your token!', token: token });
+        res.json({success: true,  message: req.app.get('tokenLife') + ' Enjoy your token!', token: token });
        }
        {}
     }
