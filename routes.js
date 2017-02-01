@@ -1,5 +1,7 @@
 var express       = require('express');
 var apiRoutes = express.Router();
+var users = require('./controllers/user');
+var artists = require('./controllers/artists');
 
 // =======================
 // routes ================
@@ -46,11 +48,10 @@ module.exports = function(app){
       });
     }
   });
-  
+
   /**********************************************
   ******        USER METHODS                *****
   **********************************************/
-  var users = require('./controllers/user');
   apiRoutes.post('/useradd', users.add);
   apiRoutes.get('/listusers', users.listAll);
   apiRoutes.get('/listuser/:username', users.listOne);
@@ -58,8 +59,6 @@ module.exports = function(app){
   /**********************************************
   ******    METHODS FOR WANTLIST / ARTIST   *****
   **********************************************/
-   var artists = require('./controllers/artists');
-
    apiRoutes.post('/wantlist', artists.add );
    apiRoutes.get('/wantlist', artists.findAll);
    apiRoutes.put('/wantlist/:id', artists.update );
