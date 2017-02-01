@@ -2,7 +2,7 @@
     "secret": "passwordlixada123",
     "port": 27017,
     "security": {
-        "tokenLife" : "1h"
+        "tokenlife" : "1h"
           },
     "mongoose": {
         "uri": "mongodb://user_coisas:totica01@localhost/auctions_coisas"
