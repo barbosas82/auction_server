@@ -32,20 +32,19 @@ exports.listOne = function(req, res){
 };
 
 exports.Auth = function(req, res){
-  //var username = req.body.username;
-  res.json({ success: false, message: 'Authentication failed. User not found.  ' + req.body});
+  var username = req.body.username;
 
-// User.find({"username": username}, function(err, usr){
-//   if (!usr){
-//     res.json({ success: false, message: 'Authentication failed. User not found. ' + username});
-//   }else if (usr){
-//     //Check if password matches
-//     if (!usr.checkPassword(username)) {//doesn't match
-//       res.json({ success: false, message: 'Authentication failed. Wrong password.'});
-//     }else{//match
-//       var token = jwt.sign(exists, req.app.get('superSecret'), {expiresIn: req.app.get('tokenLife')}  );
-//       res.json({success: true,  message: 'Enjoy your token!', token: token });
-//      }
-//   }
-//  });
+  User.find({"username": username}, function(err, usr){
+    if (!usr){
+      res.json({ success: false, message: 'Authentication failed. User not found. ' + username});
+    }else if (usr){
+      //Check if password matches
+      if (!usr.checkPassword(username)) {//doesn't match
+        res.json({ success: false, message: 'Authentication failed. Wrong password.'});
+      }else{//match
+        var token = jwt.sign(exists, req.app.get('superSecret'), {expiresIn: req.app.get('tokenLife')}  );
+        res.json({success: true,  message: 'Enjoy your token!', token: token });
+       }
+    }
+   });
 };
