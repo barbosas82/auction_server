@@ -1,7 +1,8 @@
-var express       = require('express');
-var apiRoutes = express.Router();
-var users = require('./controllers/user');
-var artists = require('./controllers/artists');
+var express        = require('express');
+var apiRoutes      = express.Router();
+var users          = require('./controllers/user');
+var artists        = require('./controllers/artists');
+var jwt            = require('jsonwebtoken');
 
 // =======================
 // routes ================
