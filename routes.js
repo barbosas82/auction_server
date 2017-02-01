@@ -10,8 +10,8 @@ module.exports = function(app){
   //Admin method to add user, list users
   var users = require('./controllers/user');
   app.post('/api/useradd', users.add);
-  app.get('/api/listusers', users.listAll)
-  app.get('/api/listuser/:username', users.listOne)
+  app.get('/api/listusers', users.listAll);
+  app.get('/api/listuser/:username', users.listOne);
   app.post('/api/authenticate', users.Auth); //Get New Token
 
 

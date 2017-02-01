@@ -27,8 +27,7 @@ exports.listAll = function(req, res){
 
 exports.listOne = function(req, res){
   User.find({"username":req.params.username}, function(req, result){
-
-    return res.send(Object.prototype.toString.call(result));
+    return res.send(result);
   });
 };
 
@@ -36,7 +35,7 @@ exports.Auth = function(req, res){
   var username = req.body.username;
 
   User.find({"username": username}, function(err, user){
-    return res.send(user instanceof User);
+    return res.send(Object.prototype.toString.call(user));
     if (!user){
       res.json({ success: false, message: 'Authentication failed. User not found. ' + username});
     }else if (user){
