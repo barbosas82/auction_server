@@ -7,7 +7,7 @@ var bodyParser    = require('body-parser');
 var morgan        = require('morgan');
 var mongoose      = require('mongoose');
 var autoIncrement = require('mongoose-auto-increment');
-var config = require('./config'); // get our config file
+var config        = require('./config'); // get our config file
 
 
 
@@ -30,11 +30,9 @@ app.use(morgan('dev'));
 
 require('./models/user'); // get our mongoose model
 require('./models/artists'); // get our mongoose model
+require('./models/auctions'); // get our mongoose model
 require('./routes')(app); //get our routes
 
-app.get('/', function(req, res) {
-    res.send('Hello! The API is at http://localhost:' + port + '/api');
-});
 
 // =======================
 // start the server ======

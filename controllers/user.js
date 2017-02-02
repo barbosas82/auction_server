@@ -9,11 +9,12 @@ exports.add = function(req, res){
 
   Users.findOne({"username": username}, function(err, exists){
       if (exists){
-        return res.send("User " + username + " already exists.");
+        res.json({ success: false, message: "User " + username + " already exists."});
       }else{
         Users.create(req.body, function (err, usr) {
                 if (err) return console.log(err);
                 return res.send("User " + username + " created with id " + usr._id + ".");
+                res.json({ success: false, message: "User " + username + " created with id " + usr._id + "."});
         });
       }
   });
@@ -21,13 +22,17 @@ exports.add = function(req, res){
 
 exports.listAll = function(req, res){
   Users.find({}, function(req, result){
-    return res.send(result);
+    res.json({ success: true, message: result});
   });
 };
 
 exports.listOne = function(req, res){
-  Users.find({"username":req.params.username}, function(req, result){
-    return res.send(result);
+  Users.find({"username":req.params.username}, function(req, user){
+    if (!user){
+      res.json({ success: false, message: 'User ' + username + " Doesn\'t exist."});
+    }else{
+      res.json({ success: true, message: user});
+    }
   });
 };
 
@@ -45,9 +50,8 @@ exports.Auth = function(req, res){
       }else{//match
         //var payload = "{ \"_id\": " + user._id + ", \"username\": \"" + user.username + "\", \"email\": \"" + user.email + "\", \"role\": \"" + user.role + "\" }";
         var token = jwt.sign(user, req.app.get('secret'), {expiresIn: req.app.get('tokenLife')}  );
-        res.json({success: true,  message: req.app.get('tokenLife') + ' Enjoy your token!', token: token });
+        res.json({success: true,  message: 'Enjoy your token!', token: token });
        }
-       {}
     }
    });
 };
