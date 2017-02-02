@@ -166,7 +166,25 @@
               th.appendChild(document.createTextNode("Estado"));
               tr.appendChild(th)
               leiloesAgendados.appendChild(tr);
-            // document.getElementById("placeholder").innerHTML=JSON.stringify(data);
+
+              if numLeiloes > 0 {
+                var idx = 0;
+                for (idx; idx < numLeiloes; idx++){
+                  var tr = document.createElement('tr');
+                  var td = document.createElement('td');
+                  td.appendChild(document.createTextNode(data.message[idx]._id));
+                  td.appendChild(document.createTextNode(data.message[idx].maxbid));
+                  td.appendChild(document.createTextNode(data.message[idx].currentbid));
+                  td.appendChild(document.createTextNode(data.message[idx].enddate));
+                  td.appendChild(document.createTextNode(data.message[idx].name));
+                  td.appendChild(document.createTextNode(data.message[idx].seller));
+                  td.appendChild(document.createTextNode(data.message[idx].status));
+                  tr.appendChild(th)
+                }
+                leiloesAgendados.appendChild(tr);
+
+
+              }
 
             },
              error: function (jqXHR, status) {
