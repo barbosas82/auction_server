@@ -2,7 +2,7 @@
     "secret": "NUBanSx+D4ezg#yy&&?YzbLg$!fX^My?9VByprt+",
     "port": 27017,
     "security": {
-        "tokenlife" : "1h"
+        "tokenlife" : "5m"
           },
     "mongoose": {
         "uri": "mongodb://user_coisas:totica01@localhost/auctions_coisas"
