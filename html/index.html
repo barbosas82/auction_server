@@ -230,7 +230,7 @@
         document.getElementById("placeholder").innerHTML="data.username";
           $.ajax({
             type: 'GET',
-            url: 'http://bid2.doismeios.pt:8080/api/listuser/pb',
+            url: 'http://bid2.doismeios.pt:8080/api/auctions',
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             beforeSend: function (xhr) {
@@ -238,7 +238,8 @@
             },
             success: function (data, status, jqXHR) {
             //Do stuff with the JSON data
-            document.getElementById("placeholder").innerHTML=data.message[0].username;
+            document.getElementById("placeholder").innerHTML=data.message.length;
+            ;
             // document.getElementById("placeholder").innerHTML=JSON.stringify(data);
 
             },
