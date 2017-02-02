@@ -3,6 +3,7 @@
 // =====================================
 var express       = require('express');
 var app           = express();
+var app2          = express();
 var bodyParser    = require('body-parser');
 var morgan        = require('morgan');
 var mongoose      = require('mongoose');
@@ -34,8 +35,25 @@ require('./models/auctions'); // get our mongoose model
 require('./routes')(app); //get our routes
 
 
+// http server
+var port2 = 8081;
+app2.get('/', (request, response) => {
+  response.send('Hello from Express!')
+})
+
+
+
 // =======================
-// start the server ======
+// start the servers ======
 // =======================
+
+app2.listen(port2, (err) => {
+  if (err) {
+    return console.log('something bad happened', err)
+  }
+
+  console.log(`server is listening on ${port2}`)
+})
+
 app.listen(port);
 console.log('Magic happens at http://localhost:' + port);

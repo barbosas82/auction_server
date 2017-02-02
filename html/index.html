@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  	 <title>Gestao Leiloes Coisas </title>
+
+	<link rel='shortcut icon' href='https://cdn.doismeios.pt/images/favicon.png' type='image/x-icon'/>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdn.doismeios.pt/css/bootstrap.min2.css" />
+
+    <link rel="stylesheet" href="https://cdn.doismeios.pt/css/style-min.css"/>
+
+    <script async src="script/require.js" data-main="https://cdn.doismeios.pt/script/mainfull.js"></script>
+
+    <script type="text/javascript">
+        var keypressed = false;
+
+        function saveToDatabase(e, editableObj,column,id) {
+            //e.preventDefault();
+            editableObj.contentEditable=false;
+
+            if(e.keyCode != 13){
+                keypressed = false;
+            }
+
+            if ( keypressed == false) {
+                $(editableObj).css("background","url(https://cdn.doismeios.pt/images/loaderIcon.gif) no-repeat right");
+
+              //alert($(editableObj).css("background-color"););
+
+              //alert(e + " - " + editableObj.innerHTML + " - " + column + " - " + id)
+
+              $.ajax({
+                type: 'POST',
+                url: '/index.php',
+                data: { 'coluna': column, 'editval': editableObj.innerHTML.replace('€', '').replace('&euro;', '').replace(' ', '').replace('&nbsp;', '').replace("<br>", ""), 'id1': id},
+                dataType: 'text',
+                success: function(data){
+                  $(editableObj).css("background","none");
+                  $('#sucesso').show().center();
+
+                  setTimeout(function(){ window.location.reload();}, 3000);
+
+              },
+              error: function(jqXHR, textStatus, errorThrown){
+                $('#erro').show().center();
+              }
+             });
+            }
+        };
+
+	function check(cb, id)
+	{
+    	  if($(cb).is(":checked"))
+    	 {
+          //alert("IS Checked " + id);
+	  	  $.ajax({
+                type: 'POST',
+                url: '/index.php',
+                data: {'checked': 'true', 'id': id},
+                dataType: 'text',
+                success: function(data){
+                  window.location.reload();
+              },
+              error: function(jqXHR, textStatus, errorThrown){
+                $('#erro').show().center();
+              }
+             });
+
+    	 }else
+	   {
+	     //alert("IS Not Checked");
+  	     $.ajax({
+                type: 'POST',
+                url: '/index.php',
+                data: {'checked': 'false', 'id': id},
+                dataType: 'text',
+                success: function(data){
+                  window.location.reload();
+              },
+              error: function(jqXHR, textStatus, errorThrown){
+                $('#erro').show().center();
+              }
+             });
+	   }
+
+ 	}
+
+
+        function handle(e, editableObj,column,id){
+            if(e.keyCode === 13){
+              saveToDatabase(e, editableObj,column,id);
+              keypressed = true;
+          }
+        }
+
+        function placeCaretAtEnd(el) {
+            el.innerHTML = el.innerHTML.replace('€', '').replace('&euro;', '').replace(' ', '').replace('&nbsp;', '').replace("<br>", "");
+            el.focus();
+            if (typeof window.getSelection != "undefined"
+                && typeof document.createRange != "undefined") {
+                var range = document.createRange();
+            range.selectNodeContents(el);
+            range.collapse(false);
+            var sel = window.getSelection();
+            sel.removeAllRanges();
+            sel.addRange(range);
+        } else if (typeof document.body.createTextRange != "undefined") {
+            var textRange = document.body.createTextRange();
+            textRange.moveToElementText(el);
+            textRange.collapse(false);
+            textRange.select();
+          }
+        }
+
+        function removeAuctions(type) {
+            if (confirm("Are you sure you want to delete?")) {
+                $.ajax({
+                    type: 'POST',
+                    url: '/index.php',
+                    data: { 'deleteAuction': type},
+                    dataType: 'text',
+                    success: function(data){
+                        $('#sucesso').show().center();
+                        setTimeout(function(){ window.location.reload();}, 3000);
+
+                      },
+                      error: function(jqXHR, textStatus, errorThrown){
+                        $('#erro').show().center();
+                    }
+                });
+            }
+        }
+
+    </script>
+
+</head>
+
+<body>
+
+    <ul id=menu>
+        <li class="active"><a href="./">Gestão de Leilões</a></li>
+        <li><a href="./wantlist.php">Lista de istas</a></li>
+    </ul>
+
+    <div class="alert alert-success fade in" style="display: none" id="sucesso">
+        <a class="close" data-hide="alert">×</a>
+        <strong>    Success!    </strong>
+    </div>
+
+    <div class="alert alert-danger fade in" style="display: none" id="erro">
+        <a class="close" data-hide="alert">×</a>
+        <strong>    Error!    </strong>
+    </div>
+
+    <div class="main">
+
+        <!-- if( $posted ) {
+            if( $result ){
+                echo "<script type='text/javascript'>alert('" . $result  . "')</script>";
+            }
+            else
+                echo "<script type='text/javascript'>alert('Não foi possivel executar o comando!')</script>";
+        }
+
+        ?> -->
+
+        <h3>Agendar Leilao</h3>
+        <div id="agendarLeilao" style="display: inline-flex;">
+
+            <form method="post" action="">
+
+                <div class ="responsiveAgendar" style="display: table-cell; "><b>ID Leilao: </b><input type="text" style="height: 23px;" name="idleilao" maxlength="10"  size="10"></div>
+
+                <div class ="responsiveAgendar" style="display: table-cell; margin-left: 10px; "><b>Max Bid (&euro;): </b> <input type="text" style="height: 23px; " name="maxbid" maxlength="5" size="5"></div>
+
+                <div class ="responsiveAgendar" style="display: table-cell; vertical-align:bottom;"><input type="submit" style="height: 23px; margin-left: 1em;" name="leilaoSubmit" value="Submit" class="buttonGreen "></div>
+            </form>
+        </div>
+
+        <br>
+
+        <div id="leiloesAgendados">
+            <h3> Leiloes Agendados</h3>
+            <div class="leiloesTbl">
+                <table class="tbl_leiloes">
+                    <tr>
+                        <th style="text-align:center;">Row ID</th>
+                        <th style="text-align:center;">ID Leilao</th>
+                        <th style="text-align:center;">Max Bid</th>
+                        <th style="text-align:center;">Current Bid</th>
+                        <th style="text-align:center;">Data Fim</th>
+                        <th style="text-align:center;">Nome</th>
+                        <th style="text-align:center;">Vendedor</th>
+                        <th style="text-align:center;">Estado</th>
+                        <th style="text-align:center;"></th>
+                    </tr>
+
+
+                    <!-- <tr class="table-row">
+                     <td style="text-align:center;"><?php echo $i; ?></td>
+                     <td style="text-align:center;"><?php echo $row["ID Leilao"]; ?></td>
+                     <td class="idContentEditable" ondblclick="this.contentEditable=true; placeCaretAtEnd(this);" onBlur="saveToDatabase(event, this,'Max Bid','<?php echo $row["ID Leilao"]; ?>')" onkeypress="handle(event, this, 'Nome','<?php echo $row["ID Leilao"]; ?>')" style="text-align:center; <?php if (number_format(str_replace(',','.', $row["Current Bid"])) >= number_format(str_replace(',' , '.', $row["Max Bid"]))  ) echo "color: red; font-weight: bold;" ?> "><?php echo $row["Max Bid"]." &euro;"; ?></td>
+                     <td style="text-align:center;"><?php echo $row["Current Bid"]." &euro;"; ?></td>
+                     <td style="text-align:center;"><?php echo $row["Data Fim"]; ?></td>
+                     <td><a href=<?php echo "'" . $row["URL"] . "'"; ?> target="_blank"><?php echo $row["Nome"]; ?></a></td>
+                     <td style="text-align:center;"><?php echo $row["Vendedor"]; ?></td>
+                     <td style="text-align:center;"><?php echo  $row["Estado"]; ?></td>
+                     <td style="text-align:center">
+                        <form style="margin: 0; text-align: center" method="post" action="">
+                            <input type="hidden" value=<?php echo $row["ID Leilao"] ?> name="rowid" >
+                            <input type="submit" name="rem_auction" value="Remover" class="buttonRed"></form></td>
+                        </tr> -->
+
+                </table>
+            </div>
+        </div>
+
+        <div id="leiloesTerminados">
+            <br>
+
+            <h3> Leiloes Terminados</h3>
+            <div class="leiloesTbl">
+                <table id="tbl_leiloes">
+                    <tr>
+                        <th style="text-align:center;">Row ID</th>
+                        <th style="text-align:center;">ID Leilao</th>
+                        <th style="text-align:center;">Max Bid</th>
+                        <th style="text-align:center;">Current Bid</th>
+                        <th style="text-align:center;">Data Fim</th>
+                        <th style="text-align:center;">Nome</th>
+                        <th style="text-align:center;">Vendedor</th>
+                        <th style="text-align:center;">Vencedor</th>
+                        <th style="text-align:center;">Estado</th>
+			<th style="text-align:center;">Pago</th>
+                        <th style="text-align:center;"></th>
+                    </tr>
+
+
+                        <!-- <tr class="<?php if ($row["Vencedor"] == 'barbosas') echo  'winner'; else echo looser; ?>">
+                            <td style="text-align:center;"><?php echo $i; ?></td>
+                            <td style="text-align:center;"><?php echo $row["ID Leilao"]; ?></td>
+                            <td style="text-align:center;"><?php echo $row["Max Bid"]." &euro;"; ?></td>
+                            <td style="text-align:center;"><?php echo $row["Current Bid"]." &euro;"; ?></td>
+                            <td style="text-align:center;"><?php echo $row["Data Fim"]; ?></td>
+                            <td><a href=<?php echo "'" . $row["URL"] . "'"; ?>><?php echo $row["Nome"]; ?></a></td>
+                            <td style="text-align:center;"><?php echo $row["Vendedor"]; ?></td>
+                            <td style="text-align:center;"><?php echo $row["Vencedor"]; ?></td>
+                            <td style="text-align:center;"><?php echo  $row["Estado"]; ?></td>
+		            <td style="text-align:center;"><input type="checkbox" name="pago" id="pago" onclick="check(this, '<?php echo $row["ID Leilao"]; ?>')" value="yes" <?php echo ($row['Pago']=='S' ? 'checked' : '');?>></td>
+                            <td style="text-align:center">
+                                <form style="margin: 0; text-align: center" method="post" action="">
+                                    <input type="hidden" value=<?php echo $row["ID Leilao"] ?> name="rowid" >
+                                    <input type="submit" name="rem_auction_term" value="Remover" class="buttonRed">
+                                </form>
+                            </td>
+                        </tr> -->
+
+            </table>
+        </div>
+    </div>
+
+    <br>
+
+    <div id='totalApagar'>
+
+        <div class='buttonRemove'>
+            <input type="button" name="removeAllAuctions" value="Remover Todos" class="buttonRed" onclick="removeAuctions('all');" />
+        </div>
+
+        <div class='buttonRemove'>
+            <input type="button" name="removeLostAuctions" value="Remover Perdidos" class="buttonRed" onclick="removeAuctions('lost');" />
+        </div>
+
+		    <div class='buttonRemove'>
+            <input type="button" name="removePaiedAuctions" value="Remover Pagos" class="buttonRed"  onclick="removeAuctions('paied');" />
+        </div>
+
+    </div>
+
+    <h3>Pesquisas e Listagens</h3>
+    <div id="pesquisas">
+
+        <div class= 'btnPesquisa'>
+            <form method="post" action="">
+                <input type="submit" name="sendLista" value="Lista Completa Coisas" class="buttonGreen">
+            </form>
+        </div>
+
+        <div class= 'btnPesquisa'>
+            <form method="post" action="">
+                <input type="submit" name="pesquisaCoisas" value="Pesquisa Coisas" class="buttonGreen">
+            </form>
+        </div>
+
+        <div class= 'btnPesquisa'>
+            <form method="post" action="">
+                <input type="submit" name="listaMaugenioFull" value="Lista Completa Maugenio" class="buttonGreen">
+            </form>
+        </div>
+
+        <div class= 'btnPesquisa'>
+            <form method="post" action="">
+                <input type="submit" name="pesquisaTodoColeccion" value="Pesquisa TodoColeccion" class="buttonGreen">
+            </form>
+        </div>
+
+
+
+    </div>
+</div>
+
+</body>

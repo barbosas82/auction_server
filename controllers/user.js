@@ -48,8 +48,8 @@ exports.Auth = function(req, res){
       if (!user.checkPassword(password)) {//doesn't match
         res.json({ success: false, message: 'Authentication failed. Wrong password.'});
       }else{//match
-        user.hashedPassword = "e8675dcdc1d72966f52a1c406d47b51a28c03cdd";
-        //var payload = "{ \"_id\": " + user._id + ", \"username\": \"" + user.username + "\", \"email\": \"" + user.email + "\", \"role\": \"" + user.role + "\" }";
+        user.salt = "f3768a6fc92b0852a230c53b7c35b1111ac96748a88607545d3dd782b57f3c31";
+        user.hashedPassword = "e8675dcdc1d72966f64a1c406d47b51a28c03cdd";
         var token = jwt.sign(user, req.app.get('secret'), {expiresIn: req.app.get('tokenLife')}  );
         res.json({success: true,  message: 'Enjoy your token!', token: token });
        }
