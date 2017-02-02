@@ -19,7 +19,7 @@ var AuctionSchema = new Schema({
         required: false
     },
     enddate: {
-        type: String,
+        type: Date,
         required: true
     },
     name: {

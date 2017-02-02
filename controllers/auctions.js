@@ -7,7 +7,7 @@ exports.add = function(req, res){
 
   Auctions.findOne({"_id": _id}, function(err, exists){
       if (exists){
-        res.json({ success: false, message: "Auction " + id + " already exist."});
+        res.json({ success: false, message: "Auction " + _id + " already exist."});
       }else{
         Auctions.create(req.body, function (err, usr) {
                 if (err) return console.log(err);
