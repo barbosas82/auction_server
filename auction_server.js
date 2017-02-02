@@ -38,7 +38,7 @@ require('./routes')(app); //get our routes
 
 // http server
 var port2 = 8081;
-app2.use(express.static(__dirname + '/public'));
+app2.use(express.static(__dirname + '/html'));
 
 
 // =======================
