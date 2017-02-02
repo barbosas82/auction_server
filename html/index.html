@@ -156,15 +156,15 @@
               var numLeiloes = data.message.length;
 
               var tr = document.createElement('tr');
-              var td = document.createElement('td');
-              td.appendChild(document.createTextNode("ID Leilao"));
-              td.appendChild(document.createTextNode("Max Bid"));
-              td.appendChild(document.createTextNode("Current Bid"));
-              td.appendChild(document.createTextNode("Data Fim"));
-              td.appendChild(document.createTextNode("Nome"));
-              td.appendChild(document.createTextNode("Vendedor"));
-              td.appendChild(document.createTextNode("Estado"));
-              tr.appendChild(td)
+              var th = document.createElement('th');
+              th.appendChild(document.createTextNode("ID Leilao"));
+              th.appendChild(document.createTextNode("Max Bid"));
+              th.appendChild(document.createTextNode("Current Bid"));
+              th.appendChild(document.createTextNode("Data Fim"));
+              th.appendChild(document.createTextNode("Nome"));
+              th.appendChild(document.createTextNode("Vendedor"));
+              th.appendChild(document.createTextNode("Estado"));
+              tr.appendChild(th)
               leiloesAgendados.appendChild(tr);
             // document.getElementById("placeholder").innerHTML=JSON.stringify(data);
 
