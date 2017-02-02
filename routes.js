@@ -72,10 +72,10 @@ module.exports = function(app){
      /**********************************************
      ******       METHODS FOR AUCTIONS         *****
      **********************************************/
-      apiRoutes.post('/auction', artists.add );
-      apiRoutes.get('/wantlist', artists.findAll);
-      apiRoutes.put('/wantlist/:id', artists.update );
-      apiRoutes.delete('/wantlist/:id', artists.delete);
+      apiRoutes.post('/auction', auctions.add );
+      apiRoutes.get('/auction', auctions.listAll);
+      apiRoutes.put('/auction/:id', auctions.update );
+      apiRoutes.delete('/auction/:id', auctions.delete);
 
      app.use('/api', apiRoutes);
 
