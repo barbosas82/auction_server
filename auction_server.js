@@ -8,6 +8,7 @@ var bodyParser    = require('body-parser');
 var morgan        = require('morgan');
 var mongoose      = require('mongoose');
 var autoIncrement = require('mongoose-auto-increment');
+var fs            = require('fs');
 var config        = require('./config'); // get our config file
 
 
@@ -37,9 +38,9 @@ require('./routes')(app); //get our routes
 
 // http server
 var port2 = 8081;
-app2.get('/', (request, response) => {
-  response.send('Hello from Express!')
-})
+app2 = express.createServer(
+     express.static(__dirname + '/html')
+     );
 
 
 

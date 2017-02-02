@@ -11,6 +11,7 @@
     "mongoose-auto-increment": "latest",
     "morgan": "latest",
     "jsonwebtoken": "latest",
-    "crypto": "latest"
+    "crypto": "latest",
+    "fs": "latest";
   }
 }
