@@ -14,6 +14,7 @@ th {
     background-color: #4CAF50;
     color: white;
     display: inline-block;
+    text-align: center;
 }
 
 tr:nth-child(even) {background-color: #f2f2f2}
@@ -74,14 +75,14 @@ label {
 }
 
 #addArtista{
-  display: inline-block; 
+  display: inline-block;
 }
 
 
 
 #listaArtista{
-	overflow-y: scroll; 
-	display: inline-block; 
+	overflow-y: scroll;
+	display: inline-block;
 	height: 600px;
 }
 
@@ -92,8 +93,8 @@ label {
     overflow: hidden;
     background-color: #333;
 }
-#menu li { 
-  float: left; 
+#menu li {
+  float: left;
   border-right: 1px solid #bbb;
 }
 
@@ -101,7 +102,7 @@ label {
     border-right: none;
 }
 
-#menu a { 
+#menu a {
     display: block;
     color: white;
     text-align: center;
@@ -119,7 +120,7 @@ label {
 
 .main {
     padding: 10px;
-    
+
 }
 
 .buttonRed{
@@ -130,7 +131,7 @@ label {
 .buttonRed:hover{
 	background-color: #f44336;
     color: white;
-    border: 1px solid #f44336; 
+    border: 1px solid #f44336;
 }
 
 .buttonGreen{
@@ -142,7 +143,7 @@ label {
 .buttonGreen:hover{
 	background-color: #4CAF50;
   color: white;
-  border: 1px solid #4CAF50; 
+  border: 1px solid #4CAF50;
 }
 
 
@@ -179,10 +180,10 @@ label {
   float: left;
 }
 
-@media only screen 
-  and (min-device-width: 375px) 
-  and (max-device-width: 667px) 
-  and (-webkit-min-device-pixel-ratio: 2) { 
+@media only screen
+  and (min-device-width: 375px)
+  and (max-device-width: 667px)
+  and (-webkit-min-device-pixel-ratio: 2) {
     .leiloesTbl{
       width: 100vw;
       max-height: 150px;
@@ -202,8 +203,8 @@ label {
     }
 
     #listaArtista{
-      overflow-y: scroll; 
-      display: inline-block; 
+      overflow-y: scroll;
+      display: inline-block;
       height: 330px;
     }
 }
