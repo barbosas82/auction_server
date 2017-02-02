@@ -237,7 +237,7 @@
             },
             success: function (data, status, jqXHR) {
             //Do stuff with the JSON data
-            document.getElementById("placeholder").innerHTML=data.message.length;
+              document.getElementById("placeholder").innerHTML=data.message[0];
             ;
             // document.getElementById("placeholder").innerHTML=JSON.stringify(data);
 
