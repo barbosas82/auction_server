@@ -165,32 +165,22 @@
                 th.appendChild(document.createTextNode(headertitles[i]));
                 tr.appendChild(th);
               }
-              // th.appendChild(document.createTextNode("ID Leilao"));
-              // th.appendChild(document.createTextNode("Max Bid"));
-              // th.appendChild(document.createTextNode("Current Bid"));
-              // th.appendChild(document.createTextNode("Data Fim"));
-              // th.appendChild(document.createTextNode("Nome"));
-              // th.appendChild(document.createTextNode("Vendedor"));
-              // th.appendChild(document.createTextNode("Estado"));
-
               leiloesAgendados.appendChild(tr);
 
-              // if (numLeiloes > 0) {
-              //   var idx = 0;
-              //   for (idx; idx < numLeiloes; idx++){
-              //     var tr = document.createElement('tr');
-              //     var td = document.createElement('td');
-              //     td.appendChild(document.createTextNode(data.message[idx]._id));
-              //     td.appendChild(document.createTextNode(data.message[idx].maxbid));
-              //     td.appendChild(document.createTextNode(data.message[idx].currentbid));
-              //     td.appendChild(document.createTextNode(data.message[idx].enddate));
-              //     td.appendChild(document.createTextNode(data.message[idx].name));
-              //     td.appendChild(document.createTextNode(data.message[idx].seller));
-              //     td.appendChild(document.createTextNode(data.message[idx].status));
-              //     tr.appendChild(td)
-              //     leiloesAgendados.appendChild(tr);
-              //   }
-              // }
+              var idsToHeader = ["_id", "maxbid", "currentbid", "enddate", "name", "seller", "status"];
+              if (numLeiloes > 0) {
+                var idx = 0;
+                for (idx; idx < numLeiloes; idx++){
+                  var tr = document.createElement('tr');
+
+                  for (var i=0; i < idsToHeader.length; i++){
+                    var td = document.createElement('td');
+                    td.appendChild(document.createTextNode(data.message[idx].idsToHeader[i]));
+                    tr.appendChild(td)
+                  }
+                  leiloesAgendados.appendChild(tr);
+                }
+              }
 
             },
              error: function (jqXHR, status) {
