@@ -175,7 +175,7 @@
                   var tr = document.createElement('tr');
                   for (var i = 0; i < idsToHeader.length; i++){
                     var title = idsToHeader[i];
-                    var text = data.message[idx].idsToHeader[i];
+                    var text = data.message[idx].title;
                     var td = document.createElement('td');
                     td.appendChild(document.createTextNode(text));
                     tr.appendChild(td);
