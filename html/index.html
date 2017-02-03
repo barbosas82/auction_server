@@ -141,7 +141,7 @@
         }
 
 
-
+        function populateAuctionTable(){
           $.ajax({
             type: 'GET',
             url: 'http://bid2.doismeios.pt:8080/api/auction',
@@ -191,6 +191,7 @@
                  alert(JSON.stringify(jqXHR));
              }
             });
+          }
     </script>
 
 </head>

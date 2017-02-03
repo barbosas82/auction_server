@@ -27,7 +27,7 @@ module.exports = function(app){
 
    // route middleware to verify a token
     apiRoutes.use(function(req, res, next) {
-       res.setHeader('Access-Control-Allow-Origin', '*')
+      // res.setHeader('Access-Control-Allow-Origin', '*')
       // check header or url parameters or post parameters for token
       var token = req.body.token || req.query.token || req.headers['x-access-token'];
 
