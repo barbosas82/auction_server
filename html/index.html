@@ -156,15 +156,22 @@
               var numLeiloes = data.message.length;
 
               var tr = document.createElement('tr');
-              var th = document.createElement('th');
-              th.appendChild(document.createTextNode("ID Leilao"));
-              th.appendChild(document.createTextNode("Max Bid"));
-              th.appendChild(document.createTextNode("Current Bid"));
-              th.appendChild(document.createTextNode("Data Fim"));
-              th.appendChild(document.createTextNode("Nome"));
-              th.appendChild(document.createTextNode("Vendedor"));
-              th.appendChild(document.createTextNode("Estado"));
-              tr.appendChild(th)
+              var headertitles = ["ID Leilao", "Max Bid", "Current Bid", "Data Fim", "Nome", "Vendedor", "Estado"];
+
+
+              for (int i = 0; i<headertitles.size; i++){
+                var th = document.createElement('th');
+                th.appendChild(document.createTextNode(headertitles[i]));
+                tr.appendChild(th)
+              }
+              // th.appendChild(document.createTextNode("ID Leilao"));
+              // th.appendChild(document.createTextNode("Max Bid"));
+              // th.appendChild(document.createTextNode("Current Bid"));
+              // th.appendChild(document.createTextNode("Data Fim"));
+              // th.appendChild(document.createTextNode("Nome"));
+              // th.appendChild(document.createTextNode("Vendedor"));
+              // th.appendChild(document.createTextNode("Estado"));
+
               leiloesAgendados.appendChild(tr);
 
               if (numLeiloes > 0) {
