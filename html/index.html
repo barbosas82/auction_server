@@ -2,10 +2,31 @@
 <html>
 <head>
 
+  <script type="text/javascript">
+      function validateLogin(){
+        $.ajax({
+          type: 'POST',
+          url: 'http://bid2.doismeios.pt:8080/authenticate',
+          contentType: "application/json; charset=utf-8",
+          data: "{\"" + document.getElementById.("login") + "\", \"" +  document.getElementById.("password")  +  "\"}",
+          dataType: "json",
+          success: function (data, status, jqXHR) {
+            alert(JSON.stringify(data));
+
+          },,
+           error: function (jqXHR, status) {
+               // error handler
+               alert(JSON.stringify(jqXHR));
+           }
+          });
+        }
+
+  </script>
+
 </head>
 
 <body>
-  <form method="post" action="index.html">
+  <form method="post" action="javascript:validateLogin()">
     <p><input type="text" name="login" value="" placeholder="Username"></p>
     <p><input type="password" name="password" value="" placeholder="Password"></p>
     <p class="remember_me">
