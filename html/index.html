@@ -172,7 +172,7 @@
               var idsToHeader = ["_id", "maxbid", "currentbid", "enddate", "name", "seller", "status"];
               if (numLeiloes > 0) {
                 for (var idx = 0; idx < numLeiloes; idx++){
-                  alert(JSON.stringfy(data.message[idx]));
+                  alert(JSON.stringfy(data.message));
                   var tr = document.createElement('tr');
 
                   for (var i = 0; i < idsToHeader.length; i++){
