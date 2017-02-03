@@ -173,6 +173,7 @@
               if (numLeiloes > 0) {
                 for (var idx = 0; idx < numLeiloes; idx++){
                   var tr = document.createElement('tr');
+                  var td = document.createElement('td');
                   td.appendChild(document.createTextNode(data.message[idx]._id)); tr.appendChild(td);
                   td.appendChild(document.createTextNode(data.message[idx].maxbid)); tr.appendChild(td);
                   td.appendChild(document.createTextNode(data.message[idx].currentbid)); tr.appendChild(td);
