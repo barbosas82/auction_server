@@ -175,7 +175,7 @@
                   for (var i = 0; i < idsToHeader.length; i++){
                     var td = document.createElement('td');
                     var idMessage = "\"" + idsToHeader[i] + "\"";
-                    var query = data.message[idx].idMessage;
+                    var query = data.message[idx]."_maxbid";
                     alert (query);
                     td.appendChild(document.createTextNode(query));
                     tr.appendChild(td);
