@@ -157,7 +157,7 @@
 
               alert (data.message[0]);
 
-              //Create Table Headers
+              //Create Ongoing Auction Table Headers
               var tr = document.createElement('tr');
               var headertitles = ["ID Leilao", "Max Bid", "Current Bid", "Data Fim", "Nome", "Vendedor", "Estado"];
 
@@ -168,74 +168,66 @@
               }
               leiloesAgendados.appendChild(tr);
 
-              //Create Table Rows
-              var idsToHeader = ["_id", "maxbid", "currentbid", "enddate", "name", "seller", "status"];
+              //Create Ended Auction Table Headers
+              var tr = document.createElement('tr');
+              var headertitles = ["ID Leilao", "Max Bid", "Current Bid", "Data Fim", "Nome", "Estado", "Vendedor"];
+
+              for (var i = 0; i<headertitles.length; i++){
+                var th = document.createElement('th');
+                th.appendChild(document.createTextNode(headertitles[i]));
+                tr.appendChild(th);
+              }
+              leiloesAgendados.appendChild(tr);
+
+              //Create Ended Auction Table Headers
+              var tr = document.createElement('tr');
+              var headertitles = ["ID Leilao", "Max Bid", "Current Bid", "Data Fim", "Nome", "Estado", "Vendedor", "Vencedor", "Pago"];
+
+              for (var i = 0; i<headertitles.length; i++){
+                var th = document.createElement('th');
+                th.appendChild(document.createTextNode(headertitles[i]));
+                tr.appendChild(th);
+              }
+              leiloesTerminados.appendChild(tr);
+
+
+              //populate table rows
+              var existsEndedAuctions = false; //if true the ended auctions table will be displayed
+
               if (numLeiloes > 0) {
                 for (var idx = 0; idx < numLeiloes; idx++){
+
+                  var _id         = data.message[idx]._id;
+                  var status      = data.message[idx].status;
+                  var maxbid      = data.message[idx].maxbid;
+                  var currentbid  = data.message[idx].currentbid;
+                  var enddate     = data.message[idx].enddate;
+                  var name        = data.message[idx].name;
+                  var status      = data.message[idx].status;
+                  var seller      = data.message[idx].seller;
+                  var buyer       = data.message[idx].buyer;
+                  var paied       = data.message[idx].paied;
+
                   var tr = document.createElement('tr');
-                  var trf = document.createElement('tr');
                   var td = document.createElement('td');
-                  var tdf = document.createElement('td');
 
-                  td.appendChild(document.createTextNode(data.message[idx]._id));
-                  tdf.appendChild(document.createTextNode(data.message[idx]._id));
-                  tr.appendChild(td);
-                  trf.appendChild(td);
+                  td.appendChild(document.createTextNode(_id));
+                  td.appendChild(document.createTextNode(maxbid));
+                  td.appendChild(document.createTextNode(currentbid));
+                  td.appendChild(document.createTextNode(enddate));
+                  td.appendChild(document.createTextNode(name));
+                  td.appendChild(document.createTextNode(status));
+                  td.appendChild(document.createTextNode(seller));
 
-                  var td = document.createElement('td');
-                  var tdf = document.createElement('td');
-                  td.appendChild(document.createTextNode(data.message[idx].maxbid));
-                  tdf.appendChild(document.createTextNode(data.message[idx].maxbid));
-                  tr.appendChild(td);
-                  trf.appendChild(tdf);
-
-                  var td = document.createElement('td');
-                  var tdf = document.createElement('td');
-                  td.appendChild(document.createTextNode(data.message[idx].currentbid));
-                  tdf.appendChild(document.createTextNode(data.message[idx].currentbid));
-                  tr.appendChild(td);
-                  trf.appendChild(tdf);
-
-                  var td = document.createElement('td');
-                  var tdf = document.createElement('td');
-                  td.appendChild(document.createTextNode(data.message[idx].enddate));
-                  tdf.appendChild(document.createTextNode(data.message[idx].enddate));
-                  tr.appendChild(td);
-                  trf.appendChild(tdf);
-
-                  var td = document.createElement('td');
-                  var tdf = document.createElement('td');
-                  td.appendChild(document.createTextNode(data.message[idx].name));
-                  tdf.appendChild(document.createTextNode(data.message[idx].enddate));
-                  tr.appendChild(td);
-                  trf.appendChild(tdf);
-
-                  var td = document.createElement('td');
-                  var tdf = document.createElement('td');
-                  td.appendChild(document.createTextNode(data.message[idx].status));
-                  tdf.appendChild(document.createTextNode(data.message[idx].status));
-                  tr.appendChild(td);
-                  trf.appendChild(tdf);
-
-                  var td = document.createElement('td');
-                  var tdf = document.createElement('td');
-                  td.appendChild(document.createTextNode(data.message[idx].seller));
-                  tdf.appendChild(document.createTextNode(data.message[idx].seller));
-                  tr.appendChild(td);
-                  trf.appendChild(tdf);
-
-                  var tdf = document.createElement('td');
-                  td.appendChild(document.createTextNode(data.message[idx].buyer));
-                  trf.appendChild(tdf);
-
-                  var tdf = document.createElement('td');
-                  td.appendChild(document.createTextNode(data.message[idx].paied));
-                  trf.appendChild(tdf);
-
-
-
-                  leiloesAgendados.appendChild(tr);
-                  leiloesTerminados.appendChild(trf);
+                  if (status == 'Terminado' || status == 'Reiniciado'){
+                    td.appendChild(document.createTextNode(buyer));
+                    td.appendChild(document.createTextNode(paied));
+                    tr.appendChild(td);
+                    leiloesTerminados.appendChild(tr);
+                  }else{
+                    tr.appendChild(td);
+                    leiloesAgendados.appendChild(tr);
+                  }
                 }
               }
             },
