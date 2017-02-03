@@ -36,12 +36,6 @@ require('./models/auctions'); // get our mongoose model
 require('./routes')(app); //get our routes
 
 
-// http server
-var port2 = 8081;
-//app2.use(express.static(__dirname + '/html'));
-app.use('/', express.static(__dirname, '/html'));
-
-
 // =======================
 // start the servers ======
 // =======================
