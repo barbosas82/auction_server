@@ -172,11 +172,11 @@
                 for (var idx = 0; idx < numLeiloes; idx++){
                   var tr = document.createElement('tr');
 
-                  for (var i1 = 0; i1 < idsToHeader.length; i1++){
+                  for (var i = 0; i < idsToHeader.length; i++){
                     var td = document.createElement('td');
-                    if (data.message[idx].idsToHeader[i1]){
-                      td.appendChild(document.createTextNode(data.message[idx].idsToHeader[i]));
-                    }
+                    var idMessage = idsToHeader[i];
+                    alert (idMessage);
+                    //td.appendChild(document.createTextNode(data.message[idx].idsToHeader[i]));
                     tr.appendChild(td);
                   }
                   leiloesAgendados.appendChild(tr);
