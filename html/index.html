@@ -174,13 +174,32 @@
                 for (var idx = 0; idx < numLeiloes; idx++){
                   var tr = document.createElement('tr');
                   var td = document.createElement('td');
-                  td.appendChild(document.createTextNode(data.message[idx]._id)); tr.appendChild(td);
-                  td.appendChild(document.createTextNode(data.message[idx].maxbid)); tr.appendChild(td);
-                  td.appendChild(document.createTextNode(data.message[idx].currentbid)); tr.appendChild(td);
-                  td.appendChild(document.createTextNode(data.message[idx].enddate)); tr.appendChild(td);
-                  td.appendChild(document.createTextNode(data.message[idx].name)); tr.appendChild(td);
-                  td.appendChild(document.createTextNode(data.message[idx].seller)); tr.appendChild(td);
-                  td.appendChild(document.createTextNode(data.message[idx].status)); tr.appendChild(td);
+                  td.appendChild(document.createTextNode(data.message[idx]._id));
+                  tr.appendChild(td);
+
+                  var td = document.createElement('td');
+                  td.appendChild(document.createTextNode(data.message[idx].maxbid));
+                  tr.appendChild(td);
+
+                  var td = document.createElement('td');
+                  td.appendChild(document.createTextNode(data.message[idx].currentbid));
+                  tr.appendChild(td);
+
+                  var td = document.createElement('td');
+                  td.appendChild(document.createTextNode(data.message[idx].enddate));
+                  tr.appendChild(td);
+
+                  var td = document.createElement('td');
+                  td.appendChild(document.createTextNode(data.message[idx].name));
+                  tr.appendChild(td);
+
+                  var td = document.createElement('td');
+                  td.appendChild(document.createTextNode(data.message[idx].seller));
+                  tr.appendChild(td);
+
+                  var td = document.createElement('td');
+                  td.appendChild(document.createTextNode(data.message[idx].status));
+                  tr.appendChild(td);
 
 
                   leiloesAgendados.appendChild(tr);
