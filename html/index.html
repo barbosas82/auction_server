@@ -173,9 +173,12 @@
               if (numLeiloes > 0) {
                 for (var idx = 0; idx < numLeiloes; idx++){
                   var tr = document.createElement('tr');
+                  var trf = document.createElement('tr');
                   var td = document.createElement('td');
+
                   td.appendChild(document.createTextNode(data.message[idx]._id));
                   tr.appendChild(td);
+                  trf.appendChild(td);
 
                   var td = document.createElement('td');
                   td.appendChild(document.createTextNode(data.message[idx].maxbid));
@@ -184,25 +187,40 @@
                   var td = document.createElement('td');
                   td.appendChild(document.createTextNode(data.message[idx].currentbid));
                   tr.appendChild(td);
+                  trf.appendChild(td);
 
                   var td = document.createElement('td');
                   td.appendChild(document.createTextNode(data.message[idx].enddate));
                   tr.appendChild(td);
+                  trf.appendChild(td);
 
                   var td = document.createElement('td');
                   td.appendChild(document.createTextNode(data.message[idx].name));
                   tr.appendChild(td);
-
-                  var td = document.createElement('td');
-                  td.appendChild(document.createTextNode(data.message[idx].seller));
-                  tr.appendChild(td);
+                  trf.appendChild(td);
 
                   var td = document.createElement('td');
                   td.appendChild(document.createTextNode(data.message[idx].status));
                   tr.appendChild(td);
+                  trf.appendChild(td);
+
+                  var td = document.createElement('td');
+                  td.appendChild(document.createTextNode(data.message[idx].seller));
+                  tr.appendChild(td);
+                  trf.appendChild(td);
+
+                  var td = document.createElement('td');
+                  td.appendChild(document.createTextNode(data.message[idx].buyer));
+                  trf.appendChild(td);
+
+                  var td = document.createElement('td');
+                  td.appendChild(document.createTextNode(data.message[idx].paied));
+                  trf.appendChild(td);
+
 
 
                   leiloesAgendados.appendChild(tr);
+                  leiloesTerminados.appendChild(trf);
                 }
               }
             },
@@ -264,40 +282,9 @@
             <h3> Leiloes Agendados</h3>
             <div class="leiloesTbl">
                 <table >
-
                   <tbody id="leiloesAgendados" class="tbl_leiloes">
 
                   </tbody>
-
-                  <!--   <tr>
-                        <th style="text-align:center;">Row ID</th>
-                        <th style="text-align:center;">ID Leilao</th>
-                        <th style="text-align:center;">Max Bid</th>
-                        <th style="text-align:center;">Current Bid</th>
-                        <th style="text-align:center;">Data Fim</th>
-                        <th style="text-align:center;">Nome</th>
-                        <th style="text-align:center;">Vendedor</th>
-                        <th style="text-align:center;">Estado</th>
-                        <th style="text-align:center;"></th>
-                    </tr>
-
-
-
-                    <tr class="table-row">
-                     <td style="text-align:center;"><?php echo $i; ?></td>
-                     <td style="text-align:center;"><?php echo $row["ID Leilao"]; ?></td>
-                     <td class="idContentEditable" ondblclick="this.contentEditable=true; placeCaretAtEnd(this);" onBlur="saveToDatabase(event, this,'Max Bid','<?php echo $row["ID Leilao"]; ?>')" onkeypress="handle(event, this, 'Nome','<?php echo $row["ID Leilao"]; ?>')" style="text-align:center; <?php if (number_format(str_replace(',','.', $row["Current Bid"])) >= number_format(str_replace(',' , '.', $row["Max Bid"]))  ) echo "color: red; font-weight: bold;" ?> "><?php echo $row["Max Bid"]." &euro;"; ?></td>
-                     <td style="text-align:center;"><?php echo $row["Current Bid"]." &euro;"; ?></td>
-                     <td style="text-align:center;"><?php echo $row["Data Fim"]; ?></td>
-                     <td><a href=<?php echo "'" . $row["URL"] . "'"; ?> target="_blank"><?php echo $row["Nome"]; ?></a></td>
-                     <td style="text-align:center;"><?php echo $row["Vendedor"]; ?></td>
-                     <td style="text-align:center;"><?php echo  $row["Estado"]; ?></td>
-                     <td style="text-align:center">
-                        <form style="margin: 0; text-align: center" method="post" action="">
-                            <input type="hidden" value=<?php echo $row["ID Leilao"] ?> name="rowid" >
-                            <input type="submit" name="rem_auction" value="Remover" class="buttonRed"></form></td>
-                        </tr> -->
-
                 </table>
             </div>
         </div>
@@ -309,42 +296,9 @@
             <h3> Leiloes Terminados</h3>
             <div class="leiloesTbl">
                 <table id="tbl_leiloes">
+                  <tbody id="leiloesTerminados" class="tbl_leiloes">
 
-
-                      <!--<tr>
-                        <th style="text-align:center;">Row ID</th>
-                        <th style="text-align:center;">ID Leilao</th>
-                        <th style="text-align:center;">Max Bid</th>
-                        <th style="text-align:center;">Current Bid</th>
-                        <th style="text-align:center;">Data Fim</th>
-                        <th style="text-align:center;">Nome</th>
-                        <th style="text-align:center;">Vendedor</th>
-                        <th style="text-align:center;">Vencedor</th>
-                        <th style="text-align:center;">Estado</th>
-			                  <th style="text-align:center;">Pago</th>
-                        <th style="text-align:center;"></th>
-                    </tr>
-
-
-                       <tr class="<?php if ($row["Vencedor"] == 'barbosas') echo  'winner'; else echo looser; ?>">
-                            <td style="text-align:center;"><?php echo $i; ?></td>
-                            <td style="text-align:center;"><?php echo $row["ID Leilao"]; ?></td>
-                            <td style="text-align:center;"><?php echo $row["Max Bid"]." &euro;"; ?></td>
-                            <td style="text-align:center;"><?php echo $row["Current Bid"]." &euro;"; ?></td>
-                            <td style="text-align:center;"><?php echo $row["Data Fim"]; ?></td>
-                            <td><a href=<?php echo "'" . $row["URL"] . "'"; ?>><?php echo $row["Nome"]; ?></a></td>
-                            <td style="text-align:center;"><?php echo $row["Vendedor"]; ?></td>
-                            <td style="text-align:center;"><?php echo $row["Vencedor"]; ?></td>
-                            <td style="text-align:center;"><?php echo  $row["Estado"]; ?></td>
-		            <td style="text-align:center;"><input type="checkbox" name="pago" id="pago" onclick="check(this, '<?php echo $row["ID Leilao"]; ?>')" value="yes" <?php echo ($row['Pago']=='S' ? 'checked' : '');?>></td>
-                            <td style="text-align:center">
-                                <form style="margin: 0; text-align: center" method="post" action="">
-                                    <input type="hidden" value=<?php echo $row["ID Leilao"] ?> name="rowid" >
-                                    <input type="submit" name="rem_auction_term" value="Remover" class="buttonRed">
-                                </form>
-                            </td>
-                        </tr> -->
-
+                  </tbody>
             </table>
         </div>
     </div>
