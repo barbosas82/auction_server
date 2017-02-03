@@ -38,20 +38,21 @@ require('./routes')(app); //get our routes
 
 // http server
 var port2 = 8081;
-app2.use(express.static(__dirname + '/html'));
+//app2.use(express.static(__dirname + '/html'));
+app.use('/', express.static(path.join(__dirname, '/html')))
 
 
 // =======================
 // start the servers ======
 // =======================
 
-app2.listen(port2, (err) => {
-  if (err) {
-    return console.log('something bad happened', err)
-  }
-
-  console.log(`server is listening on ${port2}`)
-})
+// app2.listen(port2, (err) => {
+//   if (err) {
+//     return console.log('something bad happened', err)
+//   }
+//
+//   console.log(`server is listening on ${port2}`)
+// })
 
 app.listen(port);
 console.log('Magic happens at http://localhost:' + port);
