@@ -34,7 +34,7 @@ var AuctionSchema = new Schema({
         type: String,
         required: false
     },
-    status: {
+    status: {//Agendado, Em Curso, Terminado, Reiniciado
         type: String,
         required: true
     },
