@@ -157,7 +157,7 @@
 
               //Create Ongoing Auction Table Headers
               var tr = document.createElement('tr');
-              var headertitles = ["ID Leilao", "Max Bid", "Current Bid", "Data Fim", "Nome", "Vendedor", "Estado"];
+              var headertitles = ["ID Leilao", "Max Bid", "Current Bid", "Data Fim", "Nome", "Estado", "Vendedor"];
 
               for (var i = 0; i<headertitles.length; i++){
                 var th = document.createElement('th');
@@ -197,23 +197,46 @@
                   var paied       = data.message[idx].paied;
 
                   var tr = document.createElement('tr');
-                  var td = document.createElement('td');
 
+                  var td = document.createElement('td');
                   td.appendChild(document.createTextNode(_id));
+                  tr.appendChild(td);
+              
+                  var td = document.createElement('td');
                   td.appendChild(document.createTextNode(maxbid));
+                  tr.appendChild(td);
+
+                  var td = document.createElement('td');
                   td.appendChild(document.createTextNode(currentbid));
+                  tr.appendChild(td);
+
+                  var td = document.createElement('td');
                   td.appendChild(document.createTextNode(enddate));
+                  tr.appendChild(td);
+
+                  var td = document.createElement('td');
                   td.appendChild(document.createTextNode(name));
+                  tr.appendChild(td);
+
+                  var td = document.createElement('td');
                   td.appendChild(document.createTextNode(status));
+                  tr.appendChild(td);
+
+                  var td = document.createElement('td');
                   td.appendChild(document.createTextNode(seller));
+                  tr.appendChild(td);
 
                   if (status == 'Terminado' || status == 'Reiniciado'){
+                    var td = document.createElement('td');
                     td.appendChild(document.createTextNode(buyer));
+                    tr.appendChild(td);
+
+                    var td = document.createElement('td');
                     td.appendChild(document.createTextNode(paied));
                     tr.appendChild(td);
+
                     leiloesTerminados.appendChild(tr);
                   }else{
-                    tr.appendChild(td);
                     leiloesAgendados.appendChild(tr);
                   }
                 }
