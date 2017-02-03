@@ -175,7 +175,8 @@
                   for (var i = 0; i < idsToHeader.length; i++){
                     var td = document.createElement('td');
                     var idMessage = "\"" + idsToHeader[i] + "\"";
-                    alert (JSON.stringify(message[idx]));
+                    var query = "data.message[idx]." + idMessage;
+                    alert (query);
                     td.appendChild(document.createTextNode(data.message[idx].idMessage));
                     tr.appendChild(td);
                   }
