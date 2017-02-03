@@ -160,7 +160,6 @@
 
 
               for (var i = 0; i<headertitles.length; i++){
-                alert(headertitles[i]);
                 var th = document.createElement('th');
                 th.appendChild(document.createTextNode(headertitles[i]));
                 tr.appendChild(th);
@@ -173,10 +172,11 @@
                 for (idx; idx < numLeiloes; idx++){
                   var tr = document.createElement('tr');
 
-                  for (var i=0; i < idsToHeader.length; i++){
+                  for (var i = 0; i < idsToHeader.length; i++){
+                                    alert(idsToHeader[i]);
                     var td = document.createElement('td');
                     td.appendChild(document.createTextNode(data.message[idx].idsToHeader[i]));
-                    tr.appendChild(td)
+                    tr.appendChild(td);
                   }
                   leiloesAgendados.appendChild(tr);
                 }
