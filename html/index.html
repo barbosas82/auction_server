@@ -175,7 +175,7 @@
                   for (var i = 0; i < idsToHeader.length; i++){
                                     alert(idsToHeader[i]);
                     var td = document.createElement('td');
-                    td.appendChild(document.createTextNode(data.message[idx].idsToHeader[i]));
+                    td.appendChild(document.createTextNode(data.message[idx]._id));
                     tr.appendChild(td);
                   }
                   leiloesAgendados.appendChild(tr);
