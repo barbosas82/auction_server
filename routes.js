@@ -16,6 +16,8 @@ module.exports = function(app){
   //     res.send('Hello! The API is at http://localhost:' + port + '/api');
   // });
 
+  app.use(express.static('html'));
+
   apiRoutes.get('/', function(req, res) {
        res.json({ message: 'Welcome to the coolest API on earth!' });
   });
