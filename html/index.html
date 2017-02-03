@@ -155,6 +155,8 @@
               var leiloesAgendados = document.getElementById("leiloesAgendados");
               var numLeiloes = data.message.length;
 
+              alert (numLeiloes);
+
               //Create Table Headers
               var tr = document.createElement('tr');
               var headertitles = ["ID Leilao", "Max Bid", "Current Bid", "Data Fim", "Nome", "Vendedor", "Estado"];
@@ -170,11 +172,12 @@
               var idsToHeader = ["_id", "maxbid", "currentbid", "enddate", "name", "seller", "status"];
               if (numLeiloes > 0) {
                 for (var idx = 0; idx < numLeiloes; idx++){
+                  alert(JSON.stringfy(data.message[idx]));
                   var tr = document.createElement('tr');
 
                   for (var i = 0; i < idsToHeader.length; i++){
                     var td = document.createElement('td');
-                    
+
                     td.appendChild(document.createTextNode(data.message[idx]._maxbid));
                     tr.appendChild(td);
                   }
