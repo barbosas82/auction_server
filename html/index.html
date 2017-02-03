@@ -175,47 +175,62 @@
                   var tr = document.createElement('tr');
                   var trf = document.createElement('tr');
                   var td = document.createElement('td');
+                  var tdf = document.createElement('td');
 
                   td.appendChild(document.createTextNode(data.message[idx]._id));
+                  tdf.appendChild(document.createTextNode(data.message[idx]._id));
                   tr.appendChild(td);
                   trf.appendChild(td);
 
                   var td = document.createElement('td');
+                  var tdf = document.createElement('td');
                   td.appendChild(document.createTextNode(data.message[idx].maxbid));
+                  tdf.appendChild(document.createTextNode(data.message[idx].maxbid));
                   tr.appendChild(td);
+                  trf.appendChild(tdf);
 
                   var td = document.createElement('td');
+                  var tdf = document.createElement('td');
                   td.appendChild(document.createTextNode(data.message[idx].currentbid));
+                  tdf.appendChild(document.createTextNode(data.message[idx].currentbid));
                   tr.appendChild(td);
-                  trf.appendChild(td);
+                  trf.appendChild(tdf);
 
                   var td = document.createElement('td');
+                  var tdf = document.createElement('td');
                   td.appendChild(document.createTextNode(data.message[idx].enddate));
+                  tdf.appendChild(document.createTextNode(data.message[idx].enddate));
                   tr.appendChild(td);
-                  trf.appendChild(td);
+                  trf.appendChild(tdf);
 
                   var td = document.createElement('td');
+                  var tdf = document.createElement('td');
                   td.appendChild(document.createTextNode(data.message[idx].name));
+                  tdf.appendChild(document.createTextNode(data.message[idx].enddate));
                   tr.appendChild(td);
-                  trf.appendChild(td);
+                  trf.appendChild(tdf);
 
                   var td = document.createElement('td');
+                  var tdf = document.createElement('td');
                   td.appendChild(document.createTextNode(data.message[idx].status));
+                  tdf.appendChild(document.createTextNode(data.message[idx].status));
                   tr.appendChild(td);
-                  trf.appendChild(td);
+                  trf.appendChild(tdf);
 
                   var td = document.createElement('td');
+                  var tdf = document.createElement('td');
                   td.appendChild(document.createTextNode(data.message[idx].seller));
+                  tdf.appendChild(document.createTextNode(data.message[idx].seller));
                   tr.appendChild(td);
-                  trf.appendChild(td);
+                  trf.appendChild(tdf);
 
-                  var td = document.createElement('td');
+                  var tdf = document.createElement('td');
                   td.appendChild(document.createTextNode(data.message[idx].buyer));
-                  trf.appendChild(td);
+                  trf.appendChild(tdf);
 
-                  var td = document.createElement('td');
+                  var tdf = document.createElement('td');
                   td.appendChild(document.createTextNode(data.message[idx].paied));
-                  trf.appendChild(td);
+                  trf.appendChild(tdf);
 
 
 
