@@ -169,21 +169,21 @@
               leiloesAgendados.appendChild(tr);
 
               //Create Table Rows
-              // var idsToHeader = ["_id", "maxbid", "currentbid", "enddate", "name", "seller", "status"];
-              // if (numLeiloes > 0) {
-              //   for (var idx = 0; idx < numLeiloes; idx++){
-              //     alert(JSON.stringfy(data));
-              //     var tr = document.createElement('tr');
-              //
-              //     for (var i = 0; i < idsToHeader.length; i++){
-              //       var td = document.createElement('td');
-              //
-              //       td.appendChild(document.createTextNode(data.message[idx]._maxbid));
-              //       tr.appendChild(td);
-              //     }
-              //     leiloesAgendados.appendChild(tr);
-              //   }
-              // }
+              var idsToHeader = ["_id", "maxbid", "currentbid", "enddate", "name", "seller", "status"];
+              if (numLeiloes > 0) {
+                for (var idx = 0; idx < numLeiloes; idx++){
+                  alert(JSON.stringfy(data));
+                  var tr = document.createElement('tr');
+
+                  for (var i = 0; i < idsToHeader.length; i++){
+                    var td = document.createElement('td');
+
+                    td.appendChild(document.createTextNode(data.message[idx].idsToHeader[i]));
+                    tr.appendChild(td);
+                  }
+                  leiloesAgendados.appendChild(tr);
+                }
+              }
 
             },
              error: function (jqXHR, status) {
