@@ -176,8 +176,8 @@
                     var td = document.createElement('td');
                     var idMessage = "\"" + idsToHeader[i] + "\"";
                     var query = "data.message[idx]." + idMessage;
-                    alert (query);
-                    td.appendChild(document.createTextNode(data.message[idx].idMessage));
+                    //alert (query);
+                    td.appendChild(document.createTextNode(query));
                     tr.appendChild(td);
                   }
                   leiloesAgendados.appendChild(tr);
