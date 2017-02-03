@@ -8,7 +8,7 @@
           type: 'POST',
           url: 'http://bid2.doismeios.pt:8080/authenticate',
           contentType: "application/json; charset=utf-8",
-          data: "{\"" + document.getElementById.("login") + "\", \"" +  document.getElementById.("password")  +  "\"}",
+          data: "{\"" + document.getElementById.("login").value + "\", \"" +  document.getElementById.("password")  +  "\"}",
           dataType: "json",
           success: function (data, status, jqXHR) {
             alert(JSON.stringify(data));
