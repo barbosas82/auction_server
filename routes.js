@@ -16,7 +16,7 @@ module.exports = function(app){
   //     res.send('Hello! The API is at http://localhost:' + port + '/api');
   // });
 
-  app.use(express.static('html'));
+  app.use(express.static('public_html'));
 
   apiRoutes.get('/', function(req, res) {
        res.json({ message: 'Welcome to the coolest API on earth!' });
@@ -57,6 +57,8 @@ module.exports = function(app){
       }
     });
 
+    apiRoutes.use('/private', express.static('./private_html'));
+
     /**********************************************
     ******            USER METHODS            *****
     **********************************************/
@@ -81,7 +83,5 @@ module.exports = function(app){
       apiRoutes.delete('/auction/:id', auctions.delete);
 
      app.use('/api', apiRoutes);
-
-
 
 }
