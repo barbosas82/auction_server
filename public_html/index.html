@@ -18,13 +18,10 @@
 
             if (data.success == 'true'){
               document.cookie = "x-access-token=" + data.token;
+              window.location.href = "private";
             }else{
-              alert(JSON.stringify(data));
+              alert(data.message);
             }
-
-
-
-
           },
            error: function (jqXHR, status) {
                // error handler
