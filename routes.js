@@ -18,8 +18,8 @@ module.exports = function(app){
   // });
 
 
-  app.use(express.static('public_html'));
-  app.use(express.static('private_html'));
+  app.use('/', express.static(path.join(__dirname, 'public_html')));
+  app.use('/a', express.static(path.join(__dirname, 'private_html')));
 
   console.log(__dirname);
 
