@@ -48,7 +48,7 @@ module.exports = function(app){
 
 
   app.use('/', express.static(path.join(__dirname, 'public_html')));
-  apiRoutes.use('/private', express.static(path.join(__dirname, 'private_html')));
+  app.use(validateUser, '/private', express.static(path.join(__dirname, 'private_html')));
 
 
 
