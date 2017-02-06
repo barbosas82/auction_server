@@ -218,8 +218,6 @@ function populateAuctionTable(){
           btn.appendChild(t);
           td_remove.appendChild(btn);
 
-
-
           if (status == 'Terminado' || status == 'Reiniciado'){
             var td = document.createElement('td');
             td.appendChild(document.createTextNode(buyer));
