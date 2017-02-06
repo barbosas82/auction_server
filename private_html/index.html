@@ -155,11 +155,6 @@
             },
             success: function (data, status, jqXHR) {
 
-              if (!getCookie('x-access-token')){
-                aler("Not Authenticated!")
-                window.location.href = "http://bid2.doismeios.pt:8080";
-                
-              }
               //Do stuff with the JSON data
               var leiloesAgendados = document.getElementById("leiloesAgendados");
               var numLeiloes = data.message.length;
@@ -258,20 +253,20 @@
             });
           }
 
-          function getCookie(cookieName){
-            var cname = cookieName + "=";
-            var allCookies = document.cookie;
-            var cookieExists = allCookies.search(cookieName);
-
-            alert(allCookies);
-            alert(cookieExists);
-
-            if (cookieExists){
-              return true;
-            }else{
-              return false;
-            }
-          }
+          // function getCookie(cookieName){
+          //   var cname = cookieName + "=";
+          //   var allCookies = document.cookie;
+          //   var cookieExists = allCookies.search(cookieName);
+          //
+          //   alert(allCookies);
+          //   alert(cookieExists);
+          //
+          //   if (cookieExists){
+          //     return true;
+          //   }else{
+          //     return false;
+          //   }
+          // }
     </script>
 
 </head>
