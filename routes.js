@@ -58,7 +58,7 @@ module.exports = function(app){
       }
     });
 
-    apiRoutes.use('/private', express.static('./private_html'));
+    //apiRoutes.use('/private', express.static('./private_html'));
 
 
     /**********************************************
