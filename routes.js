@@ -62,7 +62,7 @@ module.exports = function(app){
    app.post('/authenticate', users.Auth); //Get New Token
 
    // route middleware to verify a token
-    apiRoutes.use(validateUser());
+    apiRoutes.use(validateUser);
 
     //apiRoutes.use('/private', express.static('./private_html'));
 
