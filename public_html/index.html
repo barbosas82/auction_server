@@ -14,11 +14,16 @@
           data: "{\"username\": \"" + username + "\", \"password\": \"" +  password  +  "\"}",
           dataType: "json",
           success: function (data, status, jqXHR) {
-            //alert(JSON.stringify(data));
 
-            document.cookie = "x-access-token=" + data.token;
 
-            alert(data.success);
+            if (data.success == 'true'){
+              document.cookie = "x-access-token=" + data.token;
+            }else{
+              alert(JSON.stringify(data));
+            }
+
+
+
 
           },
            error: function (jqXHR, status) {
