@@ -16,7 +16,7 @@ module.exports = function(app){
      //res.setHeader('Access-Control-Allow-Origin', '*')
     // check header or url parameters or post parameters for token
 
-    //console.log(req.cookies['x-access-token']);
+    console.log(req.cookies['x-access-token']);
     var token = req.body.token || req.query.token || req.headers['x-access-token'] || req.cookies['x-access-token'];
 
     // decode token
