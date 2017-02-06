@@ -17,7 +17,7 @@ module.exports = function(app){
   // });
 
   app.use(express.static('public_html'));
-  apiRoutes.use('/private', express.static('./private_html'));
+  app.use('/private', express.static('./private_html'));
 
   apiRoutes.get('/', function(req, res) {
        res.json({ message: 'Welcome to the coolest API on earth!' });
