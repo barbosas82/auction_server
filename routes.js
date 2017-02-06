@@ -27,7 +27,7 @@ module.exports = function(app){
           //console.log(decoded);
           //return res.json({ success: false, message: 'Failed to authenticate token.' });
           res.writeHead(301,
-            {Location: 'http://bi2.doismeios.pt:8080'}
+            {Location: 'http://bid2.doismeios.pt:8080'}
           );
           res.end();
         } else {
