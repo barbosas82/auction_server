@@ -22,7 +22,7 @@
               alert(window.location.href);
               window.location.href = "/private";
             }else{
-              alert(data.message);
+              alert("Erro: " + data.message);
             }
           },
            error: function (jqXHR, status) {
