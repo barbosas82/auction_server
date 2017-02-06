@@ -18,10 +18,11 @@ module.exports = function(app){
 
   app.use('/a', express.static('../public_html'));
   app.use('/b', express.static('../private_html'));
+  
 
-  apiRoutes.get('/', function(req, res) {
-       res.json({ message: 'Welcome to the coolest API on earth!' });
-  });
+  // apiRoutes.get('/', function(req, res) {
+  //      res.json({ message: 'Welcome to the coolest API on earth!' });
+  // });
 
    /**********************************************
    ******          METHODS FOR TOKENS        *****
