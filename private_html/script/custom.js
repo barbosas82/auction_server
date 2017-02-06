@@ -106,6 +106,8 @@ function removeAuctions(auction) {
         $.ajax({
             type: 'POST',
             url: api_addr,
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
             success: function(data){
                 $('#sucesso').show().center();
                 setTimeout(function(){ window.location.reload();}, 3000);
