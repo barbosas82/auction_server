@@ -9,7 +9,7 @@ var mongoose      = require('mongoose');
 var autoIncrement = require('mongoose-auto-increment');
 var fs            = require('fs');
 var config        = require('./config'); // get our config file
-var cookieParser = require('cookie-parser');
+
 
 
 
@@ -35,7 +35,6 @@ require('./models/artists');  // get our mongoose model
 require('./models/auctions'); // get our mongoose model
 require('./routes')(app);     // get our routes
 
-console.log()
 // =======================
 // start the servers ======
 // =======================

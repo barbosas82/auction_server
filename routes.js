@@ -6,7 +6,7 @@ var artists        = require('./controllers/artists');
 var auctions       = require('./controllers/auctions');
 var jwt            = require('jsonwebtoken');
 var path           = require('path');
-var cookieParser = require('cookie-parser');
+var cookieParser   = require('cookie-parser');
 
 module.exports = function(app){
 
