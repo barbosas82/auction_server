@@ -19,76 +19,75 @@ module.exports = function(app){
 
 
   app.use('/', express.static(path.join(__dirname, 'public_html')));
-  app.use('/a', express.static(path.join(__dirname, 'private_html')));
-
-  console.log(__dirname);
+  app.use('/private', express.static(path.join(__dirname, 'private_html')));
 
 
-  // apiRoutes.get('/', function(req, res) {
-  //      res.json({ message: 'Welcome to the coolest API on earth!' });
-  // });
+
+  apiRoutes.get('/', function(req, res) {
+       res.json({ message: 'Welcome to the coolest API on earth!' });
+  });
 
    /**********************************************
    ******          METHODS FOR TOKENS        *****
    **********************************************/
-  //  app.post('/authenticate', users.Auth); //Get New Token
-   //
-  //  // route middleware to verify a token
-  //   apiRoutes.use(function(req, res, next) {
-  //      res.setHeader('Access-Control-Allow-Origin', '*')
-  //     // check header or url parameters or post parameters for token
-  //     var token = req.body.token || req.query.token || req.headers['x-access-token'];
-   //
-  //     // decode token
-  //     if (token) {
-  //       // verifies secret and checks exp
-  //       jwt.verify(token, app.get('secret'), function(err, decoded) {
-  //         if (err) {
-  //           //console.log(decoded);
-  //           return res.json({ success: false, message: 'Failed to authenticate token.' });
-  //         } else {
-  //           // if everything is good, save to request for use in other routes
-  //           //console.log(decoded);
-  //           req.decoded = decoded;
-  //           next();
-  //         }
-  //       });
-  //     } else {
-  //       // if there is no token
-  //       // return an error
-  //       return res.status(403).send({
-  //           success: false,
-  //           message: 'No token provided.'
-  //       });
-  //     }
-  //   });
-   //
-  //   //apiRoutes.use('/private', express.static('./private_html'));
-   //
-   //
-  //   /**********************************************
-  //   ******            USER METHODS            *****
-  //   **********************************************/
-  //   apiRoutes.post('/useradd', users.add);
-  //   apiRoutes.get('/listusers', users.listAll);
-  //   apiRoutes.get('/listuser/:username', users.listOne);
-   //
-  //   /**********************************************
-  //   ******    METHODS FOR WANTLIST / ARTIST   *****
-  //   **********************************************/
-  //    apiRoutes.post('/wantlist', artists.add );
-  //    apiRoutes.get('/wantlist', artists.findAll);
-  //    apiRoutes.put('/wantlist/:id', artists.update );
-  //    apiRoutes.delete('/wantlist/:id', artists.delete);
-   //
-  //    /**********************************************
-  //    ******       METHODS FOR AUCTIONS         *****
-  //    **********************************************/
-  //     apiRoutes.post('/auction', auctions.add );
-  //     apiRoutes.get('/auction', auctions.listAll);
-  //     apiRoutes.put('/auction/:id', auctions.update );
-  //     apiRoutes.delete('/auction/:id', auctions.delete);
-   //
-  //    app.use('/api', apiRoutes);
+   app.post('/authenticate', users.Auth); //Get New Token
+
+   // route middleware to verify a token
+    apiRoutes.use(function(req, res, next) {
+       res.setHeader('Access-Control-Allow-Origin', '*')
+      // check header or url parameters or post parameters for token
+      var token = req.body.token || req.query.token || req.headers['x-access-token'];
+
+      // decode token
+      if (token) {
+        // verifies secret and checks exp
+        jwt.verify(token, app.get('secret'), function(err, decoded) {
+          if (err) {
+            //console.log(decoded);
+            return res.json({ success: false, message: 'Failed to authenticate token.' });
+          } else {
+            // if everything is good, save to request for use in other routes
+            //console.log(decoded);
+            req.decoded = decoded;
+            next();
+          }
+        });
+      } else {
+        // if there is no token
+        // return an error
+        return res.status(403).send({
+            success: false,
+            message: 'No token provided.'
+        });
+      }
+    });
+
+    //apiRoutes.use('/private', express.static('./private_html'));
+
+
+    /**********************************************
+    ******            USER METHODS            *****
+    **********************************************/
+    apiRoutes.post('/useradd', users.add);
+    apiRoutes.get('/listusers', users.listAll);
+    apiRoutes.get('/listuser/:username', users.listOne);
+
+    /**********************************************
+    ******    METHODS FOR WANTLIST / ARTIST   *****
+    **********************************************/
+     apiRoutes.post('/wantlist', artists.add );
+     apiRoutes.get('/wantlist', artists.findAll);
+     apiRoutes.put('/wantlist/:id', artists.update );
+     apiRoutes.delete('/wantlist/:id', artists.delete);
+
+     /**********************************************
+     ******       METHODS FOR AUCTIONS         *****
+     **********************************************/
+      apiRoutes.post('/auction', auctions.add );
+      apiRoutes.get('/auction', auctions.listAll);
+      apiRoutes.put('/auction/:id', auctions.update );
+      apiRoutes.delete('/auction/:id', auctions.delete);
+
+     app.use('/api', apiRoutes);
 
 }
