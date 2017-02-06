@@ -212,7 +212,7 @@ function populateAuctionTable(){
           btn.className = 'buttonRed';
           //btn.onclick = removeAuctions(_id);
           btn.appendChild(t);
-          td_remove.appendChild(bdn);
+          td_remove.appendChild(btn);
 
 
 
