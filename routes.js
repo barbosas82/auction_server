@@ -26,9 +26,7 @@ module.exports = function(app){
         if (err) {
           //console.log(decoded);
           //return res.json({ success: false, message: 'Failed to authenticate token.' });
-          res.writeHead(301,
-            {Location: 'http://bid2.doismeios.pt:8080'}
-          );
+          res.writeHead(301, {Location: 'http://bid2.doismeios.pt:8080'});
           res.end();
         } else {
           // if everything is good, save to request for use in other routes
