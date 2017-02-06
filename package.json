@@ -12,6 +12,7 @@
     "morgan": "latest",
     "jsonwebtoken": "latest",
     "crypto": "latest",
-    "fs": "latest";
+    "fs": "latest",
+    "cookie-parser": "latest";
   }
 }

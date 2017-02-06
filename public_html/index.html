@@ -14,8 +14,8 @@
           dataType: "json",
           success: function (data, status, jqXHR) {
             //alert(JSON.stringify(data));
-            alert(data.token);
-            //document.cookie = "x-access-token=" + ;
+            
+            document.cookie = "x-access-token=" + data.token;
 
           },
            error: function (jqXHR, status) {
