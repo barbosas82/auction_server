@@ -38,13 +38,13 @@ module.exports = function(app){
     } else {
       // if there is no token
       // return an error
-      res.writeHead(301, {Location: 'http://bid2.doismeios.pt:8080'});
-      res.end();
+      // res.writeHead(301, {Location: 'http://bid2.doismeios.pt:8080'});
+      // res.end();
 
-      // return res.status(403).send({
-      //     success: false,
-      //     message: 'No token provided.'
-      // });
+      return res.status(403).send({
+          success: false,
+          message: 'No token provided.'
+      });
     }
   };
 
