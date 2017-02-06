@@ -1,5 +1,6 @@
 var express        = require('express');
 var apiRoutes      = express.Router();
+var prvRoutes      = express.Router();
 var users          = require('./controllers/user');
 var artists        = require('./controllers/artists');
 var auctions       = require('./controllers/auctions');
@@ -42,54 +43,53 @@ module.exports = function(app){
   /**********************************************
   ******           DEFAULT MESSAGES         *****
   **********************************************/
-  // app.get('/', function(req, res) {
-  //     res.send('Hello! The API is at http://localhost:' + port + '/api');
-  // });
 
 
+
+  //public auth page
   app.use('/', express.static(path.join(__dirname, 'public_html')));
-  app.use(validateUser, '/private', express.static(path.join(__dirname, 'private_html')));
 
+  //private pages
+  prvRoutes.use(validateUser);
+  prvRoutes.use('/private', express.static(path.join(__dirname, 'private_html')));
 
 
   apiRoutes.get('/', function(req, res) {
-       res.json({ message: 'Welcome to the coolest API on earth!' });
+    res.json({ message: 'Welcome to the coolest API on earth!' });
   });
 
+  /**********************************************
+  ******          METHODS FOR TOKENS        *****
+  **********************************************/
+  app.post('/authenticate', users.Auth); //Get New Token
+
+  // route middleware to verify a token
+  apiRoutes.use(validateUser);
+
+  /**********************************************
+  ******            USER METHODS            *****
+  **********************************************/
+  apiRoutes.post('/useradd', users.add);
+  apiRoutes.get('/listusers', users.listAll);
+  apiRoutes.get('/listuser/:username', users.listOne);
+
    /**********************************************
-   ******          METHODS FOR TOKENS        *****
+   ******    METHODS FOR WANTLIST / ARTIST   *****
    **********************************************/
-   app.post('/authenticate', users.Auth); //Get New Token
-
-   // route middleware to verify a token
-    apiRoutes.use(validateUser);
-
-    //apiRoutes.use('/private', express.static('./private_html'));
-
+   apiRoutes.post('/wantlist', artists.add );
+   apiRoutes.get('/wantlist', artists.findAll);
+   apiRoutes.put('/wantlist/:id', artists.update );
+   apiRoutes.delete('/wantlist/:id', artists.delete);
 
     /**********************************************
-    ******            USER METHODS            *****
+    ******       METHODS FOR AUCTIONS         *****
     **********************************************/
-    apiRoutes.post('/useradd', users.add);
-    apiRoutes.get('/listusers', users.listAll);
-    apiRoutes.get('/listuser/:username', users.listOne);
+    apiRoutes.post('/auction', auctions.add );
+    apiRoutes.get('/auction', auctions.listAll);
+    apiRoutes.put('/auction/:id', auctions.update );
+    apiRoutes.delete('/auction/:id', auctions.delete);
 
-    /**********************************************
-    ******    METHODS FOR WANTLIST / ARTIST   *****
-    **********************************************/
-     apiRoutes.post('/wantlist', artists.add );
-     apiRoutes.get('/wantlist', artists.findAll);
-     apiRoutes.put('/wantlist/:id', artists.update );
-     apiRoutes.delete('/wantlist/:id', artists.delete);
-
-     /**********************************************
-     ******       METHODS FOR AUCTIONS         *****
-     **********************************************/
-      apiRoutes.post('/auction', auctions.add );
-      apiRoutes.get('/auction', auctions.listAll);
-      apiRoutes.put('/auction/:id', auctions.update );
-      apiRoutes.delete('/auction/:id', auctions.delete);
-
-     app.use('/api', apiRoutes);
+    app.use('/api', apiRoutes);
+    app.use(prvRoutes);
 
 }
