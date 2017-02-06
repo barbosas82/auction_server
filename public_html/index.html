@@ -13,7 +13,9 @@
           data: "{\"username\": \"" + username + "\", \"password\": \"" +  password  +  "\"}",
           dataType: "json",
           success: function (data, status, jqXHR) {
-            alert(JSON.stringify(data));
+            //alert(JSON.stringify(data));
+            alert(data.token);
+            //document.cookie = "x-access-token=" + ;
 
           },
            error: function (jqXHR, status) {
