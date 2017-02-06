@@ -254,8 +254,10 @@
 
           function getCookie(cookieName){
             var cname = cookieName + "=";
-            var cookieExists = str.search(cookieName);
+            var allCookies = document.cookie;
+            var cookieExists = allCookies.search(cookieName);
 
+            console.log(allCookies);
              console.log(cookieExists);
 
             if (cookieExists){
