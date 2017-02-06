@@ -104,7 +104,7 @@ function removeAuctions(auction) {
 
     if (confirm("Are you sure you want to delete auction " + auction +" ?")) {
         $.ajax({
-            type: 'POST',
+            type: 'DELETE',
             url: api_addr,
             contentType: "application/json; charset=utf-8",
             dataType: "json",
