@@ -154,7 +154,13 @@
               }
             },
             success: function (data, status, jqXHR) {
-            //Do stuff with the JSON data
+
+              if (!getCookie('x-access-token')){
+                aler("Not Authenticated!")
+                window.location.href = "http://bid2.doismeios.pt:8080";
+                
+              }
+              //Do stuff with the JSON data
               var leiloesAgendados = document.getElementById("leiloesAgendados");
               var numLeiloes = data.message.length;
 
