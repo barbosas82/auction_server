@@ -102,7 +102,7 @@ function placeCaretAtEnd(el) {
 function removeAuctions(auction) {
     var api_addr = 'http://bid2.doismeios.pt:8080/api/auction/' + auction;
 
-    if (confirm("Are you sure you want to delete?")) {
+    if (confirm("Are you sure you want to delete auction " + auction +" ?")) {
         $.ajax({
             type: 'POST',
             url: api_addr,
