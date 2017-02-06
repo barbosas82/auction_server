@@ -6,6 +6,7 @@ var artists        = require('./controllers/artists');
 var auctions       = require('./controllers/auctions');
 var jwt            = require('jsonwebtoken');
 var path           = require('path');
+var cookieParser = require('cookie-parser');
 
 module.exports = function(app){
 
@@ -14,6 +15,8 @@ module.exports = function(app){
   function validateUser(req, res, next) {
      //res.setHeader('Access-Control-Allow-Origin', '*')
     // check header or url parameters or post parameters for token
+
+    console.log(req.cookies);
     var token = req.body.token || req.query.token || req.headers['x-access-token'];
 
     // decode token
@@ -43,6 +46,8 @@ module.exports = function(app){
   /**********************************************
   ******           DEFAULT MESSAGES         *****
   **********************************************/
+
+  app.use(cookieParser());
 
 
 
