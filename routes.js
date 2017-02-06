@@ -19,7 +19,7 @@ module.exports = function(app){
 
 
   app.use('/', express.static(path.join(__dirname, 'public_html')));
-  app.use('/private', express.static(path.join(__dirname, 'private_html')));
+  apiRoutes.use('/private', express.static(path.join(__dirname, 'private_html')));
 
 
 
