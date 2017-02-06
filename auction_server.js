@@ -40,13 +40,8 @@ require('./routes')(app); //get our routes
 // start the servers ======
 // =======================
 
-// app2.listen(port2, (err) => {
-//   if (err) {
-//     return console.log('something bad happened', err)
-//   }
-//
-//   console.log(`server is listening on ${port2}`)
-// })
+app.use('/a', express.static('../public_html'));
+app.use('/b', express.static('../private_html'));
 
 app.listen(port);
 console.log('Magic happens at http://localhost:' + port);
