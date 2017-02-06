@@ -1,3 +1,4 @@
+
 var keypressed = false;
 
 function saveToDatabase(e, editableObj,column,id) {
@@ -110,7 +111,7 @@ function removeAuctions(auction) {
             dataType: "json",
             success: function(data){
                 $('#sucesso').show().center();
-                setTimeout(function(){ window.location.reload();}, 3000);
+                //setTimeout(function(){ window.location.reload();}, 3000);
               },
               error: function(jqXHR, textStatus, errorThrown){
                 $('#erro').show().center();
