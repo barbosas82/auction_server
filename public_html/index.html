@@ -16,7 +16,7 @@
           success: function (data, status, jqXHR) {
             var ok = data.success;
 
-            if (ok == 'true'){
+            if (ok){
               document.cookie = "x-access-token=" + data.token;
               //alert(data.message);
               alert(window.location.href);
