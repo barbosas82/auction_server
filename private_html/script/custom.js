@@ -110,7 +110,7 @@ function removeAuctions(auction) {
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             success: function(data){
-                $('#sucesso').show().center();
+                $('#sucesso').eq(0).show().center();
                 //setTimeout(function(){ window.location.reload();}, 3000);
               },
               error: function(jqXHR, textStatus, errorThrown){
