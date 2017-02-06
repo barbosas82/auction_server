@@ -39,8 +39,8 @@ require('./models/auctions'); // get our mongoose model
 // start the servers ======
 // =======================
 
-app.use('/a', express.static('../public_html'));
-app.use('/b', express.static('../private_html'));
+app.use(express.static('public_html'));
+app.use(express.static('private_html'));
 
 app.listen(port);
 console.log('Magic happens at http://localhost:' + port);
