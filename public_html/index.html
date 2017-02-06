@@ -14,13 +14,9 @@
           data: "{\"username\": \"" + username + "\", \"password\": \"" +  password  +  "\"}",
           dataType: "json",
           success: function (data, status, jqXHR) {
-            var ok = data.success;
-
-            if (ok){
-              document.cookie = "x-access-token=" + data.token;
-              //alert(data.message);
-              alert(window.location.href);
-              window.location.href = "/private";
+            if (data.success){
+              document.cookie = "x-access-token=" + data.token; //set token cookie
+              window.location.href = "/private"; //redirect to authenticated page
             }else{
               alert("Erro: " + data.message);
             }
