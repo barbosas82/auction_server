@@ -13,6 +13,6 @@
     "jsonwebtoken": "latest",
     "crypto": "latest",
     "fs": "latest",
-    "cookie-parser": "latest";
+    "cookie-parser": "latest"
   }
 }
