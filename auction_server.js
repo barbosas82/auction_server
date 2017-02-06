@@ -32,15 +32,12 @@ app.use(morgan('dev'));
 require('./models/user');     // get our mongoose model
 require('./models/artists');  // get our mongoose model
 require('./models/auctions'); // get our mongoose model
-//require('./routes')(app);     // get our routes
+require('./routes')(app);     // get our routes
 
 
 // =======================
 // start the servers ======
 // =======================
-
-app.use(express.static('public_html'));
-app.use(express.static('private_html'));
 
 app.listen(port);
 console.log('Magic happens at http://localhost:' + port);

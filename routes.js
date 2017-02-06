@@ -4,6 +4,7 @@ var users          = require('./controllers/user');
 var artists        = require('./controllers/artists');
 var auctions       = require('./controllers/auctions');
 var jwt            = require('jsonwebtoken');
+var path           = require('path');
 
 module.exports = function(app){
 
@@ -17,6 +18,10 @@ module.exports = function(app){
   // });
 
 
+  app.use(express.static('public_html'));
+  app.use(express.static('private_html'));
+
+  console.log(__dirname);
 
 
   // apiRoutes.get('/', function(req, res) {
