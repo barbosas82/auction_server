@@ -19,6 +19,7 @@
             if (data.success == 'true'){
               document.cookie = "x-access-token=" + data.token;
               alert(data.message);
+              alert(windows.location);
               window.location = "/private";
             }else{
               alert(data.message);
