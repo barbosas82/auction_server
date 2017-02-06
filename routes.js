@@ -9,7 +9,7 @@ var path           = require('path');
 var cookieParser   = require('cookie-parser');
 
 module.exports = function(app){
-
+  app.use(cookieParser());
   var config = require('./config'); // get our config file
 
   function validateUser(req, res, next) {
@@ -52,7 +52,6 @@ module.exports = function(app){
   ******           DEFAULT MESSAGES         *****
   **********************************************/
 
-  app.use(cookieParser());
 
   //public auth page
   app.use('/', express.static(path.join(__dirname, 'public_html')));
