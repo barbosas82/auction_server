@@ -99,10 +99,10 @@ function placeCaretAtEnd(el) {
 }
 
 //onlick for remove auction
-function removeAuctions(auction) {
-    var api_addr = 'http://bid2.doismeios.pt:8080/api/auction/' + auction;
+function removeAuctions(button) {
+    var api_addr = 'http://bid2.doismeios.pt:8080/api/auction/' + button.id;
 
-    if (confirm("Are you sure you want to delete auction " + auction +" ?")) {
+    if (confirm("Are you sure you want to delete auction " + button +" ?")) {
         $.ajax({
             type: 'DELETE',
             url: api_addr,
@@ -212,8 +212,8 @@ function populateAuctionTable(){
           var btn = document.createElement("BUTTON");
           var t = document.createTextNode("Remove");
           btn.className = 'buttonRed';
-          alert(_id);
-          btn.onclick = function() {removeAuctions(""+_id)};
+          btn.id = _id;
+          btn.onclick = function() {removeAuctions(this)};
           btn.appendChild(t);
           td_remove.appendChild(btn);
 
