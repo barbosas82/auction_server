@@ -25,7 +25,11 @@ module.exports = function(app){
       jwt.verify(token, app.get('secret'), function(err, decoded) {
         if (err) {
           //console.log(decoded);
-          return res.json({ success: false, message: 'Failed to authenticate token.' });
+          //return res.json({ success: false, message: 'Failed to authenticate token.' });
+          res.writeHead(301,
+            {Location: 'http://bi2.doismeios.pt:8080'}
+          );
+          res.end();
         } else {
           // if everything is good, save to request for use in other routes
           //console.log(decoded);
@@ -49,15 +53,12 @@ module.exports = function(app){
 
   app.use(cookieParser());
 
-
-
   //public auth page
   app.use('/', express.static(path.join(__dirname, 'public_html')));
 
   //private pages
   prvRoutes.use(validateUser);
   prvRoutes.use('/private', express.static(path.join(__dirname, 'private_html')));
-
 
   apiRoutes.get('/', function(req, res) {
     res.json({ message: 'Welcome to the coolest API on earth!' });
