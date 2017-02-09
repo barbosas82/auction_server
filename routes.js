@@ -11,6 +11,7 @@ var cookieParser   = require('cookie-parser');
 module.exports = function(app){
   app.use(cookieParser());
   var config = require('./config'); // get our config file
+  var url = 'http://bid2.doismeios.pt:8080';
 
   function validateUser(req, res, next) {
      //res.setHeader('Access-Control-Allow-Origin', '*')
@@ -26,7 +27,7 @@ module.exports = function(app){
         if (err) {
           //console.log(decoded);
           //return res.json({ success: false, message: 'Failed to authenticate token.' });
-          res.writeHead(301, {Location: 'http://bid2.doismeios.pt:8080'});
+          res.writeHead(403, {Location: url});
           res.end();
         } else {
           // if everything is good, save to request for use in other routes
@@ -38,13 +39,13 @@ module.exports = function(app){
     } else {
       // if there is no token
       // return an error
-      // res.writeHead(301, {Location: 'http://bid2.doismeios.pt:8080'});
-      // res.end();
+      res.writeHead(403, {Location: url});
+      res.end();
 
-      return res.status(403).send({
-          success: false,
-          message: 'No token provided.'
-      });
+      // return res.status(403).send({
+      //     success: false,
+      //     message: 'No token provided.'
+      // });
     }
   };
 
