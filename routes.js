@@ -27,7 +27,7 @@ module.exports = function(app){
         if (err) {
           //console.log(decoded);
           //return res.json({ success: false, message: 'Failed to authenticate token.' });
-          res.writeHead(403, {Location: url});
+          res.writeHead(403, {'Location': url});
           res.end();
         } else {
           // if everything is good, save to request for use in other routes
@@ -39,7 +39,7 @@ module.exports = function(app){
     } else {
       // if there is no token
       // return an error
-      res.writeHead(403, {Location: 'http://bid2.doismeios.pt:8080'});
+      res.writeHead(403, {'Location': 'http://bid2.doismeios.pt:8080'});
       res.end();
 
       // return res.status(403).send({
