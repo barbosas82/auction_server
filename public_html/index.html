@@ -16,6 +16,7 @@
           success: function (data, status, jqXHR) {
             if (data.success){
               document.cookie = "x-access-token=" + data.token; //set token cookie
+              alert(window.location.href);
               window.location.href = "/private"; //redirect to authenticated page
             }else{
               alert("Erro: " + data.message);
