@@ -17,7 +17,7 @@
             if (data.success){
               document.cookie = "x-access-token=" + data.token; //set token cookie
               alert(window.location.href);
-              window.location.href = "/private"; //redirect to authenticated page
+              window.location.href = "/private/index.html"; //redirect to authenticated page
             }else{
               alert("Erro: " + data.message);
             }
