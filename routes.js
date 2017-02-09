@@ -107,7 +107,7 @@ module.exports = function(app){
     **********************************************/
     app.get('*', function(req, res){
       res.set('Content-Type', 'text/html');
-      res.status(404).send('<!DOCTYPE html><html><head><meta http-equiv="refresh" content="0; url=/private/404."></head></html>');
+      res.status(404).send('<!DOCTYPE html><html><head><meta http-equiv="refresh" content="0; url=/private/404.html"></head></html>');
     })
 
 }
