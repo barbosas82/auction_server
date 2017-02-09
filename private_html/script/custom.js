@@ -207,6 +207,6 @@ function populateAuctionTable(){
 //logout function
 function logout(){
   document.cookie = "";
-  alert(document.cookie);
+  alert("Cookie: " + document.cookie);
   window.location.href = "../";
 }
