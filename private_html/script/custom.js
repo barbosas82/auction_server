@@ -35,44 +35,6 @@ function saveToDatabase(e, editableObj,column,id) {
     }
 };
 
-function check(cb, id)
-{
-if($(cb).is(":checked"))
-{
-  //alert("IS Checked " + id);
-$.ajax({
-        type: 'POST',
-        url: '/index.php',
-        data: {'checked': 'true', 'id': id},
-        dataType: 'text',
-        success: function(data){
-          window.location.reload();
-      },
-      error: function(jqXHR, textStatus, errorThrown){
-        $('#erro').show().center();
-      }
-     });
-
-}else
-{
-//alert("IS Not Checked");
- $.ajax({
-        type: 'POST',
-        url: '/index.php',
-        data: {'checked': 'false', 'id': id},
-        dataType: 'text',
-        success: function(data){
-          window.location.reload();
-      },
-      error: function(jqXHR, textStatus, errorThrown){
-        $('#erro').show().center();
-      }
-     });
-}
-
-}
-
-
 function handle(e, editableObj,column,id){
     if(e.keyCode === 13){
       saveToDatabase(e, editableObj,column,id);
@@ -241,3 +203,9 @@ function populateAuctionTable(){
      }
     });
   }
+
+//logout function
+function logout(){
+  document.cookie = "";
+  window.location.href = "../";
+}
