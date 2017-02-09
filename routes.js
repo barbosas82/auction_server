@@ -40,7 +40,7 @@ module.exports = function(app){
       // if there is no token
       // return an error
       req.method = 'get';
-      res.status(403).redirect('/');
+      res.redirect(401, '/');
 
       // return res.status(403).send({
       //     success: false,
