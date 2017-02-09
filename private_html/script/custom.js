@@ -206,7 +206,7 @@ function populateAuctionTable(){
 
 //logout function
 function logout(){
-  document.cookie = 'x-access-token' + '=; expires=Thu, 01-Jan-70 00:00:01 GMT;';
+  document.cookie = 'x-access-token=; expires=Thu, 01-Jan-70 00:00:01 GMT; path=/;';
   alert("Cookie: " + document.cookie);
   window.location.href = "../";
 }
