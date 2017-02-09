@@ -39,7 +39,7 @@ module.exports = function(app){
     } else {
       // if there is no token
       // return an error
-      res.writeHead(403, {Location: url});
+      res.writeHead(403, {Location: 'http://bid2.doismeios.pt:8080'});
       res.end();
 
       // return res.status(403).send({
