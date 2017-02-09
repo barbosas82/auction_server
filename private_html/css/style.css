@@ -98,8 +98,12 @@ label {
   border-right: 1px solid #bbb;
 }
 
-#menu li:last-child {
+#menu li:last-child:before {
     border-right: none;
+}
+
+#menu li:last-child {
+    loat: right;
 }
 
 #menu a {

@@ -27,8 +27,8 @@ module.exports = function(app){
         if (err) {
           //console.log(decoded);
           //return res.json({ success: false, message: 'Failed to authenticate token.' });
-          res.writeHead(403, {'Location': url});
-          res.end();
+          res.set('Content-Type', 'text/html');
+          res.status(403).send('<!DOCTYPE html><html><head><meta http-equiv="refresh" content="0; url=/"></head></html>');
         } else {
           // if everything is good, save to request for use in other routes
           //console.log(decoded);
@@ -42,7 +42,7 @@ module.exports = function(app){
       //res.redirect(403, '/');
       //res.status(401).location('/').end();
       res.set('Content-Type', 'text/html');
-      res.status(401).send('<!DOCTYPE html><html><head><meta http-equiv="refresh" content="0; url=/"></head></html>');
+      res.status(403).send('<!DOCTYPE html><html><head><meta http-equiv="refresh" content="0; url=/"></head></html>');
 
 
       // return res.status(403).send({
