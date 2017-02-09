@@ -39,8 +39,8 @@ module.exports = function(app){
     } else {
       // if there is no token
       // return an error
-      res.redirect(403, '/');
-
+      //res.redirect(403, '/');
+      res.status(401).location('/').end();
       // return res.status(403).send({
       //     success: false,
       //     message: 'No token provided.'
