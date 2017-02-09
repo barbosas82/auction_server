@@ -39,7 +39,7 @@ module.exports = function(app){
     } else {
       // if there is no token
       // return an error
-      res.writeHead(301, {'Location': '/'});
+      res.writeHead(403, {'Location': '/'});
       res.end();
 
       // return res.status(403).send({
