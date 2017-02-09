@@ -40,7 +40,11 @@ module.exports = function(app){
       // if there is no token
       // return an error
       //res.redirect(403, '/');
-      res.status(401).location('/').end();
+      //res.status(401).location('/').end();
+      res.set('Content-Type', 'text/html');
+      res.status(401).send('<!DOCTYPE html><html><head><meta http-equiv="refresh" content="0; url=/"></head></html>');
+
+
       // return res.status(403).send({
       //     success: false,
       //     message: 'No token provided.'
