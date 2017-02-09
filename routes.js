@@ -39,8 +39,7 @@ module.exports = function(app){
     } else {
       // if there is no token
       // return an error
-      req.method = 'get';
-      res.redirect(401, '/');
+      res.redirect(403, '/');
 
       // return res.status(403).send({
       //     success: false,
