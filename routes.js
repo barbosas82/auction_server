@@ -105,16 +105,9 @@ module.exports = function(app){
     /**********************************************
     ******       Error Handling               *****
     **********************************************/
-    app.get('*', function(req, res, next) {
-      var err = new Error();
-      err.status = 404;
-      next();
-    });
-
-    //Handle 404
-    app.use(function(err, req, res, next){
-        res.set('Content-Type', 'text/html');
-        res.status(404).send('<!DOCTYPE html><html><head><meta http-equiv="refresh" content="0; url=/private/404.html"></head></html>');
-    });
+    app.get('*', function(req, res){
+      res.set('Content-Type', 'text/html');
+      res.status(404).send('<!DOCTYPE html><html><head><meta http-equiv="refresh" content="0; url=/private/404."></head></html>');
+    })
 
 }
