@@ -314,20 +314,22 @@ function sortBy(prop, order){
            return -1;
        }
        return 0;
-    }else{
-      return function(a,b){
-         if( a[prop] < b[prop]){
-             return 1;
-         }else if( a[prop] > b[prop] ){
-             return -1;
-         }
-         return 0;
-      }
+    }
+  }else{
+    return function(a,b){
+       if( a[prop] < b[prop]){
+           return 1;
+       }else if( a[prop] > b[prop] ){
+           return -1;
+       }
+       return 0;
     }
 
   }
 
 }
+
+
 
 //logout function
 function logout(){
