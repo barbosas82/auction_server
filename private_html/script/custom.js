@@ -265,6 +265,10 @@ function populateWantlistTable(){
 
         artistList += "]";
 
+        artistList.sort(function(a, b){
+            return a._id - b._id;
+        });
+
         alert(JSON.stringify(artistList));
 
         for(var idx in artistList){
