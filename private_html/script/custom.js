@@ -257,9 +257,9 @@ function populateWantlistTable(){
           var _id         = data[idx]._id;
           var name        = data[idx].name;
 
-          artistList += "{\'_id\':" + _id + ", \'name\':\'" + name + "\'}";
+          artistList += "{\"_id\":" + _id + ", \"name\":\"" + name + "\"}";
           if (idx <= numArtists - 2){
-            artistList += ", ";
+            artistList += ",";
           }
         }
 
