@@ -240,7 +240,7 @@ function populateWantlistTable(field, order){
 
       //Create Ongoing Auction Table Headers
       var tr = document.createElement('tr');
-      var headertitles = ["ID", "Nome", ""];
+      var headertitles = ["ID ", "Nome ", ""];
 
       for (var i = 0; i<headertitles.length; i++){
         var th = document.createElement('th');
@@ -258,7 +258,7 @@ function populateWantlistTable(field, order){
         img1.src  = 'images/down.png';
         img1.width = 12;
         img1.height = 12;
-        img.onclick = function() {populateWantlistTable(headertitles[i], "desc")};
+        img1.onclick = function() {populateWantlistTable(headertitles[i], "desc")};
         a1.appendChild(img1);
 
         th.appendChild(label);
