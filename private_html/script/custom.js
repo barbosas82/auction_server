@@ -250,7 +250,7 @@ function populateWantlistTable(field, asc){
       for (var i = 0; i<headertitles.length; i++){
         var th = document.createElement('th');
         var label = document.createTextNode(headertitles[i]);
-        var labelJson = headertitlesJson[i];
+        var labelJson = document.createTextNode(headertitlesJson[i]);
         var a     = document.createElement('a');
         var img   = document.createElement('img');
         img.src  = 'images/up.png'
