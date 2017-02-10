@@ -249,9 +249,14 @@ function populateWantlistTable(field, order){
         var img   = document.createElement('img');
         img.src  = 'images/up.png'
         a.appendChild(img);
+        var a1     = document.createElement('a');
+        var img1   = document.createElement('img');
+        img1.src  = 'images/down.png'
+        a1.appendChild(img1);
 
         th.appendChild(label);
         th.appendChild(a);
+        th.appendChild(a1);
         tr.appendChild(th);
       }
       wantlistTbl.appendChild(tr);
