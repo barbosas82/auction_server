@@ -144,9 +144,6 @@ function populateAuctionTable() {
       contentType: "application/json; charset=utf-8",
       dataType: "json",
       success: function (data, status, jqXHR) {
-
-        alert(field + "  " + asc);
-
         //Do stuff with the JSON data
         var wantlistTbl = document.getElementById("wantlistTable");
         while (wantlistTbl.firstChild) {
