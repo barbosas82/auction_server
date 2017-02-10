@@ -241,8 +241,8 @@ function populateWantlistTable(field, order){
 
       //Create Ongoing Auction Table Headers
       var tr = document.createElement('tr');
-      var headertitles = ["ID ", "Nome ", ""];
-      var headertitlesJson = ["_id ", "name ", ""];
+      var headertitles     = ["ID " , "Nome ", ""];
+      var headertitlesJson = ["_id", "name", ""];
 
       for (var i = 0; i<headertitles.length; i++){
         var th = document.createElement('th');
@@ -275,14 +275,12 @@ function populateWantlistTable(field, order){
       //populate table rows
       if (numArtists > 0) {
         for (var idx in data){
-
           var _id         = data[idx]._id;
           var name        = data[idx].name;
-
           item = {};
           item ["_id"] = _id;
           item ["name"] = name;
-          artistList.push(item)
+          artistList.push(item);
         }
 
 
