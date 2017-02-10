@@ -225,6 +225,7 @@ function populateAuctionTable(){
     });
   }
 
+//Populate Wantlist Table
 function populateWantlistTable(){
   $.ajax({
     type: 'GET',
@@ -264,9 +265,8 @@ function populateWantlistTable(){
           artistList.push(item)
         }
 
+        artistList.sort(sortBy(_id,"asc"));
 
-
-        alert(JSON.stringify(artistList));
 
         for(var idx in artistList){
 
@@ -303,6 +303,31 @@ function populateWantlistTable(){
     });
 }
 
+//Sort JSON
+function sortBy(prop, order){
+
+  if (order == "asc"){
+    return function(a,b){
+       if( a[prop] > b[prop]){
+           return 1;
+       }else if( a[prop] < b[prop] ){
+           return -1;
+       }
+       return 0;
+    }else{
+      return function(a,b){
+         if( a[prop] < b[prop]){
+             return 1;
+         }else if( a[prop] > b[prop] ){
+             return -1;
+         }
+         return 0;
+      }
+    }
+
+  }
+
+}
 
 //logout function
 function logout(){
