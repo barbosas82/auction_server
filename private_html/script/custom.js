@@ -237,7 +237,7 @@ function addArtist(artist){
     },
      error: function (jqXHR, status) {
          // error handler
-         alert(jqXHR.sucess);
+         alert(jqXHR);
      }
     });
 }
