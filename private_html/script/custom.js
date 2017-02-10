@@ -74,6 +74,7 @@ function populateAuctionTable() {
           var paied       = data.message[idx].paied;
 
           var tr = document.createElement('tr');
+          tr.className = table-row;
 
           var td = document.createElement('td');
           td.appendChild(document.createTextNode(_id));
@@ -156,6 +157,7 @@ function populateWantlistTable(field, asc){
 
       //Create Ongoing Auction Table Headers
       var tr = document.createElement('tr');
+      tr.className = table-row;
       var headertitles     = ["ID" , "Nome", ""];
       var headertitlesJson = ["_id" , "name", ""];
 
