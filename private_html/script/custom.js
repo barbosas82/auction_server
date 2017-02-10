@@ -236,6 +236,7 @@ function populateWantlistTable(field, order){
 
       //Do stuff with the JSON data
       var wantlistTbl = document.getElementById("wantlistTable");
+      wantlistTbl.innerHTML = "";
       var numArtists = data.length;
 
       //Create Ongoing Auction Table Headers
