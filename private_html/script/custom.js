@@ -160,7 +160,7 @@ function populateAuctionTable() {
         var headertitles     = ["ID" , "Nome", ""];
         var headertitlesJson = ["_id" , "name", ""];
 
-        for (var i = 0; i<headertitles.length; i++){
+        for (var i = 0; i<headertitles.length-1; i++){
           var th = document.createElement('th');
           var label = headertitles[i];
           var labelJson = headertitlesJson[i];
