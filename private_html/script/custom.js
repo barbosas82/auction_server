@@ -157,7 +157,6 @@ function populateWantlistTable(field, asc){
 
       //Create Ongoing Auction Table Headers
       var tr = document.createElement('tr');
-      tr.className = "table-row";
       var headertitles     = ["ID" , "Nome", ""];
       var headertitlesJson = ["_id" , "name", ""];
 
@@ -195,6 +194,7 @@ function populateWantlistTable(field, asc){
           var name        = artistList[idx].name;
 
           var tr = document.createElement('tr');
+          tr.className = "table-row";
 
           var td    = document.createElement('td');
           var label = document.createTextNode(_id);
