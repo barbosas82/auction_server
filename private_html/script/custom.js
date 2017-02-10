@@ -253,7 +253,7 @@ function populateWantlistTable(field, asc){
         var th = document.createElement('th');
         var label = headertitles[i];
         var labelJson = headertitlesJson[i];
-        th.innerHTML = label + " <a onclick=\"populateWantlistTable(\"" + labelJson + "\", true); \"><img src=\"images/up.png\" alt=\"up\" height=\"12\" width=\"12\"></a> <a onclick=\"populateWantlistTable(\"" + labelJson + "\", false); \"><img src=\"images/down.png\" alt=\"up\" height=\"12\" width=\"12\"></a>"
+      //  th.innerHTML = label + " <a onclick=\"populateWantlistTable(\"" + labelJson + "\", true); \"><img src=\"images/up.png\" alt=\"up\" height=\"12\" width=\"12\"></a> <a onclick=\"populateWantlistTable(\"" + labelJson + "\", false); \"><img src=\"images/down.png\" alt=\"up\" height=\"12\" width=\"12\"></a>"
         tr.appendChild(th);
       }
       wantlistTbl.appendChild(tr);
