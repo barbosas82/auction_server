@@ -22,10 +22,12 @@ exports.add = function(req, res) {
        if(!exists){
          Artist.create(req.body, function (err, arts) {
                  if (err) return console.log(err);
-                 return res.send("Artist " + name + " created with id " + arts._id + ".");
+                 //return res.send("Artist " + name + " created with id " + arts._id + ".");
+                 res.json({ success: true, message: "Artist " + name + " created with id " + arts._id + "."});
          });
        }else{
-               return res.send("Artist " + name + " already exists.");
+               //return res.send("Artist " + name + " already exists.");
+               res.json({ success: true, message: "Artist " + name + " already exists."});
        }
  });
 };
