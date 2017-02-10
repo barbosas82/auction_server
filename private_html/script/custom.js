@@ -250,12 +250,13 @@ function populateWantlistTable(field, asc){
       for (var i = 0; i<headertitles.length; i++){
         var th = document.createElement('th');
         var label = document.createTextNode(headertitles[i]);
+        var labelJson = headertitlesJson[i];
         var a     = document.createElement('a');
         var img   = document.createElement('img');
         img.src  = 'images/up.png'
         img.width = 12;
         img.height = 12;
-        a.onclick = function() {populateWantlistTable(headertitlesJson[i], true)};
+        a.onclick = function() {populateWantlistTable(labelJson, true)};
         a.appendChild(img);
 
         var a1     = document.createElement('a');
@@ -263,7 +264,7 @@ function populateWantlistTable(field, asc){
         img1.src  = 'images/down.png';
         img1.width = 12;
         img1.height = 12;
-        a1.onclick = function() {populateWantlistTable(headertitlesJson[i], false)};
+        a1.onclick = function() {populateWantlistTable(labelJson, false)};
         a1.appendChild(img1);
 
         th.appendChild(label);
