@@ -233,7 +233,7 @@ function addArtist(artist){
     data: "{\"name\":\"" + artist + "\"}",
     success: function (data, status, jqXHR) {
       //Do stuff with the JSON data
-      alert("Artista " + artist + " adicionado com sucesso.");
+      alert(data);
     },
      error: function (jqXHR, status) {
          // error handler
