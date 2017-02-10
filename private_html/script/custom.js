@@ -167,7 +167,7 @@ function populateAuctionTable() {
             var labelJson = headertitlesJson[i];
             var paramsTrue = "\""+labelJson+"\",true";
             var paramsFalse = "\""+labelJson+"\",false";
-            th.innerHTML = label + "<a onclick=\'populateWantlistTable(" + paramsTrue + ")\'><img src=\"images/up.png\" alt=\"up\" height=\"12\" width=\"12\"></a><a onclick=\'populateWantlistTable(" + paramsFalse + "); \'><img src=\"images/down.png\" alt=\"up\" height=\"12\" width=\"12\"></a>"
+            th.innerHTML = label + "<div class="floatright"><a onclick=\'populateWantlistTable(" + paramsTrue + ")\'><img src=\"images/up.png\" alt=\"up\" height=\"12\" width=\"12\"></a><a onclick=\'populateWantlistTable(" + paramsFalse + "); \'><img src=\"images/down.png\" alt=\"up\" height=\"12\" width=\"12\"></a></div>"
           }
           tr.appendChild(th);
         }
