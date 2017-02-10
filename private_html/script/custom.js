@@ -252,12 +252,12 @@ function populateWantlistTable(){
 
       //populate table rows
       if (numArtists > 0) {
-        for (var idx = 0; idx < numArtists; idx++){
+        for (var idx in data){
 
           var _id         = data[idx]._id;
           var name        = data[idx].name;
 
-          artistList += "{_id: " + _id + ", name: \'" + name + "\'}";
+          artistList += "{\'_id\': " + _id + ", name: \'" + name + "\'}";
           if (idx <= numArtists - 2){
             artistList += ", ";
           }
