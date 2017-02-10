@@ -246,32 +246,34 @@ function populateWantlistTable(field, asc){
 
       //Create Ongoing Auction Table Headers
       var tr = document.createElement('tr');
-      var headertitles     = ["ID " , "Nome ", ""];
-      var headertitlesJson = ["_id", "name", ""];
+      var headertitles     = ["ID" , "Nome", ""];
+      var headertitlesJson = ["_id" , "name", ""];
 
       for (var i = 0; i<headertitles.length; i++){
         var th = document.createElement('th');
         var label = document.createTextNode(headertitles[i]);
-        var labelJson = headertitlesJson[i] + "";
-        var a     = document.createElement('a');
-        var img   = document.createElement('img');
-        img.src  = 'images/up.png'
-        img.width = 12;
-        img.height = 12;
-        a.onclick = function() { populateWantlistTable(labelJson, true); };
-        a.appendChild(img);
+        var labelJson = headertitlesJson[i];
+        // var a     = document.createElement('a');
+        // var img   = document.createElement('img');
+        // img.src  = 'images/up.png'
+        // img.width = 12;
+        // img.height = 12;
+        // a.onclick = function() { populateWantlistTable(labelJson, true); };
+        // a.appendChild(img);
+        //
+        // var a1     = document.createElement('a');
+        // var img1   = document.createElement('img');
+        // img1.src  = 'images/down.png';
+        // img1.width = 12;
+        // img1.height = 12;
+        // a1.onclick = function() { populateWantlistTable(labelJson, false); };
+        // a1.appendChild(img1);
+        //
+        // th.appendChild(label);
+        // th.appendChild(a);
+        // th.appendChild(a1);
 
-        var a1     = document.createElement('a');
-        var img1   = document.createElement('img');
-        img1.src  = 'images/down.png';
-        img1.width = 12;
-        img1.height = 12;
-        a1.onclick = function() { populateWantlistTable(labelJson, false); };
-        a1.appendChild(img1);
-
-        th.appendChild(label);
-        th.appendChild(a);
-        th.appendChild(a1);
+        th.innerHTML = label + " <a onclick=\"populateWantlistTable(" + labelJson + ", true) \"><img src=\"images/up.png\" alt=\"up\" height=\"12\" width=\"12\"></a><a onclick=\"populateWantlistTable(" + labelJson + ", false) \"><img src=\"images/down.png\" alt=\"up\" height=\"12\" width=\"12\"></a>"
         tr.appendChild(th);
       }
       wantlistTbl.appendChild(tr);
