@@ -237,7 +237,7 @@ function populateWantlistTable(field, order){
       //Do stuff with the JSON data
       var wantlistTbl = document.getElementById("wantlistTable");
       wantlistTbl.innerHTML = "";
-      var numArtists = data.length;
+      var numArtists = data.length-1;
 
       //Create Ongoing Auction Table Headers
       var tr = document.createElement('tr');
@@ -324,28 +324,19 @@ function populateWantlistTable(field, order){
 
 //Sort JSON
 function sortBy(prop, order){
-
   if (order == "asc"){
     return function(a,b){
-       if( a[prop] > b[prop]){
-           return 1;
-       }else if( a[prop] < b[prop] ){
-           return -1;
-       }
+       if( a[prop] > b[prop]){ return 1;  } else
+       if( a[prop] < b[prop]){ return -1; }
        return 0;
     }
   }else{
     return function(a,b){
-       if( a[prop] > b[prop]){
-           return -1;
-       }else if( a[prop] < b[prop] ){
-           return 1;
-       }
+       if( a[prop] > b[prop]){ return -1; } else
+       if( a[prop] < b[prop]){ return 1;  }
        return 0;
     }
-
   }
-
 }
 
 
