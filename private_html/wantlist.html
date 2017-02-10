@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gestao Leiloes Coisas </title>
+
+  <link rel='shortcut icon' href='./images/favicon.png' type='image/x-icon'/>
+
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="./css/bootstrap.min2.css" />
+  <link rel="stylesheet" href="./css/style-min.css"/>
+
+  <!-- <script async src="script/require.js" data-main="./script/mainfull.js"></script> -->
+
+  <script type="text/javascript" src="script/jquery.min.js"></script>
+  <script type="text/javascript" src="script/jquery-ui.min.js"></script>
+  <script type="text/javascript" src="script/bootstrap.min.js"></script>
+  <script type="text/javascript" src="script/custom.js"></script>
+</head>
+
+<body>
+
+    <div class="alert alert-success fade in" style="display: none" id="sucesso">
+        <a class="close" data-hide="alert">×</a>
+        <strong>    Success!    </strong>
+    </div>
+
+    <div class="alert alert-danger fade in" style="display: none" id="erro">
+        <a class="close" data-hide="alert">×</a>
+        <strong>    Error!    </strong>
+    </div>
+
+    <ul id=menu>
+        <li><a href="./">Gestão de Leilões</a></li>
+        <li class="active"><a href="./wantlist.html">Lista de Artistas</a></li>
+    </ul>
+
+    <div class="main">
+
+        <div id="addArtista" >
+            <h3>Adicionar Artista</h3>
+
+            <form method="post" action="<?php echo $_SERVER['PHP_SELF'];?>">
+                <input class="floatleft" style="vertical-align: bottom; height: 23px; width: 250px;" type="text" name="nomeArtista" maxlength="70">
+                <input class="buttonGreen floatleft" style="margin-left: 1em;height: 23px;"  type="submit" name="artistSubmit" value="Submit">
+
+        </form>
+
+
+    </div>
+
+        <div id="listaArtistaMain">
+
+            <div>
+
+
+                <h3 style="display: inline-block;">Lista de Artistas</h3>
+
+                <span style="margin-left: 100px"><a href="">[Exportar]</a></span>
+
+            </div>
+
+            <div id="listaArtista">
+                <table id="artistas">
+                  <tbody id="wantlistTable" class="tbl_leiloes">
+
+                  </tbody>
+                </table>
+              </div>
+          </div>
+      </div>
+      <script type="text/javascript">populateWantlistTable()</script>
+    </body>
+</html>
