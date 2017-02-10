@@ -29,6 +29,7 @@ label{display:inline-block;text-align:left;}
 .floatright{float:right;}
 .floatleft{float:left;}
 .btnPesquisa{float:left;margin-right:5px;}
+.alignTextCenter{text-align: center;}
 #agendarLeilao{border:1px solid #000;display:inline-block;padding:20px;}
 #pesquisas{border:1px solid #000;display:inline-block;padding:20px;}
 #exportar{}
