@@ -208,7 +208,7 @@ function populateWantlistTable(field, asc){
           var t = document.createTextNode("Remove");
           btn.className = 'buttonRed';
           btn.id = _id;
-          btn.onclick = function() {removeArtist(this.id)};
+          btn.onclick = function() {deleteArtist(this.id)};
           btn.appendChild(t);
           td_remove.appendChild(btn);
           tr.appendChild(td_remove);
@@ -244,3 +244,20 @@ function addArtist(artist){
 }
 
 //Remove artist
+function deleteArtist(artist){
+  $.ajax({
+    type: 'DELETE',
+    url: 'http://bid2.doismeios.pt:8080/api/wantlist/' + artist,
+    contentType: "application/json; charset=utf-8",
+    dataType: "json",
+    success: function (data, status, jqXHR) {
+      //Do stuff with the JSON data
+      alert(data.message);
+      populateWantlistTable("_id", true);
+    },
+     error: function (jqXHR, status) {
+         // error handler
+         alert("Erro: " + JSON.stringify(jqXHR));
+     }
+    });
+}

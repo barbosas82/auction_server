@@ -58,10 +58,12 @@ exports.delete = function(req, res){
   var id = req.params.id;
   Artist.findOne({'_id':id},function(err, exists) {
         if(!exists){
-                return res.send('Artist ' + id +  ' doesn\'t exist')
+                //return res.send('Artist ' + id +  ' doesn\'t exist')
+                res.json({ success: true, message: 'Artist ' + id +  ' doesn\'t exist'});
         }else{
           Artist.remove({'_id':id},function(result) {
-                return res.send("Artist " + id + " removed.");
+                //return res.send("Artist " + id + " removed.");
+                res.json({ success: true, message: "Artist " + id + " removed."});
           });
         }
 
