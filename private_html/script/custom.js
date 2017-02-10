@@ -265,7 +265,7 @@ function populateWantlistTable(){
 
         artistList += "]";
 
-        alert(artistList);
+        alert(JSON.stringify(artistList));
 
         for(var idx in artistList){
 
