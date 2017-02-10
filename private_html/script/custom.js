@@ -226,7 +226,7 @@ function populateAuctionTable(){
   }
 
 //Populate Wantlist Table
-function populateWantlistTable(field, order){
+function populateWantlistTable(field, asc){
   $.ajax({
     type: 'GET',
     url: 'http://bid2.doismeios.pt:8080/api/wantlist',
@@ -255,7 +255,7 @@ function populateWantlistTable(field, order){
         img.src  = 'images/up.png'
         img.width = 12;
         img.height = 12;
-        a.onclick = function() {populateWantlistTable(headertitlesJson[i], "asc")};
+        a.onclick = function() {populateWantlistTable(headertitlesJson[i], true)};
         a.appendChild(img);
 
         var a1     = document.createElement('a');
@@ -263,7 +263,7 @@ function populateWantlistTable(field, order){
         img1.src  = 'images/down.png';
         img1.width = 12;
         img1.height = 12;
-        a1.onclick = function() {populateWantlistTable(headertitlesJson[i], "desc")};
+        a1.onclick = function() {populateWantlistTable(headertitlesJson[i], false)};
         a1.appendChild(img1);
 
         th.appendChild(label);
@@ -287,7 +287,7 @@ function populateWantlistTable(field, order){
         }
 
 
-        artistList.sort(sortBy(field, order));
+        artistList.sort(sortBy(field, asc));
 
         for(var idx in artistList){
 
@@ -326,19 +326,11 @@ function populateWantlistTable(field, order){
 }
 
 //Sort JSON
-function sortBy(prop, order){
-  if (order == "asc"){
-    return function(a,b){
-       if( a[prop] > b[prop]){ return 1;  } else
-       if( a[prop] < b[prop]){ return -1; }
-       return 0;
-    }
-  }else{
-    return function(a,b){
-       if( a[prop] > b[prop]){ return -1; } else
-       if( a[prop] < b[prop]){ return 1;  }
-       return 0;
-    }
+function sortBy(prop, asc){
+  if (asc) {
+      return (a[prop] > b[prop]) ? 1 : ((a[prop] < b[prop]) ? -1 : 0);
+  } else {
+      return (b[prop] > a[prop]) ? 1 : ((b[prop] < a[prop]) ? -1 : 0);
   }
 }
 
