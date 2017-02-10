@@ -256,7 +256,7 @@ function populateWantlistTable(field, asc){
         img.src  = 'images/up.png'
         img.width = 12;
         img.height = 12;
-        a.onclick = function() {populateWantlistTable(labelJson, true)};
+        a.onclick = function() {populateWantlistTable(labelJson.toString(), true)};
         a.appendChild(img);
 
         alert(labelJson);
@@ -266,7 +266,7 @@ function populateWantlistTable(field, asc){
         img1.src  = 'images/down.png';
         img1.width = 12;
         img1.height = 12;
-        a1.onclick = function() {populateWantlistTable(labelJson, false)};
+        a1.onclick = function() {populateWantlistTable(labelJson.toString(), false)};
         a1.appendChild(img1);
 
         th.appendChild(label);
