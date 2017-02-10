@@ -244,7 +244,14 @@ function populateWantlistTable(field, order){
 
       for (var i = 0; i<headertitles.length; i++){
         var th = document.createElement('th');
-        th.appendChild(document.createTextNode(headertitles[i]));
+        var label = document.createTextNode(headertitles[i]);
+        var a     = document.createElement('a');
+        var img   = document.createElement('img');
+        img.src  = 'images/up.png'
+        a.appendChild(img);
+
+        th.appendChild(label);
+        th.appendChild(a);
         tr.appendChild(th);
       }
       wantlistTbl.appendChild(tr);
@@ -274,14 +281,8 @@ function populateWantlistTable(field, order){
           var tr = document.createElement('tr');
 
           var td    = document.createElement('td');
-          var a     = document.createElement('a');
-          var img   = document.createElement('img');
           var label = document.createTextNode(_id);
-          img.src  = 'images/up.png'
-          a.appendChild(img);
           td.appendChild(label);
-
-          td.appendChild(a);
           tr.appendChild(td);
 
           var td = document.createElement('td');
