@@ -287,7 +287,7 @@ function populateWantlistTable(field, asc){
         }
 
 
-        artistList.sort(sortBy(field, asc));
+        sortBy(artistList, field, asc);
 
         for(var idx in artistList){
 
@@ -326,12 +326,14 @@ function populateWantlistTable(field, asc){
 }
 
 //Sort JSON
-function sortBy(prop, asc){
-  if (asc) {
-      return (a[prop] > b[prop]) ? 1 : ((a[prop] < b[prop]) ? -1 : 0);
-  } else {
-      return (b[prop] > a[prop]) ? 1 : ((b[prop] < a[prop]) ? -1 : 0);
-  }
+function sortBy(list, prop, asc){
+  list = list.sort(function(a, b) {
+        if (asc) {
+            return (a[prop] > b[prop]) ? 1 : ((a[prop] < b[prop]) ? -1 : 0);
+        } else {
+            return (b[prop] > a[prop]) ? 1 : ((b[prop] < a[prop]) ? -1 : 0);
+        }
+    });
 }
 
 
