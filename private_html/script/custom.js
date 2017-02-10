@@ -251,7 +251,6 @@ function populateWantlistTable(field, order){
 
       var artistList = [];
 
-      alert(JSON.stringify(data));
       //populate table rows
       if (numArtists > 0) {
         for (var idx in data){
@@ -274,8 +273,15 @@ function populateWantlistTable(field, order){
 
           var tr = document.createElement('tr');
 
-          var td = document.createElement('td');
-          td.appendChild(document.createTextNode(_id));
+          var td    = document.createElement('td');
+          var a     = document.createElement('a');
+          var img   = document.createElement('img');
+          var label = document.createTextNode(_id);
+          img.src  = 'images/up.png'
+          a.appendChild(img);
+          td.appendChild(label);
+
+          td.appendChild(a);
           tr.appendChild(td);
 
           var td = document.createElement('td');
