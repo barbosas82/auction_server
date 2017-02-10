@@ -267,7 +267,10 @@ function populateWantlistTable(){
 
         alert(artistList);
 
-        for(i=0; i<0; i++){
+        for(var idx = 0; idx < numArtists; idx++){
+
+          var _id         = artistList[idx]._id;
+          var name        = artistList[idx].name;
 
           var tr = document.createElement('tr');
 
