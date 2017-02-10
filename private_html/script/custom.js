@@ -250,10 +250,15 @@ function populateWantlistTable(field, order){
         img.src  = 'images/up.png'
         img.width = 12;
         img.height = 12;
+        img.onclick = function() {populateWantlistTable(headertitles[i], "asc")};
         a.appendChild(img);
+
         var a1     = document.createElement('a');
         var img1   = document.createElement('img');
-        img1.src  = 'images/down.png'
+        img1.src  = 'images/down.png';
+        img1.width = 12;
+        img1.height = 12;
+        img.onclick = function() {populateWantlistTable(headertitles[i], "desc")};
         a1.appendChild(img1);
 
         th.appendChild(label);
