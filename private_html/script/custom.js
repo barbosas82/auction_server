@@ -82,6 +82,27 @@ function removeAuctions(auction) {
     }
 }
 
+//onlick for add auction
+function addAuctions(auction) {
+    var api_addr = 'http://bid2.doismeios.pt:8080/api/auction/' + auction;
+
+    if (confirm("Are you sure you want to delete auction " + auction +" ?")) {
+        $.ajax({
+            type: 'DELETE',
+            url: api_addr,
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function(data){
+                $('#sucesso').eq(0).show().center();
+                //setTimeout(function(){ window.location.reload();}, 3000);
+              },
+              error: function(jqXHR, textStatus, errorThrown){
+                $('#erro').show().center();
+            }
+        });
+    }
+}
+
 
 
 //Populate Auctions Tables
@@ -203,6 +224,68 @@ function populateAuctionTable(){
      }
     });
   }
+
+function populateWantlistTable(){
+  $.ajax({
+    type: 'GET',
+    url: 'http://bid2.doismeios.pt:8080/api/wantlist',
+    contentType: "application/json; charset=utf-8",
+    dataType: "json",
+    success: function (data, status, jqXHR) {
+
+      //Do stuff with the JSON data
+      var wantlistTbl = document.getElementById("wantlistTable");
+      var numArtists = data.length;
+
+      //Create Ongoing Auction Table Headers
+      var tr = document.createElement('tr');
+      var headertitles = ["ID", "Nome", ""];
+
+      for (var i = 0; i<headertitles.length; i++){
+        var th = document.createElement('th');
+        th.appendChild(document.createTextNode(headertitles[i]));
+        tr.appendChild(th);
+      }
+      wantlistTbl.appendChild(tr);
+
+
+      //populate table rows
+      if (numArtists > 0) {
+        for (var idx = 0; idx < numArtists; idx++){
+
+          var _id         = data[idx]._id;
+          var name        = data[idx].name;
+
+          var tr = document.createElement('tr');
+
+          var td = document.createElement('td');
+          td.appendChild(document.createTextNode(_id));
+          tr.appendChild(td);
+
+          var td = document.createElement('td');
+          td.appendChild(document.createTextNode(name));
+          tr.appendChild(td);
+
+          var td_remove = document.createElement('td');
+          var btn = document.createElement("BUTTON");
+          var t = document.createTextNode("Remove");
+          btn.className = 'buttonRed';
+          btn.id = _id;
+          btn.onclick = function() {removeArtist(this.id)};
+          btn.appendChild(t);
+          td_remove.appendChild(btn);
+          tr.appendChild(td_remove);
+          wantlistTbl.appendChild(tr);
+        }
+      }
+    },
+     error: function (jqXHR, status) {
+         // error handler
+         alert(jqXHR.sucess);
+     }
+    });
+}
+
 
 //logout function
 function logout(){
