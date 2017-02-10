@@ -137,86 +137,109 @@ function populateAuctionTable() {
   }
 
   //Populate Wantlist Table
-  function populateWantlistTable(field, asc){
-    $.ajax({
-      type: 'GET',
-      url: 'http://bid2.doismeios.pt:8080/api/wantlist',
-      contentType: "application/json; charset=utf-8",
-      dataType: "json",
-      success: function (data, status, jqXHR) {
-        //Do stuff with the JSON data
-        var wantlistTbl = document.getElementById("wantlistTable");
-        while (wantlistTbl.firstChild) {
-            wantlistTbl.removeChild(wantlistTbl.firstChild);
+
+//Populate Wantlist Table
+function populateWantlistTable(field, asc){
+  $.ajax({
+    type: 'GET',
+    url: 'http://bid2.doismeios.pt:8080/api/wantlist',
+    contentType: "application/json; charset=utf-8",
+    dataType: "json",
+    success: function (data, status, jqXHR) {
+      //Do stuff with the JSON data
+      var wantlistTbl = document.getElementById("wantlistTable");
+      while (wantlistTbl.firstChild) {
+          wantlistTbl.removeChild(wantlistTbl.firstChild);
+      }
+      //alert(JSON.stringify(data));
+      var numArtists = data.length-1;
+
+      //Create Ongoing Auction Table Headers
+      var tr = document.createElement('tr');
+      var headertitles     = ["ID" , "Nome", ""];
+      var headertitlesJson = ["_id" , "name", ""];
+
+      for (var i = 0; i<headertitles.length; i++){
+        var th = document.createElement('th');
+        if (i<headertitles.length-1){
+          var label = headertitles[i];
+          var labelJson = headertitlesJson[i];
+          var paramsTrue = "\""+labelJson+"\",true";
+          var paramsFalse = "\""+labelJson+"\",false";
+          th.innerHTML = "<div class=\"alignTextCenter\" style=\"display: inline-block;\">" + label + "</div><div class=\"floatright\"><a onclick=\'populateWantlistTable(" + paramsTrue + ")\'><img src=\"images/up.png\" alt=\"up\" height=\"12\" width=\"12\"></a><a onclick=\'populateWantlistTable(" + paramsFalse + "); \'><img src=\"images/down.png\" alt=\"up\" height=\"12\" width=\"12\"></a></div>"
         }
-        //alert(JSON.stringify(data));
-        var numArtists = data.length-1;
+        tr.appendChild(th);
+      }
+      wantlistTbl.appendChild(tr);
 
-        //Create Ongoing Auction Table Headers
-        var tr = document.createElement('tr');
-        var headertitles     = ["ID" , "Nome", ""];
-        var headertitlesJson = ["_id" , "name", ""];
+      var artistList = [];
 
-        for (var i = 0; i<headertitles.length; i++){
-          var th = document.createElement('th');
-          if (i<headertitles.length-1){
-            var label = headertitles[i];
-            var labelJson = headertitlesJson[i];
-            var paramsTrue = "\""+labelJson+"\",true";
-            var paramsFalse = "\""+labelJson+"\",false";
-            th.innerHTML = "<div class=\"alignTextCenter\" style=\"display: inline-block;\">" + label + "</div><div class=\"floatright\"><a onclick=\'populateWantlistTable(" + paramsTrue + ")\'><img src=\"images/up.png\" alt=\"up\" height=\"12\" width=\"12\"></a><a onclick=\'populateWantlistTable(" + paramsFalse + "); \'><img src=\"images/down.png\" alt=\"up\" height=\"12\" width=\"12\"></a></div>"
-          }
-          tr.appendChild(th);
+      //populate table rows
+      if (numArtists > 0) {
+        for (var idx in data){
+          var _id         = data[idx]._id;
+          var name        = data[idx].name;
+          item = {};
+          item ["_id"] = _id;
+          item ["name"] = name;
+          artistList.push(item);
         }
-        wantlistTbl.appendChild(tr);
 
-        var artistList = [];
+        sortBy(artistList, field, asc);
 
-        //populate table rows
-        if (numArtists > 0) {
-          for (var idx in data){
-            var _id         = data[idx]._id;
-            var name        = data[idx].name;
-            item = {};
-            item ["_id"] = _id;
-            item ["name"] = name;
-            artistList.push(item);
-          }
+        for(var idx in artistList){
 
-          sortBy(artistList, field, asc);
+          var _id         = artistList[idx]._id;
+          var name        = artistList[idx].name;
 
-          for(var idx in artistList){
+          var tr = document.createElement('tr');
 
-            var _id         = artistList[idx]._id;
-            var name        = artistList[idx].name;
+          var td    = document.createElement('td');
+          var label = document.createTextNode(_id);
+          td.appendChild(label);
+          tr.appendChild(td);
 
-            var tr = document.createElement('tr');
+          var td = document.createElement('td');
+          td.appendChild(document.createTextNode(name));
+          tr.appendChild(td);
 
-            var td    = document.createElement('td');
-            var label = document.createTextNode(_id);
-            td.appendChild(label);
-            tr.appendChild(td);
-
-            var td = document.createElement('td');
-            td.appendChild(document.createTextNode(name));
-            tr.appendChild(td);
-
-            var td_remove = document.createElement('td');
-            var btn = document.createElement("BUTTON");
-            var t = document.createTextNode("Remove");
-            btn.className = 'buttonRed';
-            btn.id = _id;
-            btn.onclick = function() {removeArtist(this.id)};
-            btn.appendChild(t);
-            td_remove.appendChild(btn);
-            tr.appendChild(td_remove);
-            wantlistTbl.appendChild(tr);
-          }
+          var td_remove = document.createElement('td');
+          var btn = document.createElement("BUTTON");
+          var t = document.createTextNode("Remove");
+          btn.className = 'buttonRed';
+          btn.id = _id;
+          btn.onclick = function() {removeArtist(this.id)};
+          btn.appendChild(t);
+          td_remove.appendChild(btn);
+          tr.appendChild(td_remove);
+          wantlistTbl.appendChild(tr);
         }
-      },
-       error: function (jqXHR, status) {
-           // error handler
-           alert(jqXHR.sucess);
-       }
-      });
-  }
+      }
+    },
+     error: function (jqXHR, status) {
+         // error handler
+         alert(jqXHR.sucess);
+     }
+    });
+}
+
+//Add artist
+function addArtist(artist){
+  $.ajax({
+    type: 'POST',
+    url: 'http://bid2.doismeios.pt:8080/api/wantlist',
+    contentType: "application/json; charset=utf-8",
+    dataType: "json",
+    data: "{\"name\":\"" + artist + "\"}",
+    success: function (data, status, jqXHR) {
+      //Do stuff with the JSON data
+      alert("Artista " + artist + " adicionado com sucesso.");
+    },
+     error: function (jqXHR, status) {
+         // error handler
+         alert(jqXHR.sucess);
+     }
+    });
+}
+
+//Remove artist
