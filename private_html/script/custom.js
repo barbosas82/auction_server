@@ -234,6 +234,8 @@ function populateWantlistTable(field, asc){
     dataType: "json",
     success: function (data, status, jqXHR) {
 
+      alert(field + "  " + asc);
+
       //Do stuff with the JSON data
       var wantlistTbl = document.getElementById("wantlistTable");
       while (wantlistTbl.firstChild) {
@@ -258,8 +260,6 @@ function populateWantlistTable(field, asc){
         img.height = 12;
         a.onclick = function() {populateWantlistTable(labelJson, true)};
         a.appendChild(img);
-
-        alert(labelJson);
 
         var a1     = document.createElement('a');
         var img1   = document.createElement('img');
@@ -289,7 +289,7 @@ function populateWantlistTable(field, asc){
           artistList.push(item);
         }
 
-        alert(field + "  " + asc);
+
 
         sortBy(artistList, field, asc);
 
