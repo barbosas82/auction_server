@@ -259,6 +259,8 @@ function populateWantlistTable(field, asc){
         a.onclick = function() {populateWantlistTable(labelJson, true)};
         a.appendChild(img);
 
+        alert(labelJson);
+
         var a1     = document.createElement('a');
         var img1   = document.createElement('img');
         img1.src  = 'images/down.png';
