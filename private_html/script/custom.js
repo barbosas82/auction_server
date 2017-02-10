@@ -233,7 +233,8 @@ function addArtist(artist){
     data: "{\"name\":\"" + artist + "\"}",
     success: function (data, status, jqXHR) {
       //Do stuff with the JSON data
-      alert("Sucesso: " + data.message);
+      alert(data.message);
+      populateWantlistTable("_id", false);
     },
      error: function (jqXHR, status) {
          // error handler
