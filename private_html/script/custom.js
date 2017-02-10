@@ -248,6 +248,7 @@ function populateWantlistTable(){
       }
       wantlistTbl.appendChild(tr);
 
+      var artistList = "[";
 
       //populate table rows
       if (numArtists > 0) {
@@ -255,6 +256,18 @@ function populateWantlistTable(){
 
           var _id         = data[idx]._id;
           var name        = data[idx].name;
+
+          artistList += "{\"_id\": " + _id + ", \"name\": " + name"}";
+          if (idx <= numArtists - 2){
+            artistList += ", ";
+          }
+        }
+
+        artistList += "]";
+
+        alert(artistList);
+
+        for(i=0; i<0; i++){
 
           var tr = document.createElement('tr');
 
