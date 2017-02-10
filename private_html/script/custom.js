@@ -263,7 +263,7 @@ function populateWantlistTable(){
           }
         }
 
-        artistList += "]";
+        artistList += "]"; 
 
         artistList.sort(function(a, b){
             return a._id - b._id;
