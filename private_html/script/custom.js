@@ -248,6 +248,8 @@ function populateWantlistTable(field, order){
         var a     = document.createElement('a');
         var img   = document.createElement('img');
         img.src  = 'images/up.png'
+        img.width = 12;
+        img.height = 12;
         a.appendChild(img);
         var a1     = document.createElement('a');
         var img1   = document.createElement('img');
