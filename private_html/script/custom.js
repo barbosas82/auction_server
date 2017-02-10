@@ -82,6 +82,8 @@ function populateAuctionTable() {
 
           var td = document.createElement('td');
           td.appendChild(document.createTextNode(maxbid));
+          td.className = "idContentEditable";
+          td.ondblclick="this.contentEditable=true;";
           tr.appendChild(td);
 
           var td = document.createElement('td');
@@ -202,6 +204,8 @@ function populateWantlistTable(field, asc){
           tr.appendChild(td);
 
           var td = document.createElement('td');
+          td.className = "idContentEditable";
+          td.ondblclick="this.contentEditable=true;";
           td.appendChild(document.createTextNode(name));
           tr.appendChild(td);
 

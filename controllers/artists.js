@@ -27,7 +27,7 @@ exports.add = function(req, res) {
          });
        }else{
                //return res.send("Artist " + name + " already exists.");
-               res.json({ success: true, message: "Artist " + name + " already exists."});
+               res.json({ success: false, message: "Artist " + name + " already exists."});
        }
  });
 };
@@ -43,10 +43,12 @@ exports.update = function(req, res) {
         if(exists){
           Artist.update({"_id":id}, req.body, function (err, numberAffected) {
                   if (err) return console.log(err);
-                  return res.send("Artist " + id + " updated.");
+                  //return res.send("Artist " + id + " updated.");
+                  res.json({ success: false, message: "Artist " + id + " updated."});
           });
         }else{
-                return res.send("Artist " + name + " doesn\'t exist.");
+                //return res.send("Artist " + name + " doesn\'t exist.");
+                res.json({ success: false, message: "Artist " + name + " doesn\'t exist."});
         }
   });
 };
@@ -63,7 +65,7 @@ exports.delete = function(req, res){
         }else{
           Artist.remove({'_id':id},function(result) {
                 //return res.send("Artist " + id + " removed.");
-                res.json({ success: true, message: "Artist " + id + " removed."});
+                res.json({ success: false, message: "Artist " + id + " removed."});
           });
         }
 
