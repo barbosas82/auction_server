@@ -206,7 +206,7 @@ function populateWantlistTable(field, asc){
           var td = document.createElement('td');
           td.className = "idContentEditable";
           td.appendChild(document.createTextNode(name));
-          td.addEventListener("dblclick",   this.contentEditable=true;);
+          td.addEventListener("dblclick",   this.contentEditable=true);
           tr.appendChild(td);
 
           var td_remove = document.createElement('td');
