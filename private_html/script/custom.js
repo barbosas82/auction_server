@@ -239,7 +239,7 @@ function populateWantlistTable(field, asc){
       while (wantlistTbl.firstChild) {
           wantlistTbl.removeChild(wantlistTbl.firstChild);
       }
-      alert(JSON.stringify(data));
+      //alert(JSON.stringify(data));
       var numArtists = data.length-1;
 
       //Create Ongoing Auction Table Headers
@@ -286,6 +286,7 @@ function populateWantlistTable(field, asc){
           artistList.push(item);
         }
 
+        alert(field + "  " + asc);
 
         sortBy(artistList, field, asc);
 
