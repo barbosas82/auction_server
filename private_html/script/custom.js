@@ -250,7 +250,7 @@ function populateWantlistTable(field, order){
         img.src  = 'images/up.png'
         img.width = 12;
         img.height = 12;
-        img.onclick = function() {populateWantlistTable(headertitles[i], "asc")};
+        a.onclick = function() {populateWantlistTable(headertitles[i], "asc")};
         a.appendChild(img);
 
         var a1     = document.createElement('a');
@@ -258,7 +258,7 @@ function populateWantlistTable(field, order){
         img1.src  = 'images/down.png';
         img1.width = 12;
         img1.height = 12;
-        img1.onclick = function() {populateWantlistTable(headertitles[i], "desc")};
+        a1.onclick = function() {populateWantlistTable(headertitles[i], "desc")};
         a1.appendChild(img1);
 
         th.appendChild(label);
