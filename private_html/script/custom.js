@@ -265,7 +265,7 @@ function populateWantlistTable(){
           artistList.push(item)
         }
 
-        artistList.sort(sortBy(_id,"asc"));
+        artistList.sort(sortBy("_id","asc"));
 
 
         for(var idx in artistList){
