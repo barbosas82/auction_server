@@ -165,7 +165,6 @@ function populateAuctionTable() {
           var label = headertitles[i];
           var labelJson = headertitlesJson[i];
           var params = "\""+labelJson+"\",true";
-                    alert ("--" + params + "--");
           th.innerHTML = label + "<a onclick=\'populateWantlistTable(" + params + ")\'><img src=\"images/up.png\" alt=\"up\" height=\"12\" width=\"12\"></a><a onclick=\'populateWantlistTable(" + params + "); \'><img src=\"images/down.png\" alt=\"up\" height=\"12\" width=\"12\"></a>"
 
           tr.appendChild(th);
@@ -185,7 +184,7 @@ function populateAuctionTable() {
             artistList.push(item);
           }
 
-          //sortBy(artistList, field, asc);
+          sortBy(artistList, field, asc);
 
           for(var idx in artistList){
 
