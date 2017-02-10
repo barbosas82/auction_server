@@ -5,6 +5,17 @@ function logout() {
   window.location.href = "../";
 }
 
+//Sort JSON
+function sortBy(list, prop, asc) {
+  list = list.sort(function(a, b) {
+        if (asc) {
+            return (a[prop] > b[prop]) ? 1 : ((a[prop] < b[prop]) ? -1 : 0);
+        } else {
+            return (b[prop] > a[prop]) ? 1 : ((b[prop] < a[prop]) ? -1 : 0);
+        }
+    });
+}
+
 //Populate Auction Tables
 function populateAuctionTable() {
   $.ajax({
@@ -123,4 +134,89 @@ function populateAuctionTable() {
          alert(jqXHR.sucess);
      }
     });
+  }
+
+  //Populate Wantlist Table
+  function populateWantlistTable(field, asc){
+    $.ajax({
+      type: 'GET',
+      url: 'http://bid2.doismeios.pt:8080/api/wantlist',
+      contentType: "application/json; charset=utf-8",
+      dataType: "json",
+      success: function (data, status, jqXHR) {
+
+        alert(field + "  " + asc);
+
+        //Do stuff with the JSON data
+        var wantlistTbl = document.getElementById("wantlistTable");
+        while (wantlistTbl.firstChild) {
+            wantlistTbl.removeChild(wantlistTbl.firstChild);
+        }
+        //alert(JSON.stringify(data));
+        var numArtists = data.length-1;
+
+        //Create Ongoing Auction Table Headers
+        var tr = document.createElement('tr');
+        var headertitles     = ["ID" , "Nome", ""];
+        var headertitlesJson = ["_id" , "name", ""];
+
+        for (var i = 0; i<headertitles.length; i++){
+          var th = document.createElement('th');
+          var label = headertitles[i];
+          var labelJson = headertitlesJson[i];
+          th.innerHTML = label + "<a onclick=\"populateWantlistTable(\"" + labelJson + "\", true); \"><img src=\"images/up.png\" alt=\"up\" height=\"12\" width=\"12\"></a><a onclick=\"populateWantlistTable(\"" + labelJson + "\", false); \"><img src=\"images/down.png\" alt=\"up\" height=\"12\" width=\"12\"></a>"
+
+          tr.appendChild(th);
+        }
+        wantlistTbl.appendChild(tr);
+
+        var artistList = [];
+
+        //populate table rows
+        if (numArtists > 0) {
+          for (var idx in data){
+            var _id         = data[idx]._id;
+            var name        = data[idx].name;
+            item = {};
+            item ["_id"] = _id;
+            item ["name"] = name;
+            artistList.push(item);
+          }
+
+          //sortBy(artistList, field, asc);
+
+          for(var idx in artistList){
+
+            var _id         = artistList[idx]._id;
+            var name        = artistList[idx].name;
+
+            var tr = document.createElement('tr');
+
+            var td    = document.createElement('td');
+            var label = document.createTextNode(_id);
+            td.appendChild(label);
+            tr.appendChild(td);
+
+            var td = document.createElement('td');
+            td.appendChild(document.createTextNode(name));
+            tr.appendChild(td);
+
+            var td_remove = document.createElement('td');
+            var btn = document.createElement("BUTTON");
+            var t = document.createTextNode("Remove");
+            btn.className = 'buttonRed';
+            btn.id = _id;
+            btn.onclick = function() {removeArtist(this.id)};
+            btn.appendChild(t);
+            td_remove.appendChild(btn);
+            tr.appendChild(td_remove);
+            wantlistTbl.appendChild(tr);
+          }
+        }
+      },
+       error: function (jqXHR, status) {
+           // error handler
+           alert(jqXHR.sucess);
+       }
+      });
   }
