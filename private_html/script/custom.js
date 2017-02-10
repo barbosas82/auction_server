@@ -249,7 +249,7 @@ function populateWantlistTable(){
       wantlistTbl.appendChild(tr);
 
       var artistList = "[";
-
+      alert(JSON.stringify(data));
       //populate table rows
       if (numArtists > 0) {
         for (var idx in data){
