@@ -236,7 +236,10 @@ function populateWantlistTable(field, order){
 
       //Do stuff with the JSON data
       var wantlistTbl = document.getElementById("wantlistTable");
-      wantlistTbl.innerHTML = "";
+      while (wantlistTbl.firstChild) {
+          wantlistTbl.removeChild(wantlistTbl.firstChild);
+      }
+      
       var numArtists = data.length-1;
 
       //Create Ongoing Auction Table Headers
@@ -252,7 +255,6 @@ function populateWantlistTable(field, order){
         img.src  = 'images/up.png'
         img.width = 12;
         img.height = 12;
-        alert(headertitlesJson[i]);
         a.onclick = function() {populateWantlistTable(headertitlesJson[i], "asc")};
         a.appendChild(img);
 
