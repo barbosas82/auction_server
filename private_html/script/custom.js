@@ -252,6 +252,7 @@ function populateWantlistTable(field, order){
         img.src  = 'images/up.png'
         img.width = 12;
         img.height = 12;
+        alert(headertitlesJson[i]);
         a.onclick = function() {populateWantlistTable(headertitlesJson[i], "asc")};
         a.appendChild(img);
 
