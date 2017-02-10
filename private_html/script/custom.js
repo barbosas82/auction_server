@@ -257,17 +257,13 @@ function populateWantlistTable(){
           var _id         = data[idx]._id;
           var name        = data[idx].name;
 
-          artistList += "{\'_id\': " + _id + ", \'name\': \'" + name + "\'}";
+          artistList += "{\'_id\':" + _id + ", \'name\':\'" + name + "\'}";
           if (idx <= numArtists - 2){
             artistList += ", ";
           }
         }
 
-        artistList += "]"; 
-
-        artistList.sort(function(a, b){
-            return a._id - b._id;
-        });
+        artistList += "]";
 
         alert(JSON.stringify(artistList));
 
