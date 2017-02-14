@@ -1,13 +1,13 @@
 #loginbox
 {
   position: absolute;
-  margin: auto;
+  margin: 5px;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
   width: 200px;
-  height: 150px;
+  height: 120px;
   border-radius: 3px;
   border-style: dotted;
   border-color: #000000;
