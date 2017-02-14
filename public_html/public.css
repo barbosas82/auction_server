@@ -1,7 +1,8 @@
 #loginbox
 {
   position: absolute;
-  margin: 5px;
+  margin: auto;
+  padding: 10px;
   top: 0;
   right: 0;
   bottom: 0;
