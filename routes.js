@@ -28,7 +28,7 @@ module.exports = function(app){
           //console.log(decoded);
           //return res.json({ success: false, message: 'Failed to authenticate token.' });
           res.set('Content-Type', 'text/html');
-          res.status(403).send('<!DOCTYPE html><html><head><meta http-equiv="refresh" content="0; url=/"></head></html>');
+          res.status(401).send('<!DOCTYPE html><html><head><meta http-equiv="refresh" content="0; url=/"></head></html>');
         } else {
           // if everything is good, save to request for use in other routes
           //console.log(decoded);
