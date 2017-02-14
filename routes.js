@@ -38,12 +38,9 @@ module.exports = function(app){
       });
     } else {
       // if there is no token
-      // return an error
-      //res.redirect(403, '/');
-      //res.status(401).location('/').end();
+      // redirect to login page
       res.set('Content-Type', 'text/html');
-      res.status(403).send('<!DOCTYPE html><html><head><meta http-equiv="refresh" content="0; url=/"></head></html>');
-
+      res.status(401).send('<!DOCTYPE html><html><head><meta http-equiv="refresh" content="0; url=/"></head></html>');
 
       // return res.status(403).send({
       //     success: false,
@@ -55,8 +52,6 @@ module.exports = function(app){
   /**********************************************
   ******           DEFAULT MESSAGES         *****
   **********************************************/
-
-
   //public auth page
   app.use('/', express.static(path.join(__dirname, 'public_html')));
 

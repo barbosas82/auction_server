@@ -4,6 +4,7 @@ var mongoose = require('mongoose'),
     config = require('../config');
 
 
+//Add new user
 exports.add = function(req, res){
   var username = req.body.username;
 
@@ -20,12 +21,14 @@ exports.add = function(req, res){
   });
 };
 
+//List all users
 exports.listAll = function(req, res){
   Users.find({}, function(req, result){
     res.json({ success: true, message: result});
   });
 };
 
+//List one user
 exports.listOne = function(req, res){
   Users.find({"username":req.params.username}, function(req, user){
     if (!user){
@@ -36,6 +39,7 @@ exports.listOne = function(req, res){
   });
 };
 
+//Authenticate user
 exports.Auth = function(req, res){
   var username = req.body.username;
   var password = req.body.password;
