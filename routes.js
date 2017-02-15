@@ -50,19 +50,21 @@ module.exports = function(app){
   };
 
   function setCacheHeaders(req, res, next) {
-    if (!res.getHeader('Cache-Control')) res.setHeader('Cache-Control', 'public, max-age=3600');
+    res.setHeader('Cache-Control', 'max-age=3600');
     next();
 }
 
   /**********************************************
   ******           DEFAULT MESSAGES         *****
   **********************************************/
+  app.use(setCacheHeaders);
+
   //public auth page
   app.use('/', express.static(path.join(__dirname, 'public_html')));
 
   //private pages
   //prvRoutes.use(validateUser);
-  prvRoutes.use(setCacheHeaders);
+
   prvRoutes.use('/private', express.static(path.join(__dirname, 'private_html')));
 
   apiRoutes.get('/', function(req, res) {
@@ -76,7 +78,7 @@ module.exports = function(app){
 
   // route middleware to verify a token
   //apiRoutes.use(validateUser);
-  apiRoutes.use(setCacheHeaders);
+
 
   /**********************************************
   ******            USER METHODS            *****
