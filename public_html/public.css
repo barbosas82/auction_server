@@ -46,6 +46,7 @@ form {
 input[type=text], input[type=password] {
     display: inline-block;
     border: 1px solid #ccc;
+    padding: 4px 4px;
     box-sizing: border-box;
 }
 
