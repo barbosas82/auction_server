@@ -35,14 +35,15 @@
 <body>
   <div id="loginbox">
     <form method="post" action="javascript:validateLogin()">
-      <p>Username: <input style="width: 70px;" type="text" name="login" id="username" value="" placeholder="Username">  Password: <input style="width: 100px;"type="password" name="password" id="password" value="" placeholder="Password"></p>
-      <p class="remember_me">
-        <label>
-          <input type="checkbox" name="remember_me" id="remember_me"/>
-            Remember me.
-        </label>
-        <input type="submit" name="commit" value="Login">
-      </p>
+      <label>Username: </label><input style="width: 70px;" type="text" name="login" id="username" value="" placeholder="Username">
+      <label>Password: </label><input style="width: 100px;"type="password" name="password" id="password" value="" placeholder="Password">
+      <input type="submit" name="commit" value="Login">
+      <input type="checkbox" name="remember_me" id="remember_me"/> Remember me.
+
+      <div class="container" style="background-color:#f1f1f1">
+        <button type="button" class="cancelbtn">Cancel</button>
+        <span class="psw">Forgot <a href="#">password?</a></span>
+      </div>
     </form>
   </div>
 
