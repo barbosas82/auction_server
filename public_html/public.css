@@ -4,4 +4,8 @@ form {
     border: 3px solid #f1f1f1;
     display: inline-block;
     text-align: left;
+    position:absolute;
+   top:50%;
+   right:0;
+   left:0;
 }
