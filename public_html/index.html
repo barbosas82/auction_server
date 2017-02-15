@@ -36,16 +36,18 @@
 
     <form method="post" action="javascript:validateLogin()">
       <div class="container">
+
         <label>Username: </label>
         <input style="width: 70px;" type="text" name="login" id="username" value="" placeholder="Username">
-
-        <label>Password: </label>
-        <input style="width: 100px;"type="password" name="password" id="password" value="" placeholder="Password">
+        <div id="passwd">
+          <label>Password: </label>
+          <input style="width: 100px;"type="password" name="password" id="password" value="" placeholder="Password">
+        </div>
 
         <button type="submit">Login</button>
         <input type="checkbox" checked="checked"> Remember me
       </div>
-      
+
       <div class="container" style="background-color:#f1f1f1">
         <button type="button" class="cancelbtn">Cancel</button>
         <span class="password">Forgot <a href="#">password?</a></span>
