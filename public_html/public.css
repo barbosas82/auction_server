@@ -17,7 +17,7 @@ form {
 }
 
 .buttonGreen {
-    padding: 4px 4px;
+    padding: 4px 10px 4px 10px;
     background-color: #4CAF50;
     color: white;
     cursor: pointer;
@@ -31,6 +31,7 @@ form {
 }
 
 .buttonRed {
+    padding: 4px 10px 4px 10px;
     background-color: #f44336;
     cursor: pointer;
     color: white;
