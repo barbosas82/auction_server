@@ -8,6 +8,10 @@ form {
     left:50%;
 }
 
+fieldset {
+      border: 3px solid #f1f1f1;
+}
+
 .container {
     padding: 16px;
 }
