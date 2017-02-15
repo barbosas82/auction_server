@@ -1,6 +1,12 @@
 form {
     border: 3px solid #f1f1f1;
-    width: 300px;
+    width: 400px;
+    position: absolute;
+    margin: auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
 }
 
 .container {
@@ -24,4 +30,10 @@ button {
     border: none;
     cursor: pointer;
     width: 100%;
+}
+
+.cancelbtn {
+    width: auto;
+    padding: 10px 18px;
+    background-color: #f44336;
 }
