@@ -2,8 +2,6 @@ body{font-family:Calibri, Segoe, 'Segoe UI', sans-serif;font-size:14px;}
 
 form {
     border: 3px solid #f1f1f1;
-    width: 400px;
-    height: 230px;
     display: inline-block;
     position: absolute;
     margin: auto;
