@@ -12,10 +12,6 @@ form {
     margin:auto;
 }
 
-.container {
-    padding: 16px;
-}
-
 .container1 {
     padding: 16px;
 }
@@ -53,8 +49,4 @@ input[type=text], input[type=password] {
     border: 1px solid #ccc;
     padding: 4px 4px;
     box-sizing: border-box;
-}
-
-span.password {
-    float: right;
 }
