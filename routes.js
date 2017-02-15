@@ -60,12 +60,12 @@ module.exports = function(app){
   app.use(setCacheHeaders);
 
   //public auth page
-  app.use('/', express.static(path.join(__dirname, 'public_html')));
+  app.use('/', express.static(path.join(__dirname, 'public_html', { maxAge: 86400000 })));
 
   //private pages
   //prvRoutes.use(validateUser);
 
-  prvRoutes.use('/private', express.static(path.join(__dirname, 'private_html')));
+  prvRoutes.use('/private', express.static(path.join(__dirname, 'private_html', { maxAge: 86400000 })));
 
   apiRoutes.get('/', function(req, res) {
     res.json({ message: 'Welcome to the coolest API on earth!' });
