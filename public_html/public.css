@@ -1,10 +1,5 @@
 body{font-family:Calibri, Segoe, 'Segoe UI', sans-serif;font-size:14px;text-align: center;}
 
-form {
-    display: table-cell;
-    text-align: left;
-    vertical-align: middle;
-}
 
 fieldset {
       border: 3px solid #f1f1f1;
@@ -13,6 +8,12 @@ fieldset {
 #parent {
    display: table;
    width: 100%;
+}
+
+form {
+    display: table-cell;
+    text-align: left;
+    vertical-align: middle;
 }
 
 .container {
