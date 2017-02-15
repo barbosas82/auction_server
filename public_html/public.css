@@ -1,7 +1,9 @@
+body{font-family:Calibri, Segoe, 'Segoe UI', sans-serif;font-size:14px;}
+
 form {
     border: 3px solid #f1f1f1;
     width: 400px;
-    height: 255px;
+    height: 260px;
     display: inline-block;
     position: absolute;
     margin: auto;
@@ -38,4 +40,9 @@ button {
     width: auto;
     padding: 10px 18px;
     background-color: #f44336;
+}
+
+span.password {
+    float: right;
+    padding-top: 16px;
 }
