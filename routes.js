@@ -50,7 +50,7 @@ module.exports = function(app){
   };
 
   function setCacheHeaders(req, res, next) {
-    res.setHeader('Cache-Control', 'max-age=3600');
+    res.setHeader('Cache-Control', 'max-age=604801');
     next();
 }
 
