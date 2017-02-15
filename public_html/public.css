@@ -13,7 +13,28 @@ form {
     padding: 16px;
 }
 
-.buttonRed{color:white;background-color:black;border:1px solid #f44336;}
-.buttonRed:hover{color:#f44336;background-color:white;border:1px solid #f44336;}
-.buttonGreen{color:white;background-color:black;border:1px solid #4CAF50;}
-.buttonGreen:hover{color:#4CAF50;background-color:white;border:1px solid #4CAF50;}
+.buttonGreen {
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+    width: 100%;
+    border:1px solid #4CAF50;
+}
+
+.buttonGreen:hover {
+  background-color: white;
+  color:  #4CAF50;
+  border:1px solid #4CAF50;
+}
+
+.buttonRed {
+    width: auto;
+    padding: 10px 18px;
+    background-color: #f44336;
+    border:1px solid #f44336;
+}
+
+.buttonRed:hover {
+  color: #f44336;
+  border:1px solid #f44336;
+}
