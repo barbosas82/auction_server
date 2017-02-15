@@ -3,7 +3,7 @@ body{font-family:Calibri, Segoe, 'Segoe UI', sans-serif;font-size:14px;}
 form {
     border: 3px solid #f1f1f1;
     width: 400px;
-    height: 260px;
+    height: 220px;
     display: inline-block;
     position: absolute;
     margin: auto;
@@ -19,7 +19,7 @@ form {
 
 input[type=text], input[type=password] {
     width: 100%;
-    padding: 4px 10px;
+    padding: 6px 10px;
     margin: 8px 0;
     display: inline-block;
     border: 1px solid #ccc;
