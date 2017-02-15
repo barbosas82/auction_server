@@ -63,7 +63,7 @@ module.exports = function(app){
   app.use('/', express.static(path.join(__dirname, 'public_html')));
 
   //private pages
-  //prvRoutes.use(validateUser);
+  prvRoutes.use(validateUser);
 
   prvRoutes.use('/private', express.static(path.join(__dirname, 'private_html')));
 
@@ -77,7 +77,7 @@ module.exports = function(app){
   app.post('/authenticate', users.Auth); //Get New Token
 
   // route middleware to verify a token
-  //apiRoutes.use(validateUser);
+  apiRoutes.use(validateUser);
 
 
   /**********************************************
