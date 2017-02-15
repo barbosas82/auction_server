@@ -57,15 +57,15 @@ module.exports = function(app){
   /**********************************************
   ******           DEFAULT MESSAGES         *****
   **********************************************/
-  //app.use(setCacheHeaders);
+  app.use(setCacheHeaders);
 
   //public auth page
-  app.use('/', express.static(path.join(__dirname + 'public_html', { maxAge: 86400000 })));
+  app.use('/', express.static(path.join(__dirname, 'public_html')));
 
   //private pages
   //prvRoutes.use(validateUser);
 
-  prvRoutes.use('/private', express.static(path.join(__dirname +  'private_html', { maxAge: 86400000 })));
+  prvRoutes.use('/private', express.static(path.join(__dirname, 'private_html')));
 
   apiRoutes.get('/', function(req, res) {
     res.json({ message: 'Welcome to the coolest API on earth!' });
