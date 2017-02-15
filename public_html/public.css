@@ -28,10 +28,18 @@ form {
 
 .buttonRed {
     background-color: #f44336;
+    color: white;
     border:1px solid #f44336;
 }
 
 .buttonRed:hover {
+  background-color: white;
   color: #f44336;
   border:1px solid #f44336;
+}
+
+input[type=text], input[type=password] {
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
 }
