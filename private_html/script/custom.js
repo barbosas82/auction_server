@@ -207,7 +207,7 @@ function populateWantlistTable(field, asc){
           td.className = "idContentEditable";
           td.id        = "A" + _id;
           td.onclick   = function () { this.contentEditable=true; };
-          td.onblur    = function () { alert(document.getElementById(this.id).innerHTML); };
+          td.onblur    = function () { editArtist(document.getElementById(this.id).innerHTML, this.id.substring(1)); };
           td.appendChild(document.createTextNode(name));
           tr.appendChild(td);
 
@@ -216,7 +216,7 @@ function populateWantlistTable(field, asc){
           var t         = document.createTextNode("Remove");
           btn.className = 'buttonRed';
           btn.id        = _id;
-          btn.onclick   = function() {deleteArtist(this.id)};
+          btn.onclick   = function() {deleteArtist(this.id.substring(1))};
           btn.appendChild(t);
           td_remove.appendChild(btn);
           tr.appendChild(td_remove);
