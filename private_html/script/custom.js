@@ -205,18 +205,19 @@ function populateWantlistTable(field, asc){
 
           var td = document.createElement('td');
           td.className = "idContentEditable";
-          td.id = _id;
-          td.onclick = function () { this.contentEditable=true; };
-          td.onblur = function () { alert(this.id); this.contentEditable=true; };
+          td.id        = _id;
+          td.name      = name;
+          td.onclick   = function () { this.contentEditable=true; };
+          td.onblur    = function () { editArtist(this.name, this.id) };
           td.appendChild(document.createTextNode(name));
           tr.appendChild(td);
 
           var td_remove = document.createElement('td');
-          var btn = document.createElement("BUTTON");
-          var t = document.createTextNode("Remove");
+          var btn       = document.createElement("BUTTON");
+          var t         = document.createTextNode("Remove");
           btn.className = 'buttonRed';
-          btn.id = _id;
-          btn.onclick = function() {deleteArtist(this.id)};
+          btn.id        = _id;
+          btn.onclick   = function() {deleteArtist(this.id)};
           btn.appendChild(t);
           td_remove.appendChild(btn);
           tr.appendChild(td_remove);
