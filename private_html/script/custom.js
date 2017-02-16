@@ -206,7 +206,7 @@ function populateWantlistTable(field, asc){
           var td = document.createElement('td');
           td.className = "idContentEditable";
           td.onclick = function () { this.contentEditable=true; };
-          td.onBlur = function () { alert(_id); this.contentEditable=true; };
+          td.onblur = function () { alert(_id); this.contentEditable=true; };
           td.appendChild(document.createTextNode(name));
           tr.appendChild(td);
 
