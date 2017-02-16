@@ -207,7 +207,7 @@ function populateWantlistTable(field, asc){
           td.className = "idContentEditable";
           td.id        = _id;
           td.onclick   = function () { this.contentEditable=true; };
-          td.onblur    = function () { editArtist(document.getElementById(this.id).value, this.id) };
+          td.onblur    = function () { editArtist(document.getElementById("\""+this.id+"\"").value, this.id) };
           td.appendChild(document.createTextNode(name));
           tr.appendChild(td);
 
