@@ -208,7 +208,7 @@ function populateWantlistTable(field, asc){
           td.id        = "A" + _id;
           var elid = "\"" + this.id + "\"";
           td.onclick   = function () { this.contentEditable=true; };
-          td.onblur    = function () { alert(document.getElementById(elid)); };
+          td.onblur    = function () { alert(document.getElementById(this.id)); };
           td.appendChild(document.createTextNode(name));
           tr.appendChild(td);
 
