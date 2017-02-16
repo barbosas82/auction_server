@@ -262,6 +262,7 @@ function editArtist(artist, id){
     data: "{\"name\":\"" + artist + "\"}",
     success: function (data, status, jqXHR) {
       //Do stuff with the JSON data
+      alert(artist);
       alert(data.message);
       populateWantlistTable("_id", false);
     },
