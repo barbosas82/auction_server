@@ -205,7 +205,8 @@ function populateWantlistTable(field, asc){
 
           var td = document.createElement('td');
           td.className = "idContentEditable";
-          td.onclick = function () { alert(this); this.contentEditable=true; };
+          td.onclick = function () { this.contentEditable=true; };
+          td.onBlur = function () { alert(_id); this.contentEditable=true; };
           td.appendChild(document.createTextNode(name));
           tr.appendChild(td);
 
@@ -234,6 +235,26 @@ function addArtist(artist){
   $.ajax({
     type: 'POST',
     url: 'http://bid2.doismeios.pt:8080/api/wantlist',
+    contentType: "application/json; charset=utf-8",
+    dataType: "json",
+    data: "{\"name\":\"" + artist + "\"}",
+    success: function (data, status, jqXHR) {
+      //Do stuff with the JSON data
+      alert(data.message);
+      populateWantlistTable("_id", false);
+    },
+     error: function (jqXHR, status) {
+         // error handler
+         alert("Erro: " + JSON.stringify(jqXHR));
+     }
+    });
+}
+
+//Edit artist
+function editArtist(artist, id){
+  $.ajax({
+    type: 'PUT',
+    url: 'http://bid2.doismeios.pt:8080/api/wantlist/' + id,
     contentType: "application/json; charset=utf-8",
     dataType: "json",
     data: "{\"name\":\"" + artist + "\"}",
