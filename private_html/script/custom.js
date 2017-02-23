@@ -296,9 +296,10 @@ function deleteArtist(artist){
 //KeypressHandle
 function keyHandle(e, el, value, id){
 
-  el.contentEditable=false;
+
 
   if(e.keyCode == 13){
+        el.contentEditable=false;
         editArtist(value, id);
         //keypressed = true;
   }
