@@ -263,7 +263,8 @@ function editArtist(artist, id){
     success: function (data, status, jqXHR) {
       //Do stuff with the JSON data
       alert(data.message);
-      populateWantlistTable("_id", true);
+      document.reload(true);
+      //populateWantlistTable("_id", true);
     },
      error: function (jqXHR, status) {
          // error handler
