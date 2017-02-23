@@ -295,7 +295,7 @@ function deleteArtist(artist){
 
 //KeypressHandle
 function keyHandle(e){
-  alert("Keycode: " + e.keycode);
+  alert("Keycode: " + e.keyCode);
   //editArtist(value, id);
   // if(e.keyCode === 13){
   //       saveToDatabase(e, editableObj,column,id);
