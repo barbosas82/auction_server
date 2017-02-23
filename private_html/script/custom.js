@@ -222,6 +222,7 @@ function populateWantlistTable(field, asc){
           tr.appendChild(td_remove);
           wantlistTbl.appendChild(tr);
         }
+        document.reload(true);
       }
     },
      error: function (jqXHR, status) {
@@ -262,7 +263,7 @@ function editArtist(artist, id){
     success: function (data, status, jqXHR) {
       //Do stuff with the JSON data
       alert(data.message);
-      populateWantlistTable("_id", false);
+      populateWantlistTable("_id", true);
     },
      error: function (jqXHR, status) {
          // error handler
