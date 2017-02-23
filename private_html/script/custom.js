@@ -207,7 +207,7 @@ function populateWantlistTable(field, asc){
           td.className  = "idContentEditable";
           td.id         = "A" + _id;
           td.onclick    = function () { this.contentEditable=true; };
-          td.onkeypress = function () { keyHandle(window.event, document.getElementById(this.id).innerHTML, this.id.substring(1)); };
+          td.onkeypress = function () { keyHandle(event, document.getElementById(this.id).innerHTML, this.id.substring(1)); };
           td.onblur     = function () { editArtist(document.getElementById(this.id).innerHTML, this.id.substring(1)); };
           td.appendChild(document.createTextNode(name));
           tr.appendChild(td);
@@ -263,7 +263,7 @@ function editArtist(artist, id){
     success: function (data, status, jqXHR) {
       //Do stuff with the JSON data
       alert(data.message);
-      document.reload(true);
+      location.reload(true);
       //populateWantlistTable("_id", true);
     },
      error: function (jqXHR, status) {
@@ -283,7 +283,7 @@ function deleteArtist(artist){
     success: function (data, status, jqXHR) {
       //Do stuff with the JSON data
       alert(data.message);
-      document.reload(true);
+      location.reload(true);
       //populateWantlistTable("_id", true);
     },
      error: function (jqXHR, status) {
@@ -295,7 +295,7 @@ function deleteArtist(artist){
 
 //KeypressHandle
 function keyHandle(e, value, id){
-  alert(e);
+  alert("e");
   //editArtist(value, id);
   // if(e.keyCode === 13){
   //       saveToDatabase(e, editableObj,column,id);
