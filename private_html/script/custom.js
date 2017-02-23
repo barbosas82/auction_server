@@ -208,7 +208,7 @@ function populateWantlistTable(field, asc){
           td.id         = "A" + _id;
           td.onclick    = function () { this.contentEditable=true; };
           td.onkeypress = function () { keyHandle(event, this, document.getElementById(this.id).innerHTML, this.id.substring(1)); };
-          td.onblur     = function () { alert(event.keyCode; if(event.keyCode != 13){ editArtist(document.getElementById(this.id).innerHTML, this.id.substring(1)); }; };
+          td.onblur     = function () { alert(event.keyCode); if(event.keyCode != 13){ editArtist(document.getElementById(this.id).innerHTML, this.id.substring(1)); }; };
           td.appendChild(document.createTextNode(name));
           tr.appendChild(td);
 
