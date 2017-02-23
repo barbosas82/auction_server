@@ -204,10 +204,11 @@ function populateWantlistTable(field, asc){
           tr.appendChild(td);
 
           var td = document.createElement('td');
-          td.className = "idContentEditable";
-          td.id        = "A" + _id;
-          td.onclick   = function () { this.contentEditable=true; };
-          td.onblur    = function () { editArtist(document.getElementById(this.id).innerHTML, this.id.substring(1)); };
+          td.className  = "idContentEditable";
+          td.id         = "A" + _id;
+          td.onclick    = function () { this.contentEditable=true; };
+          td.onkeypress = function () { keyHandle(event, document.getElementById(this.id).innerHTML, this.id.substring(1)); };
+          td.onblur     = function () { editArtist(document.getElementById(this.id).innerHTML, this.id.substring(1)); };
           td.appendChild(document.createTextNode(name));
           tr.appendChild(td);
 
@@ -290,4 +291,14 @@ function deleteArtist(artist){
          alert("Erro: " + JSON.stringify(jqXHR));
      }
     });
+}
+
+//KeypressHandle
+function keyHandle(e, value, id){
+  alert(e.keycode);
+  //editArtist(value, id);
+  // if(e.keyCode === 13){
+  //       saveToDatabase(e, editableObj,column,id);
+  //       keypressed = true;
+  // }
 }
