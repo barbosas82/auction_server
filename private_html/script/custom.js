@@ -207,7 +207,7 @@ function populateWantlistTable(field, asc){
           td.className  = "idContentEditable";
           td.id         = "A" + _id;
           td.onclick    = function () { this.contentEditable=true; };
-          td.onkeypress = function () { keyHandle(event, document.getElementById(this.id).innerHTML, this.id.substring(1)); };
+          td.onkeypress = function () { keyHandle(window.event, document.getElementById(this.id).innerHTML, this.id.substring(1)); };
           td.onblur     = function () { editArtist(document.getElementById(this.id).innerHTML, this.id.substring(1)); };
           td.appendChild(document.createTextNode(name));
           tr.appendChild(td);
