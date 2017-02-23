@@ -207,7 +207,7 @@ function populateWantlistTable(field, asc){
           td.className  = "idContentEditable";
           td.id         = "A" + _id;
           td.onclick    = function () { this.contentEditable=true; };
-          td.onkeypress = function () { keyHandle(event, document.getElementById(this.id).innerHTML, this.id.substring(1)); };
+          td.onkeypress = function () { keyHandle(event, this, document.getElementById(this.id).innerHTML, this.id.substring(1)); };
           //td.onblur     = function () { editArtist(document.getElementById(this.id).innerHTML, this.id.substring(1)); };
           td.appendChild(document.createTextNode(name));
           tr.appendChild(td);
@@ -294,8 +294,11 @@ function deleteArtist(artist){
 }
 
 //KeypressHandle
-function keyHandle(e, value, id){
-  if(e.keyCode === 13){
+function keyHandle(e, el, value, id){
+
+  el.contentEditable=false;
+
+  if(e.keyCode == 13){
         editArtist(value, id);
         //keypressed = true;
   }
