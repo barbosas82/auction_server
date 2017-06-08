@@ -33,6 +33,7 @@ app.use(morgan('dev'));
 require('./models/user');     // get our mongoose model
 require('./models/artists');  // get our mongoose model
 require('./models/auctions'); // get our mongoose model
+require('./models/scraper'); // get our mongoose model
 require('./routes')(app);     // get our routes
 
 // =======================

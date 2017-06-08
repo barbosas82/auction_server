@@ -22,7 +22,7 @@ exports.add = function(req, res){
 			var auction_remaining_time_days = auction_remaining_time.split(" dias")[0] * 24 * 60;
 			var auction_remaining_time_hours = auction_remaining_time.split(", ")[1].split("h")[0] * 60;
 			var auction_remaining_time_minutes = auction_remaining_time.split("h ")[1].split("m")[0];
-			var auction_end_date = new Date(Date.now());
+			var auction_end_date = new Date(Date.now() + Date.now().getTimezoneOffset()*60*1000);
 			auction_end_date.setMinutes(auction_end_date.getMinutes() + 10);
 			var auction_seller = $("div.seller-column div div div b a").text();
 

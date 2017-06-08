@@ -4,6 +4,7 @@ var prvRoutes      = express.Router();
 var users          = require('./controllers/user');
 var artists        = require('./controllers/artists');
 var auctions       = require('./controllers/auctions');
+var scraper        = require('./controllers/scraper');
 var jwt            = require('jsonwebtoken');
 var path           = require('path');
 var cookieParser   = require('cookie-parser');
@@ -103,9 +104,14 @@ module.exports = function(app){
     apiRoutes.put('/auction/:id', auctions.update );
     apiRoutes.delete('/auction/:id', auctions.delete);
 
+    /**********************************************
+    ******       METHODS FOR SCRAPING         *****
+    **********************************************/
+	
+    apiRoutes.post('/scrape', scraper.add);
+	
     app.use('/api', apiRoutes);
     app.use(prvRoutes);
-
     /**********************************************
     ******       Error Handling               *****
     **********************************************/
